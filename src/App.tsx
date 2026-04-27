@@ -41,7 +41,9 @@ import {
   User,
   MessageSquare,
   Layers,
-  UserCheck
+  UserCheck,
+  CircleDollarSign,
+  BarChart3
 } from "lucide-react";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -311,94 +313,57 @@ export default function App() {
           </div>
         </section>
 
-        {/* Developers Network Section - Light Theme */}
-        <section className="py-16 bg-[#f8fafc] overflow-hidden relative border-t border-slate-200">
+        {/* Developers Network Section - Dark Theme */}
+        <section className="py-12 bg-[#0a1e3b] overflow-hidden relative border-y border-white/5">
           {/* Architectural Grid Background */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
             <svg width="100%" height="100%">
-              <pattern id="premiumGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-slate-900" />
+              <pattern id="premiumGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-white" />
               </pattern>
               <rect width="100%" height="100%" fill="url(#premiumGrid)" />
             </svg>
           </div>
           
-          <div className="max-w-7xl mx-auto px-6 mb-12 relative z-10 text-center">
+          <div className="max-w-7xl mx-auto px-6 mb-8 relative z-10 text-center">
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex flex-col items-center gap-3"
+              className="inline-flex flex-col items-center gap-2"
             >
-              <h2 className="text-2xl md:text-3xl font-headline font-black text-[#0a1e3b] leading-tight uppercase tracking-[0.1em]">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-[1px] bg-white/20" />
+                <span className="text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Our Network</span>
+                <div className="w-12 h-[1px] bg-white/20" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-headline font-black text-white leading-tight uppercase tracking-[0.05em]">
                 Strategic <span className="text-primary italic">Alliances</span>
               </h2>
             </motion.div>
           </div>
 
           {/* Infinite Marquee Rows */}
-          <div className="space-y-6 relative">
+          <div className="relative">
             {/* Fade Overlays */}
-            <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#f8fafc] via-[#f8fafc]/90 to-transparent z-20 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#f8fafc] via-[#f8fafc]/90 to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#0a1e3b] via-[#0a1e3b]/90 to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#0a1e3b] via-[#0a1e3b]/90 to-transparent z-20 pointer-events-none" />
 
-            <div className="flex whitespace-nowrap gap-4">
-              <div className="flex gap-4 animate-marquee-reverse hover:[animation-play-state:paused]">
-                {[
-                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
-                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
-                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
-                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
-                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
-                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
-                ].map((dev, idx) => (
-                  <div
-                    key={idx}
-                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white border border-slate-300 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
-                  >
-                    <span className="text-[#0a1e3b] font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
-                      {dev}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-4 animate-marquee-reverse hover:[animation-play-state:paused]" aria-hidden="true">
-                {[
-                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
-                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
-                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
-                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
-                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
-                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
-                ].map((dev, idx) => (
-                  <div
-                    key={idx}
-                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white border border-slate-300 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
-                  >
-                    <span className="text-[#0a1e3b] font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
-                      {dev}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Row 2: Right to Left */}
-            <div className="flex whitespace-nowrap gap-4">
+            <div className="flex whitespace-nowrap overflow-hidden">
               <div className="flex gap-4 animate-marquee hover:[animation-play-state:paused]">
                 {[
-                  "Smartworld", "Whiteland", "Puravankara", "Sobha Ltd",
-                  "Brigade", "Kalpataru", "Shapoorji", "Adani",
-                  "Omaxe", "Mahagun", "Ace Group", "Eldeco",
+                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
+                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
+                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
                   "Smartworld", "Whiteland", "Puravankara", "Sobha Ltd",
                   "Brigade", "Kalpataru", "Shapoorji", "Adani",
                   "Omaxe", "Mahagun", "Ace Group", "Eldeco",
                 ].map((dev, idx) => (
                   <div
                     key={idx}
-                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white border border-slate-300 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
+                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
                   >
-                    <span className="text-[#0a1e3b] font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 font-headline">
+                    <span className="text-white font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
                       {dev}
                     </span>
                   </div>
@@ -406,18 +371,18 @@ export default function App() {
               </div>
               <div className="flex gap-4 animate-marquee hover:[animation-play-state:paused]" aria-hidden="true">
                 {[
-                  "Smartworld", "Whiteland", "Puravankara", "Sobha Ltd",
-                  "Brigade", "Kalpataru", "Shapoorji", "Adani",
-                  "Omaxe", "Mahagun", "Ace Group", "Eldeco",
+                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
+                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
+                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
                   "Smartworld", "Whiteland", "Puravankara", "Sobha Ltd",
                   "Brigade", "Kalpataru", "Shapoorji", "Adani",
                   "Omaxe", "Mahagun", "Ace Group", "Eldeco",
                 ].map((dev, idx) => (
                   <div
                     key={idx}
-                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white border border-slate-300 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
+                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
                   >
-                    <span className="text-[#0a1e3b] font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 font-headline">
+                    <span className="text-white font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
                       {dev}
                     </span>
                   </div>
@@ -431,7 +396,7 @@ export default function App() {
         </section>
 
         {/* Curated Hot Properties */}
-        <section className="pt-8 pb-12 px-6 max-w-[90rem] mx-auto">
+        <section className="pt-12 pb-12 px-6 max-w-[90rem] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-headline font-black text-[#0a1e3b] text-center">Curated <span className="text-primary italic">Hot</span> Properties</h2>
             
@@ -473,11 +438,17 @@ export default function App() {
         <InvestmentAnalytics />
 
         {/* Top Investment Locations */}
-        <section className="py-24 bg-[#0a1e3b]">
+        <section className="pt-10 pb-16 bg-[#0a1e3b]">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-6xl font-headline font-black text-white mb-4 leading-tight uppercase tracking-tight">Top Investment Locations</h2>
-              <p className="text-slate-400 font-medium font-headline">Strategic markets poised for significant capital appreciation and high rental yields in 2024.</p>
+            <div className="mb-10 space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-0.5 bg-primary/40 rounded-full" />
+                <span className="text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Premium Markets</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-black text-white mb-4 leading-tight uppercase tracking-tight">
+                Top <span className="text-primary italic">Investment</span> Locations
+              </h2>
+              <p className="text-slate-400 font-medium font-headline max-w-2xl text-base">Strategic markets poised for significant capital appreciation and high rental yields in 2024.</p>
             </div>
 
             <div className="relative group/nav">
@@ -860,15 +831,15 @@ export default function App() {
 
                 <div className="space-y-3">
                   <h3 className="text-xl font-headline font-bold text-primary leading-tight group-hover:text-secondary transition-colors duration-300">
-                    {blog.title.split(' ').map((word, i) => 
+                    <Link to="/blog">{blog.title.split(' ').map((word, i) => 
                       i === 2 || i === 5 ? <span key={i} className="italic font-extrabold">{word} </span> : word + ' '
-                    )}
+                    )}</Link>
                   </h3>
-                  <button className="flex items-center gap-2.5 text-[9px] font-black text-primary uppercase tracking-[0.2em] group-hover:text-secondary transition-all">
+                  <Link to="/blog" className="flex items-center gap-2.5 text-[9px] font-black text-primary uppercase tracking-[0.2em] group-hover:text-secondary transition-all">
                     <span>Read Analysis</span>
                     <div className="w-5 h-1 w-0 group-hover:w-6 bg-secondary transition-all duration-300" />
                     <ArrowRight className="w-3 h-3" />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -876,7 +847,7 @@ export default function App() {
         </section>
 
         {/* Strategic Intelligence CTA - Premium Upgrade */}
-        <section className="py-12 bg-[#020617] px-6 relative overflow-hidden">
+        <section className="py-8 bg-[#020617] px-6 relative overflow-hidden">
           {/* Environmental Lighting & Geometric Texture */}
           <div className="absolute inset-0 z-0">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[160px] -translate-y-1/2 translate-x-1/4 animate-pulse" />
@@ -903,7 +874,7 @@ export default function App() {
             ))}
           </div>
 
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+          <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
             {/* Content Side */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
@@ -911,28 +882,66 @@ export default function App() {
               viewport={{ once: true }}
               className="flex-1 space-y-6"
             >
-              <div className="space-y-3">
-                <h2 className="text-3xl md:text-4xl font-headline font-bold text-white leading-tight tracking-tight">
-                  Maximize Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-blue-400 to-secondary italic font-black">Returns</span> <br />
-                  <span className="text-white/90">with the Right Property</span>
+              <div className="space-y-2">
+                <h2 className="text-2xl md:text-3xl font-headline font-black text-white leading-tight">
+                  Here's <span className="relative">What <div className="absolute -bottom-1.5 left-0 w-full h-1 bg-red-600 rounded-full" /></span> You'll Get
                 </h2>
-                <div className="w-16 h-0.5 bg-gradient-to-r from-secondary to-transparent rounded-full" />
-                <p className="text-slate-400 text-base md:text-lg font-medium leading-relaxed max-w-lg">
-                  We leverage proprietary market data to identify high-growth assets with exceptional rental yield.
-                </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-6 pt-2">
+              <div className="space-y-5">
                 {[
-                  { label: "Market Reach", val: "50K+", sub: "Experts" },
-                  { label: "Avg. Yield", val: "8.4%", sub: "Returns" },
-                  { label: "Portfolio", val: "$2B+", sub: "Assets" }
-                ].map((stat, idx) => (
-                  <div key={idx} className="space-y-0.5">
-                    <p className="text-xl font-headline font-black text-white">{stat.val}</p>
-                    <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none">{stat.sub}</p>
+                  { 
+                    title: "Top Investment Properties", 
+                    desc: "Handpicked high-growth properties tailored to your goals.",
+                    icon: <Building2 className="w-5 h-5 text-slate-300" />
+                  },
+                  { 
+                    title: "Price Breakdown", 
+                    desc: "Detailed cost analysis with transparent pricing.",
+                    icon: <CircleDollarSign className="w-5 h-5 text-slate-300" />
+                  },
+                  { 
+                    title: "ROI Estimation", 
+                    desc: "Get accurate return on investment projections.",
+                    icon: <BarChart3 className="w-5 h-5 text-slate-300" />
+                  },
+                  { 
+                    title: "Free Consultation", 
+                    desc: "Connect with our experts for personalized guidance.",
+                    icon: <User className="w-5 h-5 text-slate-300" />
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-4 group">
+                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center shrink-0 group-hover:border-secondary group-hover:bg-white/5 transition-all">
+                      {item.icon}
+                    </div>
+                    <div className="space-y-0.5">
+                      <h4 className="text-base font-headline font-bold text-white">{item.title}</h4>
+                      <p className="text-slate-400 text-xs md:text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Trusted Footer */}
+              <div className="bg-white/5 border border-white/10 p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 backdrop-blur-sm">
+                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5 text-slate-300" />
+                </div>
+                <div className="flex-1 text-center md:text-left space-y-1">
+                  <p className="text-xs font-bold text-white/80">Trusted by 5,000+ Investors</p>
+                  <div className="flex flex-col md:flex-row items-center gap-2">
+                    <div className="flex gap-0.5 text-yellow-400">
+                      {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 fill-current" />)}
+                    </div>
+                    <div className="hidden md:block w-px h-3 bg-white/20" />
+                    <p className="text-[10px] font-medium text-slate-400">
+                       <span className="text-white font-bold">4.8/5</span> | 120+ Reviews
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
@@ -940,15 +949,15 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="w-full lg:w-[420px]"
+              className="w-full lg:w-[380px]"
             >
               <div className="group relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-br from-white/30 to-transparent rounded-[1.5rem] blur opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-white/30 to-transparent rounded-[1.25rem] blur opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
                 
-                <div className="relative bg-[#0f172a]/95 backdrop-blur-2xl p-6 md:p-8 rounded-[1.5rem] border border-white/20 shadow-2xl space-y-4">
-                  <div className="space-y-0.5 mb-4">
-                    <h3 className="text-xl font-headline font-bold text-white">Inquiry Brief</h3>
-                    <p className="text-[12px] text-slate-300">Unlock detailed institutional project reports.</p>
+                <div className="relative bg-[#0f172a]/95 backdrop-blur-2xl p-5 md:p-6 rounded-[1.25rem] border border-white/20 shadow-2xl space-y-3">
+                  <div className="space-y-0.5 mb-2">
+                    <h3 className="text-lg font-headline font-bold text-white">Inquiry Brief</h3>
+                    <p className="text-[11px] text-slate-300">Unlock detailed institutional project reports.</p>
                   </div>
 
                   <div className="space-y-4">

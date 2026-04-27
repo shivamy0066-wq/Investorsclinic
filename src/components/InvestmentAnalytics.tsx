@@ -99,8 +99,11 @@ export function InvestmentAnalytics() {
   }, [isLive, markets.length]);
 
   return (
-    <section className="py-16 bg-[#f8f9fb]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="pt-16 pb-0 bg-slate-50/80 border-y border-slate-100 relative overflow-hidden">
+      {/* Subtle background decoration */}
+      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-white to-transparent pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-[#0a1e3b] mb-6">
             Invest with <span className="text-primary">Confidence</span><br />
@@ -113,10 +116,10 @@ export function InvestmentAnalytics() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Heatmap Grid */}
-          <div className="lg:col-span-8 bg-white/50 backdrop-blur-sm border border-slate-100 rounded-[2.5rem] p-8 shadow-sm">
+          <div className="lg:col-span-8 bg-white/70 backdrop-blur-md border border-slate-200/60 rounded-[2.5rem] p-8 shadow-xl shadow-slate-200/20">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-slate-50 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center">
                   <TrendingUp className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -126,7 +129,7 @@ export function InvestmentAnalytics() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="hidden md:flex items-center gap-3 bg-slate-50 px-5 py-2.5 rounded-full border border-slate-100">
+                <div className="hidden md:flex items-center gap-3 bg-white px-5 py-2.5 rounded-full border border-slate-100 shadow-sm">
                   <span className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Heat Range</span>
                   <div className="w-32 h-2 rounded-full bg-gradient-to-r from-slate-200 via-primary to-secondary" />
                   <div className="w-2 h-2 rounded-full bg-secondary" />
@@ -134,8 +137,8 @@ export function InvestmentAnalytics() {
                 <button 
                   onClick={() => setIsLive(!isLive)}
                   className={cn(
-                    "px-4 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest transition-all",
-                    isLive ? "bg-green-50 border-green-100 text-green-600" : "bg-slate-50 border-slate-100 text-slate-400"
+                    "px-4 py-2 rounded-full border shadow-sm text-[10px] font-black uppercase tracking-widest transition-all",
+                    isLive ? "bg-green-50 border-green-100 text-green-600" : "bg-white border-slate-100 text-slate-400"
                   )}
                 >
                   {isLive ? '● Live Feed' : '○ Paused'}
@@ -151,8 +154,8 @@ export function InvestmentAnalytics() {
                   className={cn(
                     "relative p-5 rounded-3xl transition-all duration-500 text-left border flex flex-col justify-between h-44 group overflow-hidden",
                     selectedMarketId === market.id 
-                      ? "bg-primary border-primary shadow-2xl shadow-primary/20 -translate-y-1" 
-                      : "bg-white border-slate-50 hover:border-slate-200 hover:shadow-md"
+                      ? "bg-primary border-primary shadow-2xl shadow-primary/30 -translate-y-1" 
+                      : "bg-white border-slate-200/60 hover:border-slate-300 hover:shadow-xl hover:-translate-y-0.5"
                   )}
                 >
                   <div className="relative z-10 flex flex-col h-full justify-between">
@@ -333,7 +336,7 @@ export function InvestmentAnalytics() {
       </div>
 
       {/* Bloomberg style ticker */}
-      <div className="mt-16 bg-[#0a1e3b] border-y border-white/5 py-4 overflow-hidden relative">
+      <div className="mt-10 bg-[#0a1e3b] border-y border-white/5 py-4 overflow-hidden relative">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...markets, ...markets].map((market, idx) => (
             <div key={`${market.id}-${idx}`} className="flex items-center gap-8 px-8 border-r border-white/10">
