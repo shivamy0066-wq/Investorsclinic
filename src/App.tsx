@@ -162,7 +162,7 @@ export default function App() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-[2.2rem] md:text-[4rem] font-headline font-extrabold text-white leading-tight md:leading-[0.95] mb-6 md:mb-8 tracking-[-0.03em]"
               >
-                Find Your <span className="italic text-white font-bold opacity-90">Dream</span> <br /> 
+                Find Your <span className="italic text-primary font-bold">Dream</span> <br /> 
                 Home in India
               </motion.h1>
 

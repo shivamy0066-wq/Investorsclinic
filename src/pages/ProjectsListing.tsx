@@ -205,12 +205,12 @@ export const ProjectsListing = () => {
                 <motion.div 
                   {...fadeInUp} 
                   transition={{ delay: 0.2 }}
-                  className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+                  className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center"
                 >
-                  <button className="bg-secondary text-white px-10 py-5 rounded-2xl font-black uppercase tracking-[0.15em] text-[11px] hover:brightness-110 transition-all shadow-xl active:scale-95 whitespace-nowrap">
+                  <button className="bg-secondary text-white px-7 py-3 rounded-xl font-black uppercase tracking-[0.15em] text-[10px] hover:brightness-110 transition-all shadow-lg active:scale-95 whitespace-nowrap">
                     Talk to a Consultant
                   </button>
-                  <button className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-2xl font-black uppercase tracking-[0.15em] text-[11px] hover:bg-white/10 transition-all active:scale-95 whitespace-nowrap">
+                  <button className="bg-white/5 text-white border border-white/20 backdrop-blur-md px-7 py-3 rounded-xl font-black uppercase tracking-[0.15em] text-[10px] hover:bg-white/10 transition-all active:scale-95 whitespace-nowrap">
                     Download Property Guide
                   </button>
                 </motion.div>
