@@ -1,9 +1,29 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+let aiInstance: any = null;
+
+function getAI() {
+  if (!aiInstance) {
+    // Check both process.env (Vite defined) and import.meta.env (alternative)
+    // fallback to empty string to prevent the SDK from throwing an error immediately 
+    // though the SDK might still check if it's empty.
+    const apiKey = process.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
+    
+    if (!apiKey) {
+      console.warn("GEMINI_API_KEY is missing. AI features will be disabled.");
+      return null;
+    }
+    
+    aiInstance = new GoogleGenAI({ apiKey });
+  }
+  return aiInstance;
+}
 
 export async function generatePropertyImages(description: string, count: number = 3): Promise<string[]> {
   try {
+    const ai = getAI();
+    if (!ai) return [];
+    
     const images: string[] = [];
     
     // We'll generate multiple images one by one for better variety
