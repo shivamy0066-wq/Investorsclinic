@@ -18,41 +18,41 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ property, index }) => 
   };
 
   return (
-    <motion.div {...fadeInUp} className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border border-slate-100 group">
+    <motion.div {...fadeInUp} className="bg-white rounded-[1.5rem] overflow-hidden shadow-xl border border-slate-100 group">
       <Link to={`/project/${property.id}`} className="block">
-        <div className="aspect-[1.2/1] relative overflow-hidden">
+        <div className="aspect-[1.3/1] relative overflow-hidden">
           <img src={property.img} alt={property.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
-          <div className="absolute top-6 left-6">
-            <span className={`${property.tagColor} text-white px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest`}>{property.tag}</span>
+          <div className="absolute top-4 left-4">
+            <span className={`${property.tagColor} text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest`}>{property.tag}</span>
           </div>
-          <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl">
-            <p className="text-xs font-black text-[#0a1e3b]">{property.price}</p>
+          <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg">
+            <p className="text-[10px] font-black text-primary">{property.price}</p>
           </div>
         </div>
       </Link>
-      <div className="p-8">
+      <div className="p-5 md:p-6">
         <Link to={`/project/${property.id}`}>
-          <h3 className="text-xl font-headline font-bold text-[#0a1e3b] mb-1 leading-tight min-h-[56px] hover:text-secondary transition-colors">{property.title}</h3>
+          <h3 className="text-sm md:text-base font-headline font-black text-primary mb-2 leading-tight min-h-[40px] hover:text-secondary transition-colors line-clamp-2 uppercase tracking-tight">{property.title}</h3>
         </Link>
-        <div className="flex items-center gap-2 text-[#64748b] text-[12px] font-bold mb-3">
-          <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
+        <div className="flex items-center gap-1.5 text-slate-400 text-[10px] font-bold mb-4">
+          <MapPin className="w-3 h-3 text-secondary shrink-0" />
           <span className="truncate">{property.loc}</span>
         </div>
-        <div className="flex items-center gap-3 mb-6">
-          <span className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 bg-slate-50 text-slate-400 rounded-md border border-slate-100">Under Construction</span>
-          <span className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-md border border-emerald-100">RERA Verified</span>
+        <div className="flex items-center gap-2 mb-6">
+          <span className="text-[8px] font-black uppercase tracking-[0.1em] px-2.5 py-1 bg-slate-50 text-slate-400 rounded-lg border border-slate-100 whitespace-nowrap">Under Construction</span>
+          <span className="text-[8px] font-black uppercase tracking-[0.1em] px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-100 whitespace-nowrap">RERA Verified</span>
         </div>
-        <div className="flex items-center justify-between pt-5 border-t border-slate-100">
-          <div className="flex gap-3">
-            <div className="flex items-center gap-1 text-[10px] font-black text-[#0a1e3b] uppercase">
-              <Home className="w-3.5 h-3.5" /> {property.bhk.split(' ')[0]}
+        <div className="flex items-center justify-between pt-5 border-t border-slate-50">
+          <div className="flex gap-4">
+            <div className="flex items-center gap-1.5 text-[10px] font-black text-primary uppercase">
+              <Home className="w-3.5 h-3.5 text-secondary" /> {property.bhk.split(' ')[0]}
             </div>
-            <div className="flex items-center gap-1 text-[10px] font-black text-[#0a1e3b] uppercase">
-              <PencilRuler className="w-3.5 h-3.5" /> {property.sqft.split(' ')[0]}
+            <div className="flex items-center gap-1.5 text-[10px] font-black text-primary uppercase">
+              <PencilRuler className="w-3.5 h-3.5 text-secondary" /> {property.sqft.split(' ')[0]}
             </div>
           </div>
-          <Link to={`/project/${property.id}`} className="text-secondary font-black text-[10px] uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all p-2 rounded-lg hover:bg-secondary/10">
-            Details <ChevronRight className="w-3.5 h-3.5" />
+          <Link to={`/project/${property.id}`} className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all shadow-sm">
+            <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

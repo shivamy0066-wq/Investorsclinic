@@ -7,7 +7,7 @@ function getAI() {
     // Check both process.env (Vite defined) and import.meta.env (alternative)
     // fallback to empty string to prevent the SDK from throwing an error immediately 
     // though the SDK might still check if it's empty.
-    const apiKey = process.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY;
     
     if (!apiKey) {
       console.warn("GEMINI_API_KEY is missing. AI features will be disabled.");

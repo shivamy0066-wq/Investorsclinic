@@ -162,9 +162,9 @@ export default function App() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-[2.2rem] md:text-[4rem] font-headline font-extrabold text-white leading-tight md:leading-[0.95] mb-6 md:mb-8 tracking-[-0.03em]"
+                className="text-[2.4rem] md:text-[4.5rem] font-headline font-black text-white leading-[1.1] md:leading-[0.95] mb-8 md:mb-10 tracking-tight"
               >
-                Find Your <span className="italic text-primary font-bold">Dream</span> <br /> 
+                Find Your <span className="italic text-primary font-bold">Dream</span> <br className="hidden md:block" /> 
                 Home in India
               </motion.h1>
 
@@ -172,27 +172,22 @@ export default function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-x-4 md:gap-x-10 gap-y-4 md:gap-y-6 mb-8 md:mb-12"
+                className="flex flex-wrap items-center gap-x-6 md:gap-x-12 gap-y-6 mb-10 md:mb-16"
               >
                 {[
-                  { val: "19", label: "Years of Experience" },
-                  { val: "190,000", label: "Happy Customers" },
+                  { val: "19", label: "Years" },
+                  { val: "190K", label: "Customers" },
                   { val: "700", label: "Developers" },
                   { val: "2000", label: "Projects" },
-                  { val: "20", label: "Offices in India" },
-                  { val: "2", label: "Offices Abroad" }
                 ].map((stat, idx) => (
-                  <div key={idx} className="relative sm:pr-10 last:pr-0 group">
-                    <div className="flex items-start gap-1">
-                      <span className="text-xl md:text-2xl font-headline font-black text-white italic tracking-tighter drop-shadow-md">{stat.val}</span>
-                      <span className="text-secondary font-black mt-0.5 text-xs animate-pulse drop-shadow-sm group-hover:scale-125 transition-transform">+</span>
+                  <div key={idx} className="relative group">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-2xl md:text-3xl font-headline font-black text-white italic tracking-tighter drop-shadow-lg">{stat.val}</span>
+                      <span className="text-secondary font-black text-sm animate-pulse">+</span>
                     </div>
-                    <div className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-white font-black mt-1 leading-tight max-w-[100px] drop-shadow-md">
+                    <div className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-white/70 font-black mt-1 leading-tight">
                       {stat.label}
                     </div>
-                    {idx !== 5 && (
-                      <div className="absolute right-5 top-1/2 -translate-y-1/2 w-[1px] h-6 bg-white/20 hidden xl:block" />
-                    )}
                   </div>
                 ))}
               </motion.div>
@@ -233,9 +228,9 @@ export default function App() {
                 </div>
 
                   {/* Main Search Interface */}
-                <div className="bg-white rounded-b-[0.75rem] shadow-[0_15px_40px_rgba(0,0,0,0.12)] flex flex-col md:flex-row items-stretch overflow-hidden border border-white/20">
+                <div className="bg-white rounded-b-[1.5rem] md:rounded-b-[0.75rem] shadow-[0_30px_60px_rgba(0,0,0,0.15)] flex flex-col md:flex-row items-stretch overflow-hidden border border-white/20">
                   {/* Location Selector */}
-                  <div className="md:w-40 px-5 py-3.5 border-b md:border-b-0 md:border-r border-slate-100 flex items-center justify-between group cursor-pointer hover:bg-slate-50 transition-colors relative">
+                  <div className="md:w-48 px-6 py-5 border-b md:border-b-0 md:border-r border-slate-100 flex items-center justify-between group cursor-pointer hover:bg-slate-50 transition-colors relative">
                     <select 
                       className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                       value={selectedCity}
@@ -245,27 +240,27 @@ export default function App() {
                         <option key={city} value={city}>{city}</option>
                       ))}
                     </select>
-                    <p className="text-[15px] font-extrabold text-[#0a1e3b] tracking-tight">{selectedCity}</p>
+                    <div className="flex items-center gap-3">
+                      <MapPin className="w-4 h-4 text-secondary" />
+                      <p className="text-[14px] md:text-[15px] font-black text-primary tracking-tight">{selectedCity}</p>
+                    </div>
                     <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" />
                   </div>
 
                   {/* Search Input Area */}
-                  <div className="flex-1 flex items-center px-5 py-3.5 min-w-0">
-                    <Search className="w-4 h-4 text-slate-300 mr-4 shrink-0" />
+                  <div className="flex-1 flex items-center px-6 py-5 min-w-0 bg-slate-50/30">
+                    <Search className="w-5 h-5 text-slate-300 mr-4 shrink-0" />
                     <input 
                       type="text" 
-                      placeholder="Search by project, builder or location"
-                      className="bg-transparent border-none focus:ring-0 w-full text-slate-600 font-semibold placeholder:text-slate-300 min-w-0 text-[13px]"
+                      placeholder="Project, builder or location..."
+                      className="bg-transparent border-none focus:ring-0 w-full text-primary font-bold placeholder:text-slate-400 min-w-0 text-[14px]"
                       value={heroSearchQuery}
                       onChange={(e) => setHeroSearchQuery(e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && handleHeroSearch()}
                     />
                     
-                    <div className="flex items-center gap-2 ml-3 shrink-0">
-                      <button className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 hover:text-primary hover:bg-slate-100 transition-all shadow-sm">
-                        <Navigation className="w-4 h-4 rotate-45" />
-                      </button>
-                      <button className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 hover:text-primary hover:bg-slate-100 transition-all shadow-sm">
+                    <div className="flex items-center gap-3 ml-3 shrink-0">
+                      <button className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-500 hover:text-primary transition-all shadow-sm">
                         <Mic className="w-4 h-4" />
                       </button>
                     </div>
@@ -274,9 +269,10 @@ export default function App() {
                   {/* CTA Button */}
                   <button 
                     onClick={handleHeroSearch}
-                    className="bg-primary text-white px-8 py-3.5 text-[14px] font-black uppercase tracking-wide hover:brightness-110 hover:shadow-2xl hover:-translate-y-1 shadow-inner group transition-all active:scale-[0.98] shrink-0"
+                    className="bg-primary text-white px-10 py-6 md:py-3.5 text-[14px] font-black uppercase tracking-widest hover:bg-[#0c2a55] transition-all active:scale-[0.98] shrink-0 flex items-center justify-center gap-3"
                   >
-                    SEARCH {activeTab === "Projects" ? "PROJECTS" : activeTab.toUpperCase()}
+                    <Search className="w-5 h-5 md:hidden" />
+                    SEARCH PROJECTS
                   </button>
                 </div>
 
@@ -396,12 +392,12 @@ export default function App() {
         </section>
 
         {/* Curated Hot Properties */}
-        <section className="pt-12 pb-12 px-6 max-w-[90rem] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-headline font-black text-[#0a1e3b] text-center">Curated <span className="text-primary italic">Hot</span> Properties</h2>
+        <section className="pt-10 pb-10 px-6 max-w-[90rem] mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-headline font-black text-[#0a1e3b] text-center">Curated <span className="text-primary italic">Hot</span> Properties</h2>
             
             {/* City Filter */}
-            <div className="mt-12 flex md:flex-wrap items-center justify-start md:justify-center gap-3 overflow-x-auto md:overflow-visible no-scrollbar pb-4 md:pb-0 px-2">
+            <div className="mt-8 flex md:flex-wrap items-center justify-start md:justify-center gap-3 overflow-x-auto md:overflow-visible no-scrollbar pb-4 md:pb-0 px-2">
               {CITIES.map((city) => (
                 <button
                   key={city}
@@ -512,7 +508,7 @@ export default function App() {
       </section>
 
         {/* Testimonials & Google Reviews Unified Section */}
-        <section className="py-32 bg-[#F9FAFB] border-y border-[#E5E7EB]">
+        <section className="py-16 md:py-32 bg-[#F9FAFB] border-y border-[#E5E7EB]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               
@@ -750,7 +746,7 @@ export default function App() {
         )}
 
         {/* Recent Blogs - Premium Intelligence */}
-        <section className="py-24 px-6 max-w-7xl mx-auto border-t border-slate-100/50">
+        <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-slate-100/50">
           <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 items-baseline mb-16">
             <div className="lg:col-span-8">
               <h2 className="text-3xl md:text-4xl font-headline font-black text-primary leading-tight">

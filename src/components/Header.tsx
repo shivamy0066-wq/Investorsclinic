@@ -1,11 +1,21 @@
-import React from "react";
-import { motion } from "motion/react";
-import { ChevronDown } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ChevronDown, Menu, X, ArrowUpRight, Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 export const Header = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects", hasDropdown: true },
+    { label: "Who We Are", href: "/about" },
+    { label: "Cities", href: "/cities" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" }
+  ];
 
   return (
     <header className="fixed top-0 w-full z-50 border-b border-black/5 backdrop-blur-md bg-white/80">
@@ -33,14 +43,7 @@ export const Header = () => {
             </Link>
             
             <div className="hidden lg:flex items-center gap-10">
-              {[
-                { label: "Home", href: "/" },
-                { label: "Projects", href: "/projects", hasDropdown: true },
-                { label: "Who We Are", href: "/about" },
-                { label: "City", href: "/cities", hasDropdown: true },
-                { label: "Blog", href: "/blog" },
-                { label: "Contact", href: "/contact" }
-              ].map((item, idx) => {
+              {navItems.map((item, idx) => {
                 const active = location.pathname === item.href;
                 return (
                   <Link 
@@ -62,14 +65,78 @@ export const Header = () => {
             </div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
             <button className="bg-primary text-white px-5 md:px-8 py-3 rounded-[12px] font-bold text-[13px] md:text-[15px] hover:brightness-110 hover:-translate-y-1 hover:shadow-xl transition-all active:scale-95 shadow-lg shadow-primary/20 whitespace-nowrap">
               <span className="hidden sm:inline">Book Free Site Visit</span>
               <span className="sm:hidden">Book Visit</span>
             </button>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="lg:hidden p-2 text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </nav>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[60] lg:hidden bg-[#0a1e3b]"
+          >
+            <div className="flex flex-col h-full p-8 pt-24">
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="space-y-8">
+                {navItems.map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                  >
+                    <Link
+                      to={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="group flex items-end gap-4"
+                    >
+                      <span className="text-white font-headline font-black text-4xl uppercase tracking-tight">{item.label}</span>
+                      <div className="h-0.5 flex-1 bg-white/10 mb-2 group-hover:bg-secondary transition-colors" />
+                      <ArrowUpRight className="text-secondary mb-1 opacity-0 group-hover:opacity-100 transition-all" />
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-auto space-y-6">
+                <div className="flex gap-6">
+                   <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white"><Phone size={18} /></div>
+                   <div>
+                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Connect with us</p>
+                     <p className="text-white font-bold">+91 12345 67890</p>
+                   </div>
+                </div>
+                <button className="w-full bg-secondary text-white py-5 rounded-2xl font-black text-[13px] uppercase tracking-[0.2em] shadow-2xl">
+                  Book Free Visit
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

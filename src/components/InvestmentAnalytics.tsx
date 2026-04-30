@@ -105,7 +105,7 @@ export function InvestmentAnalytics() {
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-[#0a1e3b] mb-6">
+          <h2 className="text-3xl md:text-5xl font-headline font-extrabold text-[#0a1e3b] mb-6">
             Invest with <span className="text-primary">Confidence</span><br />
             <span className="italic font-serif font-light text-secondary lowercase">using real-time data</span>
           </h2>
@@ -228,7 +228,7 @@ export function InvestmentAnalytics() {
               key={selectedMarketId}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-[#0a1e3b] rounded-[2.5rem] p-10 flex flex-col h-full shadow-2xl shadow-blue-950/20 relative overflow-hidden"
+              className="bg-[#0a1e3b] rounded-[2.5rem] p-6 md:p-10 flex flex-col h-full shadow-2xl shadow-blue-950/20 relative overflow-hidden"
             >
               {/* Theme decorative element */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />

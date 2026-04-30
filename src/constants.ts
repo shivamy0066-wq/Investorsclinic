@@ -98,6 +98,58 @@ export const PROPERTIES: Property[] = [
     description: "Nestled in nature, M3M Woodshire offers a sustainable living experience with extensive landscaping, organic gardens, and energy-efficient building designs."
   },
   { 
+    id: "puri-the-aman-vilas",
+    tag: "Signature Life", 
+    tagColor: "bg-secondary",
+    title: "Puri The Aman Vilas", 
+    loc: "Sector 82, Faridabad", 
+    city: "Faridabad",
+    price: "₹1.5 Cr Onwards", 
+    bhk: "3 & 4 BHK",
+    sqft: "1800 sq.ft",
+    img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop",
+    description: "Aman Vilas by Puri Constructions is a sprawling township in Faridabad, offering luxury floors and plots with a focus on community living and greenery."
+  },
+  { 
+    id: "ace-terra",
+    tag: "Green Oasis", 
+    tagColor: "bg-emerald-600",
+    title: "ACE Terra", 
+    loc: "Sector 22D, Greater Noida West", 
+    city: "Greater Noida West",
+    price: "₹1.1 Cr Onwards", 
+    bhk: "2 & 3 BHK",
+    sqft: "1600 sq.ft",
+    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+    description: "ACE Terra brings sustainable luxury to Greater Noida West, featuring forest-themed landscapes and climate-responsive architecture."
+  },
+  { 
+    id: "mangalam-grand-residency",
+    tag: "Royal Heritage", 
+    tagColor: "bg-amber-600",
+    title: "Mangalam Grand Residency", 
+    loc: "Mansarovar, Jaipur", 
+    city: "Jaipur",
+    price: "₹0.8 Cr Onwards", 
+    bhk: "3 BHK",
+    sqft: "1550 sq.ft",
+    img: "https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?q=80&w=800&auto=format&fit=crop",
+    description: "Experience the royal charm of Jaipur at Mangalam Grand Residency, where traditional aesthetics meet modern luxury and convenience."
+  },
+  { 
+    id: "lodha-belmondo",
+    tag: "Riverside Resort", 
+    tagColor: "bg-blue-600",
+    title: "Lodha Belmondo", 
+    loc: "MCA Stadium, Pune", 
+    city: "Pune",
+    price: "₹1.4 Cr Onwards", 
+    bhk: "2 & 3 BHK",
+    sqft: "1400 sq.ft",
+    img: "https://images.unsplash.com/photo-1562979314-bee7453e911c?q=80&w=800&auto=format&fit=crop",
+    description: "A luxury resort living on the banks of a river. Lodha Belmondo offers a 45-acre golf course and world-class amenities in Pune."
+  },
+  { 
     id: "smartworld-one-dxp",
     tag: "Smart Home", 
     tagColor: "bg-blue-600",
