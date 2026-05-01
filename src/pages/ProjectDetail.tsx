@@ -198,7 +198,7 @@ export const ProjectDetail = () => {
                   <div className="space-y-6 max-w-2xl">
                     <div className="space-y-2">
                        <span className="text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Premium Property Listing</span>
-                       <h1 className="text-4xl lg:text-6xl font-headline font-black text-primary tracking-tighter uppercase leading-[0.9]">
+                       <h1 className="text-3xl lg:text-5xl font-headline font-black text-primary tracking-tighter uppercase leading-[0.9]">
                          {project.title}
                        </h1>
                     </div>
@@ -213,13 +213,13 @@ export const ProjectDetail = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-start lg:items-end gap-2 bg-slate-50 p-6 rounded-[2rem] border border-slate-100 min-w-[240px]">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Market Value Appraisal</p>
+                  <div className="flex flex-col items-start lg:items-end gap-2 bg-slate-50 p-5 rounded-[1.5rem] border border-slate-100 min-w-[200px]">
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Market Value Appraisal</p>
                     <div className="flex flex-col items-start lg:items-end">
-                      <div className="text-5xl lg:text-6xl font-headline font-black text-primary tracking-tighter leading-none">
+                      <div className="text-4xl lg:text-5xl font-headline font-black text-primary tracking-tighter leading-none">
                         {project.price.split(' ')[0]}
                       </div>
-                      <span className="text-xl font-black text-secondary uppercase tracking-widest mt-2">{project.price.split(' ').slice(1).join(' ') || 'onwards'}</span>
+                      <span className="text-lg font-black text-secondary uppercase tracking-widest mt-1">{project.price.split(' ').slice(1).join(' ') || 'onwards'}</span>
                     </div>
                   </div>
                 </div>
@@ -578,10 +578,10 @@ export const ProjectDetail = () => {
             <div className="lg:col-span-4">
               <div className="sticky top-32 space-y-8">
                 {/* Private Advisory Desk - Refined Compact Lead Module */}
-                <div className="bg-primary rounded-[2.5rem] p-8 shadow-[0_40px_80px_-20px_rgba(0,113,186,0.3)] relative overflow-hidden border border-white/10">
+                <div className="bg-[#081b35] rounded-[2.5rem] p-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] relative overflow-hidden border border-white/10">
                 {/* Decorative Background Elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/20 rounded-full -mr-32 -mt-32 blur-[80px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24 blur-[60px] pointer-events-none" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full -mr-32 -mt-32 blur-[80px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full -ml-24 -mb-24 blur-[60px] pointer-events-none" />
                 
                 <div className="relative z-10 space-y-6">
                   <div className="flex justify-between items-start">
@@ -694,7 +694,7 @@ export const ProjectDetail = () => {
       </main>
 
       {/* Similar Projects Carousel-like Grid */}
-      <section className="bg-primary pt-12 pb-16 relative overflow-hidden">
+      <section className="bg-[#051124] pt-12 pb-16 relative overflow-hidden">
          {/* Subtle background decoration */}
          <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_70%_20%,rgba(237,28,36,0.1),transparent)] pointer-events-none" />
          

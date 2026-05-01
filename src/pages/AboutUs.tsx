@@ -47,14 +47,14 @@ export const AboutUs = () => {
             >
               <div className="flex items-center gap-4 mb-6 md:mb-8">
                 <div className="h-0.5 w-12 bg-secondary rounded-full" />
-                <span className="text-secondary font-black tracking-[0.5em] uppercase text-[10px] md:text-[12px]">Committed to Excellence</span>
+                <span className="text-secondary font-black tracking-[0.5em] uppercase text-[10px] md:text-[12px]">Legacy of Excellence</span>
               </div>
               <h1 className="text-5xl md:text-8xl font-headline font-black text-white tracking-tighter uppercase leading-[0.9] mb-8">
-                Building <span className="text-secondary italic font-serif">Trust</span>, <br />
-                Since 2006.
+                We Build <span className="text-secondary italic">Trust</span>, <br />
+                Not Just Portfolios.
               </h1>
               <p className="text-white/60 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mb-12">
-                India's leading real estate consultancy, redefining transparency and professional advisory for two decades. 
+                India's most awarded real estate consultancy, redefining the intersection of property advisory and wealth creation since 2007.
               </p>
               
               <div className="flex flex-wrap gap-6 items-center">
@@ -112,7 +112,7 @@ export const AboutUs = () => {
                   transition={{ delay: 0.6 }}
                   className="absolute -top-10 -left-6 md:-left-12 bg-secondary text-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl z-20 flex flex-col items-center justify-center border-[8px] border-white"
                 >
-                  <span className="text-4xl md:text-6xl font-black leading-none drop-shadow-md">20</span>
+                  <span className="text-4xl md:text-6xl font-black leading-none drop-shadow-md">19</span>
                   <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.3em] mt-3 whitespace-nowrap opacity-90">Years Of Power</span>
                 </motion.div>
 
@@ -148,7 +148,7 @@ export const AboutUs = () => {
                       <span className="text-secondary font-black tracking-[0.5em] uppercase text-[11px]">The Investors Clinic Era</span>
                     </div>
                     <h2 className="text-3xl md:text-5xl font-headline font-black text-primary leading-tight tracking-tighter uppercase">
-                      Committed to <span className="text-secondary italic font-serif ml-3">Excellence.</span>
+                      Building Trust <span className="text-secondary italic font-serif ml-3">Since 2006.</span>
                     </h2>
                   </div>
 
@@ -157,7 +157,7 @@ export const AboutUs = () => {
                       "Building Trust Since 2006 isn't just a slogan; it's the foundation of over 1.9 Lakh stories of success."
                     </p>
                     <p>
-                      Established in 2006, <span className="text-primary font-black">Investors Clinic</span> was created to dismantle the confusion of real estate and replace it with institutional-grade clarity.
+                      Established near two decades ago, <span className="text-primary font-black">Investors Clinic</span> was created to dismantle the confusion of real estate and replace it with institutional-grade clarity.
                     </p>
                     <p className="opacity-80">
                       We operate as a global boutique consultancy, harmonizing data-driven analytics with a personalized human touch to ensure every asset in your portfolio becomes a legacy.
@@ -255,7 +255,7 @@ export const AboutUs = () => {
                   <div className="flex flex-col gap-1">
                     <span className="text-[9px] font-black text-secondary uppercase tracking-[0.4em] mb-1">Our Purpose</span>
                     <h2 className="text-2xl md:text-3xl font-headline font-black text-primary uppercase tracking-tighter leading-tight">
-                      Professionalizing <br /> <span className="text-secondary italic font-serif">The Market.</span>
+                      Professionalizing <br /> <span className="text-secondary italic">The Market.</span>
                     </h2>
                   </div>
                   <div className="w-8 h-[2px] bg-secondary rounded-full" />
@@ -283,12 +283,12 @@ export const AboutUs = () => {
                   <div className="flex flex-col gap-1">
                     <span className="text-[9px] font-black text-white/50 uppercase tracking-[0.4em] mb-1">Our Future</span>
                     <h2 className="text-2xl md:text-3xl font-headline font-black text-white uppercase tracking-tighter leading-tight">
-                      Global Gold <br /> <span className="text-secondary italic font-serif">Standard.</span>
+                      Global Gold <br /> <span className="text-secondary italic">Standard.</span>
                     </h2>
                   </div>
                   <div className="w-8 h-[2px] bg-secondary rounded-full" />
                   <p className="text-white/70 text-xs md:text-sm font-medium leading-relaxed max-w-sm group-hover:text-white transition-colors">
-                    Setting the international benchmark where disruptive technology meets 20 years of human wisdom to create sustainable wealth.
+                    Setting the international benchmark where disruptive technology meets 19 years of human wisdom to create sustainable wealth.
                   </p>
                 </div>
               </motion.div>
@@ -374,7 +374,7 @@ export const AboutUs = () => {
                 
                 <h2 className="text-3xl md:text-5xl font-headline font-black text-primary mb-8 leading-[1.1] tracking-tight">
                   Why Strategic Investors <br /> 
-                  <span className="text-secondary italic font-serif">Trust IC.</span>
+                  <span className="text-secondary italic">Trust IC.</span>
                 </h2>
  
                 <div className="grid gap-6">
@@ -427,6 +427,61 @@ export const AboutUs = () => {
           </div>
         </section>
 
+        {/* 8. Team Leadership - Refined & Compact */}
+        <section className="py-16 md:py-24 bg-[#050c18] relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(188,0,17,0.08),transparent_50%)]" />
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-12 md:mb-20">
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px w-8 bg-secondary/40" />
+                <p className="text-secondary font-black tracking-[0.5em] uppercase text-[10px]">Board of Directors</p>
+                <div className="h-px w-8 bg-secondary/40" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-headline font-black text-white">
+                Meet Our <span className="text-secondary italic">Architects.</span>
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { name: "Honeyy Katiyal", role: "Founder & MD", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop", story: "Founded IC in 2007 with a vision to professionalize Indian brokerage." },
+                { name: "Vikram Mehra", role: "Co-Founder", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop", story: "Strategist behind our global expansion and high-compliance benchmarks." },
+                { name: "Anjali Gupta", role: "Executive Director", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop", story: "Mind behind our AI-driven property matching engine and digital growth." },
+                { name: "Sanjay Varma", role: "Board Member", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop", story: "Leads technical due-diligence, vetting every project for security." }
+              ].map((founder, i) => (
+                <motion.div 
+                  key={i} 
+                  {...fadeInUp}
+                  transition={{ delay: i * 0.1 }}
+                  className="relative group h-[400px] md:h-[480px] overflow-hidden rounded-[2rem] bg-white/5 border border-white/5 shadow-2xl"
+                >
+                  <img 
+                    src={founder.image} 
+                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-110" 
+                    alt={founder.name} 
+                  />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end transition-all duration-500">
+                    <h4 className="text-xl md:text-2xl font-black text-white mb-1 uppercase tracking-tight">{founder.name}</h4>
+                    <p className="text-secondary font-black uppercase tracking-[0.2em] text-[9px]">{founder.role}</p>
+                  </div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                    className="absolute inset-0 bg-secondary/95 p-10 flex flex-col justify-center text-white transition-all duration-500 cursor-pointer"
+                  >
+                    <Quote className="w-10 h-10 text-white/30 mb-6" />
+                    <p className="text-lg font-bold leading-tight mb-8">"{founder.story}"</p>
+                    <div className="flex items-center gap-2 font-black text-[9px] uppercase tracking-widest mt-auto">
+                      Full Vision <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* 8. Testimonials - Refined Theme Integration */}
         <section className="pt-12 pb-8 md:pt-16 md:pb-10 bg-[#fcfdff] overflow-hidden relative">
@@ -438,7 +493,7 @@ export const AboutUs = () => {
                   <div className="h-[1.5px] w-6 bg-secondary" />
                   <span className="text-secondary font-black tracking-[0.3em] uppercase text-[8px]">Client Sentiment</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-headline font-black text-primary leading-[1.1]">Voices of <span className="text-secondary italic font-serif">Trust.</span></h2>
+                <h2 className="text-3xl md:text-4xl font-headline font-black text-primary leading-[1.1]">Voices of <span className="text-secondary italic">Trust.</span></h2>
                 <div className="flex items-center gap-3 bg-white w-fit px-4 py-2 rounded-xl border border-slate-100 shadow-sm">
                   <div className="flex items-center gap-1">
                     {[1, 2, 3, 4, 5].map(i => <Star key={i} size={12} className="fill-secondary text-secondary" />)}
@@ -496,7 +551,7 @@ export const AboutUs = () => {
                   <p className="text-secondary font-black tracking-[0.3em] uppercase text-[9px]">Private Wealth Advisory</p>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-headline font-black text-white mb-6 leading-tight">
-                  Design Your <span className="text-secondary italic font-serif">Legacy</span> Portfolio.
+                  Design Your <span className="text-secondary italic">Legacy</span> Portfolio.
                 </h2>
                 <p className="text-white/50 text-lg font-medium max-w-xl">
                   Consult with our senior investment analysts for bespoke residential and commercial portfolio design.
