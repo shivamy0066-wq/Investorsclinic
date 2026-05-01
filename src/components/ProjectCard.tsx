@@ -7,9 +7,11 @@ import { Link } from "react-router-dom";
 interface ProjectCardProps {
   property: Property;
   index: number;
+  onCompareToggle?: (property: Property) => void;
+  isComparing?: boolean;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ property, index }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ property, index, onCompareToggle, isComparing }) => {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -55,6 +57,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ property, index }) => 
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
+        
+        {onCompareToggle && (
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              onCompareToggle(property);
+            }}
+            className={`mt-4 w-full py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all border flex items-center justify-center gap-2 ${
+              isComparing 
+                ? "bg-secondary text-white border-secondary shadow-lg shadow-secondary/20" 
+                : "bg-white text-slate-400 border-slate-100 hover:border-secondary/30 hover:text-secondary"
+            }`}
+          >
+            <div className={`w-2 h-2 rounded-full ${isComparing ? "bg-white animate-pulse" : "bg-slate-200"}`} />
+            {isComparing ? "Remove from Comparison" : "Add to Comparison"}
+          </button>
+        )}
       </div>
     </motion.div>
   );

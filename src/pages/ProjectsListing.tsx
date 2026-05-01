@@ -5,7 +5,9 @@ import { useSearchParams } from "react-router-dom";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ProjectCard } from "../components/ProjectCard";
+import { ProjectComparison } from "../components/ProjectComparison";
 import { PROPERTIES, CITIES } from "../constants";
+import { Property } from "../types";
 
 export const ProjectsListing = () => {
   const [searchParams] = useSearchParams();
@@ -13,6 +15,21 @@ export const ProjectsListing = () => {
   const [selectedCity, setSelectedCity] = useState(searchParams.get("city") || "All Cities");
   const [selectedBHK, setSelectedBHK] = useState("All BHK");
   const [sortBy, setSortBy] = useState<"price-asc" | "price-desc" | "newest">("newest");
+  
+  const [selectedForComparison, setSelectedForComparison] = useState<Property[]>([]);
+
+  const handleCompareToggle = (property: Property) => {
+    setSelectedForComparison(prev => {
+      const exists = prev.find(p => p.id === property.id);
+      if (exists) {
+        return prev.filter(p => p.id !== property.id);
+      }
+      if (prev.length >= 3) {
+        return prev; // Limit to 3 for clean UI
+      }
+      return [...prev, property];
+    });
+  };
 
   // Handle URL updates or direct landing with params
   useEffect(() => {
@@ -25,6 +42,16 @@ export const ProjectsListing = () => {
   const bhkOptions = ["All BHK", "2 BHK", "3 BHK", "4 BHK", "5 BHK"];
 
   const [visibleCount, setVisibleCount] = useState(8);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  const handleLoadMore = () => {
+    setIsLoadingMore(true);
+    // Simulate a brief network delay for a more "dynamic" feel
+    setTimeout(() => {
+      setVisibleCount(prev => prev + 8);
+      setIsLoadingMore(false);
+    }, 600);
+  };
 
   // Reset pagination when filters change
   useEffect(() => {
@@ -60,7 +87,7 @@ export const ProjectsListing = () => {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }
   };
 
   return (
@@ -149,19 +176,41 @@ export const ProjectsListing = () => {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 {displayedProperties.map((prop, idx) => (
-                  <ProjectCard key={prop.title} property={prop} index={idx} />
+                  <ProjectCard 
+                    key={prop.id} // Fixed: use prop.id for stability
+                    property={prop} 
+                    index={idx} 
+                    onCompareToggle={handleCompareToggle}
+                    isComparing={selectedForComparison.some(p => p.id === prop.id)}
+                  />
                 ))}
               </div>
+
+              <ProjectComparison 
+                selectedItems={selectedForComparison} 
+                onRemove={handleCompareToggle}
+                onClear={() => setSelectedForComparison([])}
+              />
 
               {/* Load More Button */}
               {visibleCount < filteredProperties.length && (
                 <div className="mt-20 text-center">
                   <button 
-                    onClick={() => setVisibleCount(prev => prev + 8)}
-                    className="group flex items-center gap-3 mx-auto bg-white border-2 border-slate-100 hover:border-secondary px-10 py-5 rounded-2xl transition-all active:scale-95"
+                    onClick={handleLoadMore}
+                    disabled={isLoadingMore}
+                    className="group flex items-center gap-3 mx-auto bg-white border-2 border-slate-100 hover:border-secondary px-10 py-5 rounded-2xl transition-all active:scale-95 disabled:opacity-70 disabled:cursor-wait"
                   >
-                    <span className="text-primary group-hover:text-secondary font-black text-xs uppercase tracking-[0.2em]">Explore More Projects</span>
-                    <ChevronDown className="w-4 h-4 text-slate-300 group-hover:text-secondary transition-colors" />
+                    {isLoadingMore ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-secondary/30 border-t-secondary rounded-full animate-spin" />
+                        <span className="text-secondary font-black text-xs uppercase tracking-[0.2em]">Curating for you...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-primary group-hover:text-secondary font-black text-xs uppercase tracking-[0.2em]">Explore More Projects</span>
+                        <ChevronDown className="w-4 h-4 text-slate-300 group-hover:text-secondary transition-colors" />
+                      </>
+                    )}
                   </button>
                 </div>
               )}
@@ -184,7 +233,7 @@ export const ProjectsListing = () => {
 
           {/* CTA Section */}
           <section className="mt-32">
-            <div className="bg-primary rounded-[3.5rem] p-12 md:p-20 relative overflow-hidden">
+            <div className="bg-[#020617] rounded-[3.5rem] p-12 md:p-20 relative overflow-hidden border border-white/5">
               <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_70%_20%,rgba(188,0,17,0.15),transparent)]" />
               <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(188,0,17,0.05)_0deg,transparent_90deg)] blur-3xl" />
               
@@ -197,7 +246,7 @@ export const ProjectsListing = () => {
                   <h2 className="text-4xl md:text-5xl font-headline font-black text-white mb-6 leading-tight">
                     Can't find your <span className="text-secondary italic">Ideal</span> home?
                   </h2>
-                  <p className="text-white/50 text-lg font-medium">
+                  <p className="text-white/60 text-lg font-medium leading-relaxed">
                     Our advisors have access to off-market inventory and upcoming launches that aren't listed publicly yet.
                   </p>
                 </motion.div>
