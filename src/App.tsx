@@ -143,7 +143,7 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[700px] md:min-h-screen flex items-center pt-28 md:pt-32 pb-12 overflow-hidden">
+        <section className="relative min-h-[550px] md:min-h-[85vh] flex items-center pt-24 md:pt-28 pb-10 overflow-hidden">
           {/* Static Banner */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -156,13 +156,13 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-1 gap-12 relative z-10 w-full lg:mb-20">
+          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-1 gap-10 relative z-10 w-full lg:mb-16">
             <div className="lg:col-span-1">
               <motion.h1 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-[2.4rem] md:text-[4.5rem] font-headline font-black text-white leading-[1.1] md:leading-[0.95] mb-8 md:mb-10 tracking-tight"
+                className="text-[2.2rem] md:text-[4.2rem] font-headline font-black text-white leading-[1.1] md:leading-[0.95] mb-6 md:mb-8 tracking-tight"
               >
                 Find Your <span className="italic text-primary font-bold">Dream</span> <br className="hidden md:block" /> 
                 Home in India
@@ -172,7 +172,7 @@ export default function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap items-center gap-x-6 md:gap-x-12 gap-y-6 mb-10 md:mb-16"
+                className="flex flex-wrap items-center gap-x-6 md:gap-x-10 gap-y-4 mb-8 md:mb-12"
               >
                 {[
                   { val: "19", label: "Years" },
@@ -310,7 +310,7 @@ export default function App() {
         </section>
 
         {/* Developers Network Section - Dark Theme */}
-        <section className="py-12 bg-[#0a1e3b] overflow-hidden relative border-y border-white/5">
+        <section className="py-10 bg-[#0a1e3b] overflow-hidden relative border-y border-white/5">
           {/* Architectural Grid Background */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
             <svg width="100%" height="100%">
@@ -321,19 +321,19 @@ export default function App() {
             </svg>
           </div>
           
-          <div className="max-w-7xl mx-auto px-6 mb-8 relative z-10 text-center">
+          <div className="max-w-7xl mx-auto px-6 mb-6 relative z-10 text-center">
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="inline-flex flex-col items-center gap-2"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-[1px] bg-white/20" />
-                <span className="text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Our Network</span>
-                <div className="w-12 h-[1px] bg-white/20" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-[1px] bg-white/20" />
+                <span className="text-[9px] font-black text-secondary uppercase tracking-[0.4em]">Our Network</span>
+                <div className="w-10 h-[1px] bg-white/20" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-headline font-black text-white leading-tight uppercase tracking-[0.05em]">
+              <h2 className="text-xl md:text-2xl font-headline font-black text-white leading-tight uppercase tracking-[0.05em]">
                 Strategic <span className="text-primary italic">Alliances</span>
               </h2>
             </motion.div>
@@ -357,9 +357,9 @@ export default function App() {
                 ].map((dev, idx) => (
                   <div
                     key={idx}
-                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
+                    className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
                   >
-                    <span className="text-white font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
+                    <span className="text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
                       {dev}
                     </span>
                   </div>
@@ -376,9 +376,9 @@ export default function App() {
                 ].map((dev, idx) => (
                   <div
                     key={idx}
-                    className="flex-none w-[160px] md:w-[200px] h-[60px] md:h-[70px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-4 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
+                    className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
                   >
-                    <span className="text-white font-black text-[11px] md:text-sm uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
+                    <span className="text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
                       {dev}
                     </span>
                   </div>
@@ -392,9 +392,9 @@ export default function App() {
         </section>
 
         {/* Curated Hot Properties */}
-        <section className="pt-10 pb-10 px-6 max-w-[90rem] mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-headline font-black text-[#0a1e3b] text-center">Curated <span className="text-primary italic">Hot</span> Properties</h2>
+        <section className="py-8 px-6 max-w-[90rem] mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-4xl font-headline font-black text-[#0a1e3b] text-center">Curated <span className="text-primary italic">Hot</span> Properties</h2>
             
             {/* City Filter */}
             <div className="mt-8 flex md:flex-wrap items-center justify-start md:justify-center gap-3 overflow-x-auto md:overflow-visible no-scrollbar pb-4 md:pb-0 px-2">
@@ -434,17 +434,17 @@ export default function App() {
         <InvestmentAnalytics />
 
         {/* Top Investment Locations */}
-        <section className="pt-10 pb-16 bg-[#0a1e3b]">
+        <section className="py-10 bg-[#0a1e3b]">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-10 space-y-6">
+            <div className="mb-8 space-y-4">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-0.5 bg-primary/40 rounded-full" />
-                <span className="text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Premium Markets</span>
+                <div className="w-10 h-0.5 bg-primary/40 rounded-full" />
+                <span className="text-[9px] font-black text-secondary uppercase tracking-[0.4em]">Premium Markets</span>
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-black text-white mb-4 leading-tight uppercase tracking-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-headline font-black text-white leading-tight uppercase tracking-tight">
                 Top <span className="text-primary italic">Investment</span> Locations
               </h2>
-              <p className="text-slate-400 font-medium font-headline max-w-2xl text-base">Strategic markets poised for significant capital appreciation and high rental yields in 2024.</p>
+              <p className="text-slate-400 font-medium font-headline max-w-2xl text-sm italic">Strategic markets poised for significant capital appreciation in 2024.</p>
             </div>
 
             <div className="relative group/nav">
@@ -508,37 +508,37 @@ export default function App() {
       </section>
 
         {/* Testimonials & Google Reviews Unified Section */}
-        <section className="py-16 md:py-32 bg-[#F9FAFB] border-y border-[#E5E7EB]">
+        <section className="py-12 md:py-20 bg-[#F9FAFB] border-y border-[#E5E7EB]">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               
               {/* Left Column: Overall Rating Summary */}
-              <div className="lg:col-span-4 lg:pr-10">
-                <div className="mb-8">
-                  <h2 className="text-4xl font-headline font-black text-[#111827] leading-tight mb-6">
+              <div className="lg:col-span-4 lg:pr-8">
+                <div className="mb-6">
+                  <h2 className="text-3xl font-headline font-black text-[#111827] leading-tight mb-4">
                     The Voice <br />of our <span className="italic text-primary">Investors</span>
                   </h2>
-                  <p className="text-[#6B7280] font-medium leading-relaxed mb-10">
-                    Direct feedback from the global community of investors who have entrusted us with their capital growth.
+                  <p className="text-[#6B7280] font-medium leading-relaxed mb-8 text-sm">
+                    Direct feedback from the global community who have entrusted us with their capital.
                   </p>
                 </div>
 
-                <div className="bg-white p-8 rounded-[1.5rem] border border-[#E5E7EB] shadow-sm relative overflow-hidden group">
-                  <div className="flex items-center gap-6 relative z-10">
+                <div className="bg-white p-6 rounded-[1.25rem] border border-[#E5E7EB] shadow-sm relative overflow-hidden group">
+                  <div className="flex items-center gap-4 relative z-10">
                     <div>
-                      <div className="text-5xl font-headline font-black text-[#111827]">4.8</div>
-                      <div className="flex text-yellow-500 mt-2">
-                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
+                      <div className="text-4xl font-headline font-black text-[#111827]">4.8</div>
+                      <div className="flex text-yellow-500 mt-1">
+                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-current" />)}
                       </div>
                     </div>
-                    <div className="h-16 w-px bg-[#E5E7EB]" />
+                    <div className="h-12 w-px bg-[#E5E7EB]" />
                     <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />
-                        <span className="text-[10px] font-black text-[#111827] uppercase tracking-widest">Reviews</span>
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-3" />
+                        <span className="text-[9px] font-black text-[#111827] uppercase tracking-widest">Reviews</span>
                       </div>
-                      <p className="text-lg font-headline font-bold text-[#111827]">2,500+</p>
-                      <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest">Verified Insights</p>
+                      <p className="text-base font-headline font-bold text-[#111827]">2,500+</p>
+                      <p className="text-[9px] font-bold text-[#6B7280] uppercase tracking-widest">Verified Insights</p>
                     </div>
                   </div>
                 </div>
@@ -746,18 +746,18 @@ export default function App() {
         )}
 
         {/* Recent Blogs - Premium Intelligence */}
-        <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-slate-100/50">
-          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 items-baseline mb-16">
+        <section className="py-12 md:py-16 px-6 max-w-7xl mx-auto border-t border-slate-100/50">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 items-baseline mb-12">
             <div className="lg:col-span-8">
-              <h2 className="text-3xl md:text-4xl font-headline font-black text-primary leading-tight">
+              <h2 className="text-2xl md:text-3xl font-headline font-black text-primary leading-tight">
                 Latest from our <span className="italic text-secondary font-extrabold uppercase tracking-tight">Cultural Blog</span>
               </h2>
             </div>
             <div className="lg:col-span-4 lg:text-right self-end">
-              <button className="group flex items-center gap-4 text-[10px] font-black text-primary uppercase tracking-[0.2em] ml-auto">
+              <button className="group flex items-center gap-3 text-[9px] font-black text-primary uppercase tracking-[0.2em] ml-auto">
                 <span className="border-b border-primary/20 pb-1 group-hover:border-secondary transition-colors">Explore All</span>
-                <div className="w-8 h-8 rounded-full border border-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                <div className="w-7 h-7 rounded-full border border-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                  <ArrowUpRight className="w-3 h-3" />
                 </div>
               </button>
             </div>

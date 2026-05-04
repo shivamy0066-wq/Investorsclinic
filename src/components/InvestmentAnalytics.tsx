@@ -99,32 +99,32 @@ export function InvestmentAnalytics() {
   }, [isLive, markets.length]);
 
   return (
-    <section className="pt-16 pb-0 bg-slate-50/80 border-y border-slate-100 relative overflow-hidden">
+    <section className="pt-12 pb-0 bg-slate-50/80 border-y border-slate-100 relative overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-white to-transparent pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-5xl font-headline font-extrabold text-[#0a1e3b] mb-6">
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-4xl font-headline font-extrabold text-[#0a1e3b] mb-4">
             Invest with <span className="text-primary">Confidence</span><br />
             <span className="italic font-serif font-light text-secondary lowercase">using real-time data</span>
           </h2>
-          <p className="text-slate-500 font-medium max-w-2xl leading-relaxed">
-            Identify fast-growing locations, analyze multi-year trends, and unlock better real estate investments with our proprietary Bloomberg-grade analytics.
+          <p className="text-slate-500 font-medium max-w-2xl leading-relaxed text-sm">
+            Identify fast-growing locations, analyze multi-year trends, and unlock better investments with our Bloomberg-grade analytics.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Heatmap Grid */}
-          <div className="lg:col-span-8 bg-white/70 backdrop-blur-md border border-slate-200/60 rounded-[2.5rem] p-8 shadow-xl shadow-slate-200/20">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-primary" />
+          <div className="lg:col-span-8 bg-white/70 backdrop-blur-md border border-slate-200/60 rounded-[2rem] p-6 shadow-xl shadow-slate-200/20">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white shadow-md border border-slate-100 flex items-center justify-center">
+                  <TrendingUp className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-headline font-bold text-slate-900 leading-tight">Appreciation Heatmap</h3>
-                  <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400">Select a micro-market to analyze</p>
+                  <h3 className="font-headline font-bold text-slate-900 leading-tight text-sm">Appreciation Heatmap</h3>
+                  <p className="text-[9px] uppercase font-bold tracking-widest text-slate-400">Select a micro-market to analyze</p>
                 </div>
               </div>
 
@@ -152,7 +152,7 @@ export function InvestmentAnalytics() {
                   key={market.id}
                   onClick={() => setSelectedMarketId(market.id)}
                   className={cn(
-                    "relative p-5 rounded-3xl transition-all duration-500 text-left border flex flex-col justify-between h-44 group overflow-hidden",
+                    "relative p-4 rounded-2xl transition-all duration-500 text-left border flex flex-col justify-between h-40 group overflow-hidden",
                     selectedMarketId === market.id 
                       ? "bg-primary border-primary shadow-2xl shadow-primary/30 -translate-y-1" 
                       : "bg-white border-slate-200/60 hover:border-slate-300 hover:shadow-xl hover:-translate-y-0.5"
@@ -228,7 +228,7 @@ export function InvestmentAnalytics() {
               key={selectedMarketId}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-[#0a1e3b] rounded-[2.5rem] p-6 md:p-10 flex flex-col h-full shadow-2xl shadow-blue-950/20 relative overflow-hidden"
+              className="bg-[#0a1e3b] rounded-[2rem] p-6 md:p-8 flex flex-col h-full shadow-2xl shadow-blue-950/20 relative overflow-hidden"
             >
               {/* Theme decorative element */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
