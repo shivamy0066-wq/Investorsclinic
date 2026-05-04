@@ -182,61 +182,64 @@ export const AboutUs = () => {
           </div>
         </section>
 
-        {/* 4. Mission & Vision - Refined Premium Layout */}
-        <section className="py-8 md:py-12 bg-white relative overflow-hidden">
-          <div className="max-w-6xl mx-auto px-6 relative">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+        {/* 4. Mission & Vision - Compact Premium Dark Theme */}
+        <section className="py-10 md:py-14 bg-[#0a1120] relative overflow-hidden">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(237,28,36,0.08),transparent_70%)]" />
+          
+          <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
               
-              {/* Mission Card - Refined & Compact */}
+              {/* Mission Card - Compact Dark Glassmorphism */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-slate-50/50 p-10 md:p-12 rounded-[2rem] border border-slate-100 flex flex-col items-start group hover:-translate-y-2 transition-all duration-700 cursor-default relative overflow-hidden h-full"
+                className="bg-white/5 backdrop-blur-sm p-7 md:p-9 rounded-[2rem] border border-white/10 flex flex-col items-start group hover:-translate-y-1 transition-all duration-700 cursor-default relative overflow-hidden h-full shadow-2xl"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/20 rounded-full -mr-12 -mt-12 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 
-                <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-10 group-hover:bg-primary transition-all duration-500 group-hover:shadow-lg group-hover:shadow-primary/20">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-8 group-hover:bg-primary transition-all duration-500">
                   <Target className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                 </div>
                 
-                <div className="space-y-4">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[9px] font-black text-secondary uppercase tracking-[0.4em] mb-1">Our Purpose</span>
-                    <h2 className="text-2xl md:text-3xl font-headline font-black text-primary uppercase tracking-tighter leading-tight">
+                <div className="space-y-4 relative z-10">
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[9px] font-black text-secondary uppercase tracking-[0.4em]">Our Purpose</span>
+                    <h2 className="text-2xl md:text-3xl font-headline font-black text-white uppercase tracking-tighter leading-tight">
                       Professionalizing <br /> <span className="text-secondary italic">The Market.</span>
                     </h2>
                   </div>
-                  <div className="w-8 h-[2px] bg-secondary rounded-full" />
-                  <p className="text-slate-500 text-xs md:text-sm font-medium leading-relaxed max-w-sm">
+                  <div className="w-10 h-[2px] bg-secondary rounded-full" />
+                  <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed max-w-sm group-hover:text-white/80 transition-colors">
                     We empower investors with institutional-grade data and verified insights, ensuring every property journey is built on a foundation of absolute trust.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Vision Card - Refined & Compact */}
+              {/* Vision Card - Compact Dark Glassmorphism */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="bg-gradient-to-br from-primary to-[#051124] p-10 md:p-12 rounded-[2rem] shadow-xl flex flex-col items-start group hover:-translate-y-2 transition-all duration-700 cursor-default relative overflow-hidden h-full"
+                className="bg-white/5 backdrop-blur-sm p-7 md:p-9 rounded-[2rem] border border-white/10 flex flex-col items-start group hover:-translate-y-1 transition-all duration-700 cursor-default relative overflow-hidden h-full shadow-2xl"
               >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_0%,rgba(237,28,36,0.1),transparent)]" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/20 rounded-full -mr-12 -mt-12 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 
-                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-10 group-hover:bg-secondary transition-all duration-500">
-                  <Eye className="w-5 h-5 text-white" />
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-8 group-hover:bg-secondary transition-all duration-500">
+                  <Eye className="w-5 h-5 text-secondary group-hover:text-white transition-colors" />
                 </div>
                 
                 <div className="space-y-4 relative z-10">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[9px] font-black text-white/50 uppercase tracking-[0.4em] mb-1">Our Future</span>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.4em]">Our Future</span>
                     <h2 className="text-2xl md:text-3xl font-headline font-black text-white uppercase tracking-tighter leading-tight">
                       Global Gold <br /> <span className="text-secondary italic">Standard.</span>
                     </h2>
                   </div>
-                  <div className="w-8 h-[2px] bg-secondary rounded-full" />
-                  <p className="text-white/70 text-xs md:text-sm font-medium leading-relaxed max-w-sm group-hover:text-white transition-colors">
+                  <div className="w-10 h-[2px] bg-secondary rounded-full" />
+                  <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed max-w-sm group-hover:text-white/80 transition-colors">
                     Setting the international benchmark where disruptive technology meets 19 years of human wisdom to create sustainable wealth.
                   </p>
                 </div>
@@ -244,20 +247,21 @@ export const AboutUs = () => {
 
             </div>
           </div>
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         </section>
 
-        {/* 5. Our Journey - Refined Compact Spacing */}
-        <section className="py-[60px] bg-[#0a0f1a] overflow-hidden relative">
+        {/* 5. Our Journey - Light Theme Professional Redesign */}
+        <section className="py-[60px] bg-white overflow-hidden relative">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-[60px]">
-              <h2 className="text-2xl md:text-3xl font-headline font-black text-white uppercase tracking-tighter">
+              <h2 className="text-2xl md:text-3xl font-headline font-black text-primary uppercase tracking-tighter">
                 Our Journey
               </h2>
             </div>
 
             <div className="relative max-w-6xl mx-auto">
               {/* The Timeline Line - Centered on circles */}
-              <div className="absolute top-[15px] left-0 w-full h-[2px] bg-secondary/20 hidden md:block" />
+              <div className="absolute top-[15px] left-0 w-full h-[2px] bg-slate-100 hidden md:block" />
               <motion.div 
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
@@ -283,7 +287,7 @@ export const AboutUs = () => {
                     className="flex flex-col items-center text-center group w-full md:w-[180px]"
                   >
                     {/* Circle Node - Precise Small Size */}
-                    <div className="w-[30px] h-[30px] rounded-full bg-secondary text-white flex items-center justify-center text-[11px] font-black mb-[15px] shadow-[0_0_20px_rgba(237,28,36,0.6)] group-hover:scale-110 transition-transform cursor-default relative z-20 border-2 border-white/5">
+                    <div className="w-[30px] h-[30px] rounded-full bg-secondary text-white flex items-center justify-center text-[11px] font-black mb-[15px] shadow-[0_5px_15px_rgba(237,28,36,0.3)] group-hover:scale-110 transition-transform cursor-default relative z-20 border-2 border-white">
                       {step.num}
                       <div className="absolute inset-0 rounded-full animate-pulse bg-secondary/40 -z-10 blur-sm" />
                     </div>
@@ -293,7 +297,7 @@ export const AboutUs = () => {
                       <span className="text-[22px] md:text-[24px] font-black text-secondary block tracking-tighter mb-[10px]">
                         {step.year}
                       </span>
-                      <p className="text-white/60 text-[11px] md:text-[12px] font-medium leading-relaxed max-w-[160px] mx-auto group-hover:text-white/90 transition-colors">
+                      <p className="text-slate-500 text-[11px] md:text-[12px] font-medium leading-relaxed max-w-[160px] mx-auto group-hover:text-primary transition-colors">
                         {step.desc}
                       </p>
                     </div>
@@ -304,79 +308,12 @@ export const AboutUs = () => {
           </div>
         </section>
 
-        {/* 6. Why Choose Us - Refined & Compact */}
-        <section className="py-12 md:py-16 bg-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/4 h-full bg-slate-50/30 -z-10" />
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              <motion.div 
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1 }}
-                className="lg:col-span-6"
-              >
-                <h2 className="text-3xl md:text-5xl font-headline font-black text-primary mb-8 leading-[1.1] tracking-tight">
-                  Why Strategic Investors <br /> 
-                  <span className="text-secondary italic">Trust IC.</span>
-                </h2>
- 
-                <div className="grid gap-6">
-                  {[
-                    { icon: ShieldCheck, title: "Verified Professionalism", desc: "Every advisor undergoes rigorous background checks and institutional training." },
-                    { icon: Rocket, title: "Zero Brokerage Model", desc: "Transparent fee structure ensures your investment goes entirely into equity." },
-                    { icon: Globe2, title: "Algorithmic Precision", desc: "Access to proprietary heat-maps usually reserved for institutional funds." }
-                  ].map((item, i) => (
-                    <motion.div 
-                      key={i} 
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex gap-5 group"
-                    >
-                      <div className="shrink-0">
-                        <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
-                          <item.icon className="w-4 h-4 text-secondary group-hover:text-white transition-colors" />
-                        </div>
-                      </div>
-                      <div className="space-y-1">
-                        <h4 className="text-lg font-black text-primary tracking-tight group-hover:text-secondary transition-colors">{item.title}</h4>
-                        <p className="text-slate-500 text-sm md:text-base leading-relaxed opacity-80">{item.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
- 
-              <div className="lg:col-span-6 relative order-first lg:order-last">
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative group"
-                >
-                  <div className="absolute -inset-2 bg-primary/5 rounded-[3rem] group-hover:scale-105 transition-transform duration-700" />
-                  <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border-4 border-white bg-white">
-                    <img 
-                      src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200&auto=format&fit=crop" 
-                      className="w-full aspect-[4/3] md:aspect-[3/2] object-cover group-hover:scale-110 transition-transform duration-1000" 
-                      alt="Office Culture" 
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 8. Team Leadership - Professional Visibility Enhanced */}
-        <section className="py-16 md:py-24 bg-[#0a1120] relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(237,28,36,0.1),transparent_70%)]" />
+        {/* 8. Team Leadership - Light Theme Professional Redesign */}
+        <section className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(237,28,36,0.05),transparent_70%)]" />
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-12 md:mb-20">
-              <h2 className="text-3xl md:text-5xl font-headline font-black text-white uppercase tracking-tighter">
+              <h2 className="text-3xl md:text-5xl font-headline font-black text-primary uppercase tracking-tighter">
                 Meet Our <span className="text-secondary italic">Leadership</span>
               </h2>
             </div>
@@ -479,39 +416,52 @@ export const AboutUs = () => {
         </section>
 
 
-        {/* 11. CTA - Refined Compact Version */}
-        <section className="pt-4 pb-12 px-6">
-          <div className="max-w-7xl mx-auto bg-primary rounded-[3rem] p-10 md:p-16 relative overflow-hidden border border-white/5">
-            {/* Background elements */}
-            <div className="absolute -right-20 -bottom-20 opacity-5 pointer-events-none">
-              <Building2 className="w-96 h-96 text-white" />
+        {/* 11. CTA - Premium Elite Version */}
+        <section className="pt-6 pb-16 px-6 relative overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-[1200px] mx-auto bg-gradient-to-r from-[#003366] to-[#001a33] rounded-[2rem] p-12 md:p-16 relative overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] flex flex-col md:flex-row items-center justify-between gap-10"
+          >
+            {/* Artistic Watermark - Building Shapes */}
+            <div className="absolute right-0 bottom-0 top-0 w-1/2 opacity-[0.03] pointer-events-none z-0">
+              <Building2 className="w-full h-full transform translate-x-1/4 translate-y-1/4" />
             </div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(188,0,17,0.1),transparent)]" />
             
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-              <motion.div {...fadeInUp} className="max-w-2xl text-center lg:text-left">
-                <h2 className="text-4xl md:text-5xl font-headline font-black text-white mb-6 leading-tight">
-                  Design Your <span className="text-secondary italic">Legacy</span> Portfolio.
-                </h2>
-                <p className="text-white/50 text-lg font-medium max-w-xl">
-                  Consult with our senior investment analysts for bespoke residential and commercial portfolio design.
-                </p>
-              </motion.div>
-
-              <motion.div 
-                {...fadeInUp} 
-                transition={{ delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-              >
-                <button className="bg-secondary text-white px-8 py-4 rounded-xl font-black uppercase tracking-[0.15em] text-[11px] hover:brightness-110 transition-all shadow-xl active:scale-95 whitespace-nowrap">
-                  Book VIP Consultation
-                </button>
-                <button className="bg-white/5 text-white border border-white/10 px-8 py-4 rounded-xl font-black uppercase tracking-[0.15em] text-[11px] hover:bg-white/10 transition-all active:scale-95 whitespace-nowrap">
-                  View Case Studies
-                </button>
-              </motion.div>
+            <div className="relative z-10 space-y-6 text-center md:text-left">
+              {/* Badge Label */}
+              <div className="flex items-center justify-center md:justify-start gap-4">
+                <div className="h-[2px] w-8 bg-secondary" />
+                <span className="text-secondary font-black tracking-[0.3em] uppercase text-[11px]">Private Wealth Advisory</span>
+                <div className="h-[2px] w-8 bg-secondary" />
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-white leading-tight tracking-tight">
+                Design Your <span className="text-secondary italic">Legacy</span> Portfolio.
+              </h2>
             </div>
-          </div>
+
+            <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4">
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-[#ed1c24] text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[11px] flex items-center gap-3 shadow-2xl shadow-red-600/20 whitespace-nowrap transition-all"
+              >
+                Book VIP Consultation
+                <ArrowRight size={16} />
+              </motion.button>
+              
+              <motion.button 
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-transparent text-white border-2 border-white/20 px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[11px] flex items-center gap-3 whitespace-nowrap transition-all"
+              >
+                View Case Studies
+                <ArrowRight size={16} />
+              </motion.button>
+            </div>
+          </motion.div>
         </section>
       </main>
 
