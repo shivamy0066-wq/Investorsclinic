@@ -8,74 +8,16 @@ import {
   ChevronRight,
   Search,
   Filter,
-  ArrowUpRight
+  ArrowUpRight,
+  TrendingUp,
+  Mail,
+  ChevronDown
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
-const BLOG_POSTS = [
-  {
-    id: "1",
-    title: "The Rise of Luxury Real Estate in Noida Sector 150",
-    excerpt: "Why institutional investors and luxury seekers are flocking to India's first residential sector with high-density green cover.",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop",
-    category: "Market Trends",
-    author: "Vishal Gupta",
-    date: "Oct 24, 2024",
-    readTime: "6 min read"
-  },
-  {
-    id: "2",
-    title: "Capital Appreciation Trends in Mumbai: 2024 Report",
-    excerpt: "A deep dive into the micro-markets of Mumbai that are showing double-digit growth despite global headwinds.",
-    image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?q=80&w=1000&auto=format&fit=crop",
-    category: "Investments",
-    author: "Anjali Mehta",
-    date: "Oct 20, 2024",
-    readTime: "8 min read"
-  },
-  {
-    id: "3",
-    title: "Smart Home Technology: The New Standard for Premium Living",
-    excerpt: "How AI and IoT are redefining luxury apartments and increasing rental yields in Bengaluru and Hyderabad.",
-    image: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1000&auto=format&fit=crop",
-    category: "Innovation",
-    author: "Rohan Verma",
-    date: "Oct 15, 2024",
-    readTime: "5 min read"
-  },
-  {
-    id: "4",
-    title: "Understanding RERA: A Comprehensive Guide for ROI",
-    excerpt: "Everything you need to know about navigating the regulatory framework to ensure your investment is secure and profitable.",
-    image: "https://images.unsplash.com/photo-1582408921715-18e7806365c1?q=80&w=1000&auto=format&fit=crop",
-    category: "Regulations",
-    author: "Sanjay Dixit",
-    date: "Oct 10, 2024",
-    readTime: "10 min read"
-  },
-  {
-    id: "5",
-    title: "Eco-Friendly Living: The Green Revolution in Indian Real Estate",
-    excerpt: "Sustainable architecture is no longer a luxury choice but a fundamental necessity for modern home buyers.",
-    image: "https://images.unsplash.com/photo-1449156001437-3a16b1ad922b?q=80&w=1000&auto=format&fit=crop",
-    category: "Sustainability",
-    author: "Meera Reddy",
-    date: "Oct 05, 2024",
-    readTime: "7 min read"
-  },
-  {
-    id: "6",
-    title: "Vacation Homes in Goa: Higher Returns than Urban Rentals?",
-    excerpt: "Comparing the yield between commercial urban rentals and the booming Airbnb market in coastal India.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop",
-    category: "Holiday Homes",
-    author: "Kevin Peterson",
-    date: "Sep 28, 2024",
-    readTime: "6 min read"
-  }
-];
+import { BLOG_POSTS } from "../constants";
 
 const CATEGORIES = ["All", "Market Trends", "Investments", "Innovation", "Regulations", "Sustainability", "Holiday Homes"];
 
@@ -89,222 +31,165 @@ export const BlogListing = () => {
     transition: { duration: 0.6 }
   };
 
+  const categories = ["Indian Real Estate", "Real Estate Trends", "NRI", "Expert Tips"];
+
+  const filteredPosts = activeCategory === "All" 
+    ? BLOG_POSTS 
+    : BLOG_POSTS.filter(p => p.category === activeCategory);
+
   return (
-    <div className="min-h-screen bg-surface">
+    <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="pt-24 lg:pt-32 pb-24">
-        {/* Hero Header */}
-        <section className="px-6 max-w-7xl mx-auto mb-10 md:mb-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="max-w-3xl">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="flex items-center gap-3 mb-4"
-              >
-                <div className="h-[1px] w-6 md:w-8 bg-secondary" />
-                <span className="text-[9px] md:text-[10px] font-black text-secondary uppercase tracking-[0.4em]">Intelligence & Insights</span>
-              </motion.div>
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-3xl md:text-6xl font-headline font-black text-primary leading-tight uppercase tracking-tight"
-              >
-                The Investors <span className="italic text-secondary">Clinic</span> <br className="md:hidden" /> Journal
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mt-6 text-slate-500 font-medium text-base md:text-lg leading-relaxed max-w-2xl"
-              >
-                Exclusive market analysis, investment strategies, and luxury lifestyle trends curated for the sophisticated real estate investor.
-              </motion.p>
+      <main className="pt-28 pb-12">
+        {/* Category Navigation Bar - Secondary Header Style */}
+        <div className="bg-white border-b border-slate-100 mb-6 sticky top-20 z-40">
+          <div className="max-w-[1400px] mx-auto px-6">
+            <div className="flex items-center gap-10 py-4 overflow-x-auto no-scrollbar scrollbar-hide">
+              {["All", ...CATEGORIES.slice(1)].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`whitespace-nowrap text-[12px] font-black uppercase tracking-widest transition-all pb-2 border-b-2 ${
+                    activeCategory === cat 
+                    ? 'text-primary border-primary' 
+                    : 'text-slate-500 border-transparent hover:text-primary hover:border-slate-200'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 }}
-              className="bg-white p-2 rounded-2xl shadow-2xl flex items-center border border-slate-100"
-            >
-              <div className="pl-4 pr-2">
-                <Search className="w-5 h-5 text-slate-300" />
-              </div>
-              <input 
-                type="text" 
-                placeholder="Search articles..." 
-                className="bg-transparent border-none focus:ring-0 py-3 text-[14px] font-bold w-full md:w-64"
-              />
-              <button className="bg-primary text-white p-3 rounded-xl hover:bg-secondary transition-all shrink-0">
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </motion.div>
           </div>
-        </section>
+        </div>
 
-        {/* Categories Bar */}
-        <section className="px-6 max-w-7xl mx-auto mb-12 md:mb-16 overflow-x-auto no-scrollbar scrollbar-hide py-2">
-          <div className="flex items-center gap-4 border-b border-slate-100 pb-4">
-            {CATEGORIES.map((cat, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
-                  activeCategory === cat 
-                    ? "bg-secondary text-white shadow-xl shadow-secondary/20" 
-                    : "bg-white text-slate-400 border border-slate-100 hover:border-secondary hover:text-secondary"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </section>
-
-        {/* Featured Post (Full Width) */}
-        <section className="px-6 max-w-7xl mx-auto mb-12 md:20">
-          <motion.div 
-            {...fadeInUp}
-            className="group relative min-h-[500px] md:h-[600px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer"
-          >
-            <img 
-              src={BLOG_POSTS[0].image} 
-              alt={BLOG_POSTS[0].title}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-10">
             
-            <div className="absolute bottom-10 md:bottom-12 left-6 md:left-12 right-6 md:right-12">
-              <div className="flex items-center gap-4 mb-4 md:mb-6">
-                <span className="bg-secondary text-white px-4 py-1.5 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest">
-                  Featured
-                </span>
-                <span className="text-white/60 text-[9px] md:text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5" /> {BLOG_POSTS[0].readTime}
-                </span>
-              </div>
-              <h2 className="text-2xl md:text-5xl font-headline font-black text-white mb-6 leading-tight max-w-4xl uppercase tracking-tight">
-                {BLOG_POSTS[0].title}
-              </h2>
-              <p className="text-white/70 font-medium text-base md:text-lg mb-8 max-w-2xl line-clamp-3 md:line-clamp-none">
-                {BLOG_POSTS[0].excerpt}
-              </p>
-              <Link 
-                to={`/blog/${BLOG_POSTS[0].id}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] md:text-xs hover:bg-secondary hover:text-white transition-all group/btn"
-              >
-                Read Analysis <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Blog Grid */}
-        <section className="px-6 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16 md:gap-y-24">
-            {BLOG_POSTS.slice(1).map((post, idx) => (
-              <motion.article 
-                key={post.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group flex flex-col"
-              >
-                <Link to={`/blog/${post.id}`} className="block relative overflow-hidden rounded-[2rem] aspect-[4/3] mb-6 md:mb-8 shadow-2xl">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-5 right-5">
-                    <div className="w-10 h-10 rounded-full bg-white/95 backdrop-blur flex items-center justify-center text-primary shadow-xl group-hover:bg-secondary group-hover:text-white transition-all transform group-hover:rotate-45">
-                      <ArrowUpRight className="w-5 h-5" />
-                    </div>
-                  </div>
-                  <div className="absolute top-5 left-5">
-                    <span className="bg-white/95 backdrop-blur text-primary px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">
-                      {post.category}
-                    </span>
-                  </div>
-                </Link>
-                
-                <div className="flex items-center gap-4 mb-4 text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                  <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3 text-secondary" /> {post.date}</span>
-                  <span className="w-1 h-1 rounded-full bg-slate-200" />
-                  <span className="flex items-center gap-1.5"><Clock className="w-3 h-3 text-secondary" /> {post.readTime}</span>
-                </div>
-                
-                <h3 className="text-xl md:text-2xl font-headline font-black text-primary leading-tight mb-4 group-hover:text-secondary transition-colors line-clamp-2 uppercase tracking-tight">
-                  <Link to={`/blog/${post.id}`}>{post.title}</Link>
-                </h3>
-                
-                <p className="text-slate-500 font-medium leading-relaxed mb-6 line-clamp-3 text-sm md:text-base">
-                  {post.excerpt}
-                </p>
-                
-                <div className="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-primary font-black text-[9px] uppercase border border-slate-100">
-                      {post.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-black text-primary uppercase tracking-widest">{post.author}</p>
-                      <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest leading-none">Journalist</p>
-                    </div>
-                  </div>
+            {/* Left: Intelligence Feed (8 cols) */}
+            <div className="lg:col-span-8 space-y-10">
+              {/* Grid of Intel Reports */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {filteredPosts.map((post, i) => (
                   <Link 
-                    to={`/blog/${post.id}`}
-                    className="text-[9px] font-black text-secondary uppercase tracking-[0.2em] flex items-center gap-1 group/link"
+                    to={`/blog/${post.id}`} 
+                    key={post.id} 
+                    className="bg-white border border-slate-100 rounded-[2rem] overflow-hidden group hover:border-primary/10 transition-all flex flex-col h-full hover:shadow-xl hover:shadow-primary/5"
                   >
-                    Read <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+                    <div className="relative h-44 overflow-hidden">
+                      <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-white/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest leading-none">
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <h3 className="text-xs font-black text-primary uppercase leading-tight mb-3 group-hover:text-secondary transition-colors line-clamp-2 tracking-tight">
+                        {post.title}
+                      </h3>
+                      <p className="text-[11px] leading-relaxed text-slate-500 font-medium opacity-80 mb-6 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+                         <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{post.author}</span>
+                         <span className="text-[8px] font-black text-slate-300 uppercase tracking-widest">{post.date}</span>
+                      </div>
+                    </div>
                   </Link>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </section>
-
-        {/* Newsletter Section */}
-        <section className="mt-32 px-6 max-w-7xl mx-auto">
-          <div className="bg-[#0a1e3b] rounded-[3rem] p-6 md:p-20 relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
-              <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path d="M0 0 L100 0 L100 100 Z" fill="white" />
-              </svg>
-            </div>
-            
-            <div className="relative z-10 grid lg:grid-cols-2 items-center gap-12">
-              <div>
-                <h2 className="text-3xl md:text-5xl font-headline font-black text-white leading-tight mb-6">
-                  Stay Informed with <br /> <span className="italic text-secondary">The Clinic Weekly</span>
-                </h2>
-                <p className="text-slate-400 text-lg font-medium leading-relaxed max-w-lg">
-                  Join 25,000+ serious investors. Get private invitations to pre-launch projects and institutional market reports directly in your inbox.
-                </p>
+                ))}
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-2 flex items-center group focus-within:border-white/30 transition-all">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your professional email"
-                    className="bg-transparent border-none focus:ring-0 w-full px-4 text-white font-medium placeholder:text-white/30"
-                  />
-                </div>
-                <button className="bg-secondary text-white px-10 py-5 rounded-2xl font-headline font-black uppercase tracking-[0.2em] text-xs hover:brightness-110 hover:shadow-xl active:scale-95 transition-all">
-                  Subscribe Now
+
+              {/* Load More Button */}
+              <div className="flex justify-center pt-6">
+                <button className="bg-secondary text-white px-10 py-4 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] shadow-xl shadow-secondary/20 hover:brightness-110 transition-all active:scale-95">
+                  Load More Intelligence
                 </button>
               </div>
             </div>
+
+            {/* Right: Insights Sidebar (4 cols) */}
+            <div className="lg:col-span-4 space-y-8">
+              {/* Search Intelligence */}
+              <div className="bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm">
+                <div className="flex items-center gap-4 mb-6">
+                   <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20">
+                      <Search size={18} />
+                   </div>
+                   <h4 className="text-sm font-black text-primary uppercase tracking-widest">Search Intelligence</h4>
+                </div>
+                <div className="relative">
+                   <input 
+                     type="text" 
+                     placeholder="Type Your Search Here" 
+                     className="w-full bg-slate-50 border border-slate-100 rounded-xl px-5 py-4 text-[12px] font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/10 transition-all pr-12"
+                   />
+                   <Search size={16} className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300" />
+                </div>
+              </div>
+
+              {/* Recent Strategic Updates */}
+              <div className="bg-white border border-slate-100 p-8 rounded-[2rem] shadow-sm">
+                <div className="flex items-center gap-4 mb-8">
+                   <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20">
+                      <TrendingUp size={18} />
+                   </div>
+                   <h4 className="text-sm font-black text-primary uppercase tracking-widest">Recent Updates</h4>
+                </div>
+                <div className="space-y-6">
+                  {BLOG_POSTS.slice(0, 5).map((post, i) => (
+                    <div key={i} className="flex gap-4 group cursor-pointer">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-slate-100">
+                        <img src={post.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      </div>
+                      <div className="space-y-1.5 flex-1">
+                        <h5 className="text-[11px] font-black text-primary uppercase leading-tight group-hover:text-secondary transition-colors line-clamp-2">
+                          {post.title}
+                        </h5>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[9px] font-black text-secondary uppercase tracking-widest">Read Report</span>
+                          <ChevronRight size={12} className="text-secondary" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Alpha Access Subscription */}
+              <div className="bg-primary p-8 rounded-[2rem] text-white relative overflow-hidden group shadow-2xl shadow-primary/20">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-all translate-x-8 -translate-y-8" />
+                
+                <div className="flex items-center gap-4 mb-6">
+                   <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md">
+                      <Mail size={18} />
+                   </div>
+                   <h4 className="text-sm font-black uppercase tracking-widest">Subscribe</h4>
+                </div>
+                <p className="text-[11px] font-bold text-white/50 uppercase tracking-widest mb-6">Stay ahead of the market curve with proprietary data.</p>
+                
+                <div className="space-y-4">
+                  <div className="relative">
+                    <input 
+                      type="email" 
+                      placeholder="Enter email address" 
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-[12px] font-bold text-white placeholder:text-white/30 focus:outline-none focus:bg-white/10 transition-all"
+                    />
+                    <Mail size={16} className="absolute right-5 top-1/2 -translate-y-1/2 text-white/30" />
+                  </div>
+                  <button className="w-full bg-secondary py-4 rounded-xl text-[11px] font-black uppercase tracking-widest shadow-xl shadow-secondary/20 hover:brightness-110 active:scale-95 transition-all">
+                    Get Alpha Alerts
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+
+        </div>
       </main>
 
       <Footer />
     </div>
   );
 };
+

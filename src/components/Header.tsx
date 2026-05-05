@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Menu, X, ArrowUpRight, Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { CITIES } from "../constants";
 
 export const Header = () => {
   const location = useLocation();
@@ -12,7 +13,7 @@ export const Header = () => {
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects", hasDropdown: true },
     { label: "Who We Are", href: "/about" },
-    { label: "Cities", href: "/cities" },
+    { label: "Cities", href: "#", hasDropdown: true },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" }
   ];
@@ -46,20 +47,47 @@ export const Header = () => {
               {navItems.map((item, idx) => {
                 const active = location.pathname === item.href;
                 return (
-                  <Link 
-                    key={idx} 
-                    to={item.href} 
-                    className={`group relative text-[16px] font-bold transition-all flex items-center gap-1.5 ${active ? 'text-primary' : 'text-[#1a1a2e] hover:text-primary'}`}
-                  >
-                    {item.label}
-                    {item.hasDropdown && <ChevronDown className={`w-4 h-4 mt-0.5 transition-transform duration-300 group-hover:rotate-180 ${active ? 'text-primary' : 'text-slate-400'}`} />}
-                    {active && (
-                      <motion.div 
-                        layoutId="navUnderline"
-                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary" 
-                      />
+                  <div key={idx} className="relative group/parent">
+                    <Link 
+                      to={item.href} 
+                      className={`group relative text-[16px] font-bold transition-all flex items-center gap-1.5 ${active ? 'text-primary' : 'text-[#1a1a2e] hover:text-primary'}`}
+                    >
+                      {item.label}
+                      {item.hasDropdown && <ChevronDown className={`w-4 h-4 mt-0.5 transition-transform duration-300 group-hover/parent:rotate-180 ${active ? 'text-primary' : 'text-slate-400'}`} />}
+                      {active && (
+                        <motion.div 
+                          layoutId="navUnderline"
+                          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary" 
+                        />
+                      )}
+                    </Link>
+
+                    {item.label === "Cities" && (
+                      <div className="absolute top-full left-0 pt-4 hidden group-hover/parent:block">
+                        <div className="bg-white border border-slate-100 rounded-2xl shadow-2xl p-4 w-64 grid grid-cols-1 gap-2">
+                          {CITIES.map((city) => (
+                            <Link 
+                              key={city}
+                              to={`/city/${city.toLowerCase().replace(/\s+/g, '-')}`}
+                              className="text-sm font-bold text-slate-600 hover:text-primary hover:bg-slate-50 px-4 py-2.5 rounded-xl transition-all"
+                            >
+                              {city}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     )}
-                  </Link>
+
+                    {item.label === "Projects" && (
+                      <div className="absolute top-full left-0 pt-4 hidden group-hover/parent:block">
+                        <div className="bg-white border border-slate-100 rounded-2xl shadow-2xl p-4 w-64 flex flex-col gap-2">
+                          <Link to="/projects" className="text-sm font-bold text-slate-600 hover:text-primary hover:bg-slate-50 px-4 py-2.5 rounded-xl transition-all">All Projects</Link>
+                          <Link to="/projects?type=residential" className="text-sm font-bold text-slate-600 hover:text-primary hover:bg-slate-50 px-4 py-2.5 rounded-xl transition-all">Residential</Link>
+                          <Link to="/projects?type=commercial" className="text-sm font-bold text-slate-600 hover:text-primary hover:bg-slate-50 px-4 py-2.5 rounded-xl transition-all">Commercial</Link>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>
@@ -108,15 +136,33 @@ export const Header = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
                   >
-                    <Link
-                      to={item.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="group flex items-end gap-4"
-                    >
-                      <span className="text-white font-headline font-black text-4xl uppercase tracking-tight">{item.label}</span>
-                      <div className="h-0.5 flex-1 bg-white/10 mb-2 group-hover:bg-secondary transition-colors" />
-                      <ArrowUpRight className="text-secondary mb-1 opacity-0 group-hover:opacity-100 transition-all" />
-                    </Link>
+                    {item.label === "Cities" ? (
+                      <div className="space-y-4">
+                        <span className="text-white font-headline font-black text-4xl uppercase tracking-tight">{item.label}</span>
+                        <div className="grid grid-cols-2 gap-4 pl-4">
+                          {CITIES.map((city) => (
+                            <Link
+                              key={city}
+                              to={`/city/${city.toLowerCase().replace(/\s+/g, '-')}`}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="text-white/60 font-bold text-sm hover:text-white uppercase tracking-widest"
+                            >
+                              {city}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="group flex items-end gap-4"
+                      >
+                        <span className="text-white font-headline font-black text-4xl uppercase tracking-tight">{item.label}</span>
+                        <div className="h-0.5 flex-1 bg-white/10 mb-2 group-hover:bg-secondary transition-colors" />
+                        <ArrowUpRight className="text-secondary mb-1 opacity-0 group-hover:opacity-100 transition-all" />
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </div>

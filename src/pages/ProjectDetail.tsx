@@ -35,7 +35,10 @@ import {
   Dumbbell,
   Gamepad2,
   Film,
-  Leaf
+  Leaf,
+  Share2,
+  Linkedin,
+  Twitter
 } from 'lucide-react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 

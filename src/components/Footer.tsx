@@ -78,10 +78,10 @@ export const Footer = () => {
           <div>
             <h4 className="font-headline font-bold text-[#0a1e3b] uppercase tracking-widest text-[12px] mb-5">Quick Links</h4>
             <ul className="space-y-3">
-              {['Residential Projects', 'Commercial Spaces', 'Our Cities', 'Investment Guide', 'Intelligence Journal'].map((item, idx) => (
+              {['Residential Projects', 'Commercial Spaces', 'Investment Guide', 'Intelligence Journal'].map((item, idx) => (
                 <li key={item}>
                   <Link 
-                    to={item === 'Intelligence Journal' ? '/blog' : item === 'Our Cities' ? '/cities' : '#'} 
+                    to={item === 'Intelligence Journal' ? '/blog' : item === 'Residential Projects' ? '/projects' : item === 'Commercial Spaces' ? '/projects' : '#'} 
                     className="text-sm font-bold text-[#64748b] hover:text-secondary transition-colors"
                   >
                     {item}

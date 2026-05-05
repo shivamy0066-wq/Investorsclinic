@@ -1,3 +1,18 @@
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  author: string;
+  date: string;
+  readTime: string;
+  content: {
+    type: 'heading' | 'paragraph' | 'data';
+    text?: string;
+    items?: { label: string; value: string }[];
+  }[];
+}
 export interface Property {
   id: string;
   tag: string;

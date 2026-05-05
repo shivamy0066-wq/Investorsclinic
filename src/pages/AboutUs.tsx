@@ -73,18 +73,24 @@ export const AboutUs = () => {
             <motion.img 
               initial={{ scale: 1.05 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 15, repeat: Infinity, repeatType: "alternate", ease: "linear" }}
+              transition={{ duration: 15, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
               alt="Premium Architecture" 
               className="w-full h-full object-cover object-center opacity-60"
             />
             {/* Elegant Tech Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#050b18] via-[#050b18]/80 to-transparent" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(237,28,36,0.1),transparent_70%)]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050b18] via-[#050b18]/90 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050b18] via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(237,28,36,0.12),transparent_60%)]" />
             
-            {/* Subtle Digital Grid / Wave Effect */}
-            <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050b18] to-transparent" />
+            {/* Refined Digital Grid Patterns */}
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none" 
+                 style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+            />
+            <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+                 style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '10px 10px' }} 
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#050b18] to-transparent z-0" />
           </div>
 
           <div className="max-w-7xl mx-auto px-6 w-full relative z-10 pt-12">
