@@ -231,35 +231,40 @@ export const ContactUs = () => {
         </section>
 
         {/* MAIN FORM SECTION - Re-engineered for Screenshot Fidelity */}
-        <section className="pt-6 pb-12 md:pt-10 md:pb-16 bg-white border-y border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start">
+        <section className="pt-12 pb-20 md:pt-20 md:pb-24 bg-[#181941] border-y border-white/5 relative overflow-hidden">
+          {/* Decorative Technical Background */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+            <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:40px_40px]" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start relative z-10">
             
             {/* LEFT COLUMN: REFINED FORM */}
             <motion.div 
               {...fadeInUp} 
-              className="lg:col-span-12 xl:col-span-7 bg-white p-6 sm:p-10 md:p-12 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,115,183,0.1)] border border-slate-100 relative overflow-hidden"
+              className="lg:col-span-12 xl:col-span-7 bg-white/5 backdrop-blur-xl p-6 sm:p-10 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/10 relative overflow-hidden"
             >
               {/* Subtle background glow */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-[#0073B7]/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[#0073B7]/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
               
               <div className="relative z-10 mb-10 text-center md:text-left">
-                <h3 className="text-2xl md:text-3xl font-black text-[#0073B7] uppercase tracking-tight">Send an Inquiry</h3>
+                <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">Send an Inquiry</h3>
                 <div className="h-[3px] w-12 bg-[#ED1C24] mt-4 rounded-full mx-auto md:mx-0" />
               </div>
               
               <AnimatePresence mode="wait">
                 {status === 'success' ? (
                   <motion.div key="success" {...fadeInUp} className="py-16 text-center space-y-8 relative z-10">
-                    <div className="w-20 h-20 rounded-full bg-[#ED1C24]/10 text-[#ED1C24] flex items-center justify-center mx-auto shadow-inner">
+                    <div className="w-20 h-20 rounded-full bg-[#ED1C24]/20 text-[#ED1C24] flex items-center justify-center mx-auto shadow-inner">
                       <CheckCircle2 size={40} strokeWidth={1.5} />
                     </div>
                     <div className="space-y-4">
-                      <h3 className="text-2xl font-black text-[#0073B7] uppercase tracking-tight">Transmission Encoded</h3>
-                      <p className="text-slate-500 text-sm md:text-base font-medium max-w-sm mx-auto italic leading-relaxed">Our security protocols have verified your request. We will initiate contact shortly.</p>
+                      <h3 className="text-2xl font-black text-white uppercase tracking-tight">Transmission Encoded</h3>
+                      <p className="text-white/60 text-sm md:text-base font-medium max-w-sm mx-auto italic leading-relaxed">Our security protocols have verified your request. We will initiate contact shortly.</p>
                     </div>
                     <button 
                       onClick={() => setStatus('idle')}
-                      className="group flex items-center gap-3 mx-auto px-10 py-4 rounded-full border border-slate-200 text-[#0073B7] font-black text-[11px] md:text-xs uppercase tracking-[0.4em] hover:bg-[#0073B7] hover:text-white transition-all shadow-xl"
+                      className="group flex items-center gap-3 mx-auto px-10 py-4 rounded-full border border-white/10 text-white font-black text-[11px] md:text-xs uppercase tracking-[0.4em] hover:bg-white hover:text-[#181941] transition-all shadow-xl"
                     >
                       New Inquiry <ArrowRight size={14} />
                     </button>
@@ -269,78 +274,78 @@ export const ContactUs = () => {
                     <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                       {/* Full Name */}
                       <div className="space-y-2.5">
-                        <label className="text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">Full Name</label>
+                        <label className="text-[10px] md:text-[11px] font-black text-white/30 uppercase tracking-[0.3em] ml-1">Full Name</label>
                         <div className="relative group">
-                          <User size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#0073B7] transition-colors" />
+                          <User size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-[#ED1C24] transition-colors" />
                           <input 
                             required 
                             type="text" 
                             placeholder="Ex: Alexander Thorne" 
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-slate-900 placeholder:text-slate-400 transition-all focus:border-[#0073B7] focus:ring-8 focus:ring-[#0073B7]/5 outline-none" 
+                            className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-white placeholder:text-white/10 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none" 
                           />
                         </div>
                       </div>
-
+ 
                       {/* Phone Reference */}
                       <div className="space-y-2.5">
-                        <label className="text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">Phone Reference</label>
+                        <label className="text-[10px] md:text-[11px] font-black text-white/30 uppercase tracking-[0.3em] ml-1">Phone Reference</label>
                         <div className="relative group">
-                          <Phone size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#0073B7] transition-colors" />
+                          <Phone size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-[#ED1C24] transition-colors" />
                           <input 
                             required 
                             type="tel" 
                             placeholder="+1 (555) 000-0000" 
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-slate-900 placeholder:text-slate-400 transition-all focus:border-[#0073B7] focus:ring-8 focus:ring-[#0073B7]/5 outline-none" 
+                            className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-white placeholder:text-white/10 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none" 
                           />
                         </div>
                       </div>
                     </div>
-
+ 
                     <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                       {/* Search Location */}
                       <div className="space-y-2.5">
-                        <label className="text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">Search Location</label>
+                        <label className="text-[10px] md:text-[11px] font-black text-white/30 uppercase tracking-[0.3em] ml-1">Search Location</label>
                         <div className="relative group">
-                          <Globe size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#0073B7] transition-colors" />
+                          <Globe size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-[#ED1C24] transition-colors" />
                           <input 
                             required 
                             type="text" 
                             placeholder="Dubai, London, Noida..." 
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-slate-900 placeholder:text-slate-400 transition-all focus:border-[#0073B7] focus:ring-8 focus:ring-[#0073B7]/5 outline-none" 
+                            className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-white placeholder:text-white/10 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none" 
                           />
                         </div>
                       </div>
-
+ 
                       {/* Estimated Budget */}
                       <div className="space-y-2.5">
-                        <label className="text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">Estimated Budget</label>
+                        <label className="text-[10px] md:text-[11px] font-black text-white/30 uppercase tracking-[0.3em] ml-1">Estimated Budget</label>
                         <div className="relative group">
                           <select 
                             required 
                             defaultValue="" 
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 text-base md:text-sm font-medium text-slate-900 appearance-none transition-all focus:border-[#0073B7] focus:ring-8 focus:ring-[#0073B7]/5 outline-none cursor-pointer"
+                            className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-4 px-6 text-base md:text-sm font-medium text-white appearance-none transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none cursor-pointer"
                           >
-                            <option value="" disabled className="bg-white">Select Budget Range</option>
-                            <option value="50L-1Cr" className="bg-white">₹50 Lacs - ₹1 Cr</option>
-                            <option value="1Cr-5Cr" className="bg-white">₹1 Cr - ₹5 Cr</option>
-                            <option value="5Cr-10Cr" className="bg-white">₹5 Cr - ₹10 Cr</option>
-                            <option value="10Cr+" className="bg-white">₹10 Cr+</option>
+                            <option value="" disabled className="bg-[#181941]">Select Budget Range</option>
+                            <option value="50L-1Cr" className="bg-[#181941]">₹50 Lacs - ₹1 Cr</option>
+                            <option value="1Cr-5Cr" className="bg-[#181941]">₹1 Cr - ₹5 Cr</option>
+                            <option value="5Cr-10Cr" className="bg-[#181941]">₹5 Cr - ₹10 Cr</option>
+                            <option value="10Cr+" className="bg-[#181941]">₹10 Cr+</option>
                           </select>
-                          <ChevronDown size={18} className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none group-focus-within:rotate-180 transition-transform" />
+                          <ChevronDown size={18} className="absolute right-5 top-1/2 -translate-y-1/2 text-white/20 pointer-events-none group-focus-within:rotate-180 transition-transform" />
                         </div>
                       </div>
                     </div>
-
+ 
                     {/* Message */}
                     <div className="space-y-2.5">
-                      <label className="text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] ml-1">How can we assist you?</label>
+                      <label className="text-[10px] md:text-[11px] font-black text-white/30 uppercase tracking-[0.3em] ml-1">How can we assist you?</label>
                       <textarea 
                         rows={4} 
                         placeholder="Describe your property requirements or investment goals in detail..." 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 text-base md:text-sm font-medium text-slate-900 placeholder:text-slate-400 transition-all focus:border-[#0073B7] focus:ring-8 focus:ring-[#0073B7]/5 outline-none resize-none lg:min-h-[120px]" 
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-xl py-4 px-6 text-base md:text-sm font-medium text-white placeholder:text-white/10 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none resize-none lg:min-h-[120px]" 
                       />
                     </div>
-
+ 
                     <button 
                       disabled={status === 'submitting'}
                       className="w-full relative group overflow-hidden bg-[#ED1C24] text-white py-4 rounded-2xl font-black uppercase tracking-[0.4em] text-[11px] transition-all shadow-[0_20px_60px_-10px_rgba(237,28,36,0.5)] md:hover:shadow-[0_30px_80px_-10px_rgba(237,28,36,0.6)] active:scale-[0.97] flex items-center justify-center gap-4"
@@ -350,73 +355,134 @@ export const ContactUs = () => {
                         {status === 'submitting' ? <>Processing... <Loader2 size={18} className="animate-spin" /></> : <>Submit Form <ArrowRight size={18} /></>}
                       </span>
                     </button>
-
-                    <div className="flex items-center justify-center gap-3 pt-6 border-t border-slate-100">
-                       <ShieldCheck size={14} className="text-slate-300" />
-                       <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">Enterprise Grade Encryption Active</span>
+ 
+                    <div className="flex items-center justify-center gap-3 pt-6 border-t border-white/5">
+                       <ShieldCheck size={14} className="text-white/10" />
+                       <span className="text-[10px] font-black text-white/10 uppercase tracking-[0.4em]">Enterprise Grade Encryption Active</span>
                     </div>
                   </form>
                 )}
               </AnimatePresence>
             </motion.div>
-
+ 
             {/* RIGHT COLUMN: CARDS */}
             <div className="lg:col-span-12 xl:col-span-5 flex flex-col gap-6">
               {/* Partnering Card */}
               <motion.div 
                 {...fadeInUp}
                 transition={{ delay: 0.2 }}
-                className="bg-white p-10 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,115,183,0.08)] border border-slate-100 relative overflow-hidden"
+                className="bg-white/5 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-2xl border border-white/10 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-80 h-80 bg-[#ED1C24]/5 rounded-full blur-[100px] -mr-40 -mt-40" />
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#0073B7]/5 rounded-full blur-[80px] -ml-24 -mb-24" />
                 
                 <div className="relative z-10 space-y-6">
                   <div className="space-y-2">
-                    <h4 className="text-sm font-black text-slate-400 uppercase tracking-[0.3em]">Partnering In</h4>
-                    <h2 className="text-3xl font-black text-[#0073B7] uppercase tracking-tighter italic">Your Success</h2>
+                    <h4 className="text-sm font-black text-white/40 uppercase tracking-[0.3em]">Partnering In</h4>
+                    <h2 className="text-3xl font-black text-white tracking-tighter italic"><span className="text-[#0073B7]">Your</span> Success</h2>
                   </div>
-                  <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-xs">Delivering trusted real estate investment solutions across the global premium markets.</p>
+                  <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs">Delivering trusted real estate investment solutions across the global premium markets.</p>
                   
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100">
+                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/5">
                     <div className="text-center space-y-3">
                       <Users size={24} className="mx-auto text-[#ED1C24]" strokeWidth={1} />
                       <div>
-                        <div className="text-2xl font-black tracking-tight text-[#0073B7]">250K+</div>
-                        <div className="text-[8px] font-black uppercase text-slate-300 tracking-[0.1em]">Families Served</div>
+                        <div className="text-2xl font-black tracking-tight text-white">250K+</div>
+                        <div className="text-[8px] font-black uppercase text-white/20 tracking-[0.1em]">Families Served</div>
                       </div>
                     </div>
                     <div className="text-center space-y-3">
-                      <Building2 size={24} className="mx-auto text-[#ED1C24]" strokeWidth={1} />
+                      <Building2 size={24} className="mx-auto text-[#0073B7]" strokeWidth={1} />
                       <div>
-                        <div className="text-2xl font-black tracking-tight text-[#0073B7]">1500+</div>
-                        <div className="text-[8px] font-black uppercase text-slate-300 tracking-[0.1em]">Partnerships</div>
+                        <div className="text-2xl font-black tracking-tight text-white">1500+</div>
+                        <div className="text-[8px] font-black uppercase text-white/20 tracking-[0.1em]">Partnerships</div>
                       </div>
                     </div>
                     <div className="text-center space-y-3">
                       <Clock size={24} className="mx-auto text-[#ED1C24]" strokeWidth={1} />
                       <div>
-                        <div className="text-2xl font-black tracking-tight text-[#0073B7]">17+</div>
-                        <div className="text-[8px] font-black uppercase text-slate-300 tracking-[0.1em]">Years Exp</div>
+                        <div className="text-2xl font-black tracking-tight text-white">17+</div>
+                        <div className="text-[8px] font-black uppercase text-white/20 tracking-[0.1em]">Years Exp</div>
                       </div>
                     </div>
                   </div>
-
+ 
                   {/* Success Validation */}
-                  <div className="pt-6 flex flex-col sm:flex-row items-center gap-6 border-t border-slate-100">
+                  <div className="pt-6 flex flex-col sm:flex-row items-center gap-6 border-t border-white/5">
                     <div className="flex -space-x-3">
                       {[1, 2, 3, 4].map(i => (
-                        <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center overflow-hidden">
-                          <User size={18} className="text-slate-400" />
+                        <div key={i} className="w-10 h-10 rounded-full border-2 border-[#181941] bg-slate-800 flex items-center justify-center overflow-hidden">
+                          <User size={18} className="text-slate-500" />
                         </div>
                       ))}
                     </div>
                     <div className="flex-1 space-y-1">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-[#ED1C24] animate-pulse" />
-                        <p className="text-[9px] font-bold text-[#0073B7] uppercase tracking-[0.2em]">Verified Excellence</p>
+                        <p className="text-[9px] font-bold text-white/80 uppercase tracking-[0.2em]">Verified Excellence</p>
                       </div>
-                      <p className="text-[10px] font-medium text-slate-400">Trusted by <span className="text-[#0073B7] font-bold">5,000+</span> global institutional partners.</p>
+                      <p className="text-[10px] font-medium text-white/30">Trusted by <span className="text-[#0073B7] font-bold">5,000+</span> global institutional partners.</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* WE HELP YOU WITH - From Screenshot */}
+              <motion.div 
+                {...fadeInUp}
+                transition={{ delay: 0.3 }}
+                className="bg-white/5 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/10 relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#0073B7]/5 rounded-full blur-[80px] -mr-32 -mt-32" />
+                <div className="relative z-10 space-y-8">
+                  <div className="space-y-3">
+                    <h4 className="text-[10px] md:text-[11px] font-black text-white/60 uppercase tracking-[0.4em]">We help you with</h4>
+                    <div className="h-[3px] w-10 bg-[#ED1C24] rounded-full" />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
+                    {/* Category 1: Residential */}
+                    <div className="flex flex-col items-center gap-4 text-center group cursor-default">
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#ED1C24] shadow-xl group-hover:scale-110 transition-transform duration-500">
+                        <Home size={24} strokeWidth={1.5} />
+                      </div>
+                      <div className="space-y-0.5">
+                        <p className="text-[11px] font-black text-white uppercase tracking-tight">Residential</p>
+                        <p className="text-[9px] font-bold text-white/30 uppercase tracking-[0.1em]">Investments</p>
+                      </div>
+                    </div>
+
+                    {/* Category 2: Commercial */}
+                    <div className="flex flex-col items-center gap-4 text-center group cursor-default">
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#0073B7] shadow-xl group-hover:scale-110 transition-transform duration-500">
+                        <Building2 size={24} strokeWidth={1.5} />
+                      </div>
+                      <div className="space-y-0.5">
+                        <p className="text-[11px] font-black text-white uppercase tracking-tight">Commercial</p>
+                        <p className="text-[9px] font-bold text-white/30 uppercase tracking-[0.1em]">Investments</p>
+                      </div>
+                    </div>
+
+                    {/* Category 3: NRI */}
+                    <div className="flex flex-col items-center gap-4 text-center group cursor-default">
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#ED1C24] shadow-xl group-hover:scale-110 transition-transform duration-500">
+                        <Globe size={24} strokeWidth={1.5} />
+                      </div>
+                      <div className="space-y-0.5">
+                        <p className="text-[11px] font-black text-white uppercase tracking-tight">NRI</p>
+                        <p className="text-[9px] font-bold text-white/30 uppercase tracking-[0.1em]">Investments</p>
+                      </div>
+                    </div>
+
+                    {/* Category 4: Land & Plot */}
+                    <div className="flex flex-col items-center gap-4 text-center group cursor-default">
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#0073B7] shadow-xl group-hover:scale-110 transition-transform duration-500">
+                        <Trees size={24} strokeWidth={1.5} />
+                      </div>
+                      <div className="space-y-0.5">
+                        <p className="text-[11px] font-black text-white uppercase tracking-tight">Land & Plot</p>
+                        <p className="text-[9px] font-bold text-white/30 uppercase tracking-[0.1em]">Investments</p>
+                      </div>
                     </div>
                   </div>
                 </div>
