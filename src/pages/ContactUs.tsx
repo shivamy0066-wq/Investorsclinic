@@ -10,6 +10,9 @@ import {
   Clock, 
   ShieldCheck, 
   Globe,
+  FileText,
+  Home,
+  Trees,
   ArrowRight,
   Headphones,
   Users,
@@ -17,7 +20,9 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
+  User,
   ChevronRight,
+  ChevronDown,
   HelpCircle,
   Plus,
   Minus
@@ -30,14 +35,16 @@ type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border-b border-slate-100 last:border-0">
+    <div className={`transition-all duration-500 rounded-[2rem] border ${isOpen ? 'bg-white border-slate-200 shadow-xl' : 'bg-transparent border-transparent'} overflow-hidden mb-4`}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-8 flex items-center justify-between text-left group"
+        className="w-full p-8 md:p-10 flex items-center justify-between text-left group"
       >
-        <span className="text-xl font-bold text-[#0073B7] group-hover:text-[#ED1C24] transition-all tracking-tight uppercase leading-snug">{question}</span>
-        <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${isOpen ? 'bg-[#ED1C24] text-white' : 'bg-slate-50 text-slate-400'}`}>
-          {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+        <span className={`text-lg md:text-xl font-black transition-all tracking-tight uppercase leading-snug ${isOpen ? 'text-[#ED1C24]' : 'text-[#0073B7] group-hover:text-[#ED1C24]'}`}>
+          {question}
+        </span>
+        <div className={`shrink-0 ml-6 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-[#ED1C24] text-white rotate-180 shadow-[0_10px_20px_-5px_rgba(237,28,36,0.3)]' : 'bg-slate-100/50 text-slate-400 group-hover:bg-slate-100 group-hover:text-[#0073B7]'}`}>
+          <ChevronDown size={24} className={`transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} />
         </div>
       </button>
       <AnimatePresence>
@@ -46,11 +53,14 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="pb-8 text-slate-500 text-lg leading-relaxed font-medium italic">
-              {answer}
-            </p>
+            <div className="px-8 md:px-10 pb-10">
+              <div className="h-px w-full bg-slate-100 mb-8" />
+              <p className="text-slate-500 text-base md:text-lg leading-relaxed font-medium italic">
+                {answer}
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -185,7 +195,7 @@ export const ContactUs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="text-lg md:text-2xl text-slate-500 max-w-2xl mx-auto font-medium tracking-tight leading-relaxed italic"
+              className="text-lg md:text-2xl text-slate-300 max-w-2xl mx-auto font-medium tracking-tight leading-relaxed italic"
             >
               Strategic property advisory for distinguished <br className="hidden md:block" /> residential and commercial portfolios.
             </motion.p>
@@ -193,7 +203,7 @@ export const ContactUs = () => {
         </section>
 
         {/* QUICK CONTACT CARDS - Ultra Premium Floating */}
-        <section className="max-w-6xl mx-auto px-6 -mt-32 relative z-20">
+        <section className="max-w-6xl mx-auto px-6 -mt-20 relative z-20">
           <div className="grid md:grid-cols-3 gap-6">
             {contactMethods.map((method, i) => (
               <motion.a
@@ -220,162 +230,285 @@ export const ContactUs = () => {
           </div>
         </section>
 
-        {/* MAIN FORM SECTION - Light Refined Layout with Differentiation */}
-        <section className="py-20 bg-white border-y border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-start">
-            <motion.div {...fadeInUp} className="lg:col-span-5 space-y-12">
-            <div className="space-y-8">
-              <div className="flex items-center gap-4">
-                <div className="h-[2px] w-12 bg-[#ED1C24]" />
-                <span className="text-[#ED1C24] font-black text-[12px] uppercase tracking-[0.5em] leading-none">Bespoke Advisory</span>
+        {/* MAIN FORM SECTION - Re-engineered for Screenshot Fidelity */}
+        <section className="py-12 md:py-20 bg-[#fcfdff] border-y border-slate-100">
+          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start">
+            
+            {/* LEFT COLUMN: REFINED FORM */}
+            <motion.div 
+              {...fadeInUp} 
+              className="lg:col-span-12 xl:col-span-7 bg-[#0a1120] p-6 sm:p-10 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/10 relative overflow-hidden"
+            >
+              {/* Subtle background glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[#ED1C24]/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
+              
+              <div className="relative z-10 mb-10 text-center md:text-left">
+                <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">Send an Inquiry</h3>
+                <div className="h-[3px] w-12 bg-[#ED1C24] mt-4 rounded-full mx-auto md:mx-0" />
               </div>
-              <h2 className="text-5xl md:text-6xl font-headline font-black text-[#0073B7] uppercase leading-[0.9] tracking-tighter">
-                Send a <span className="text-[#0073B7] italic">Strategic</span> <br /> Transmission.
-              </h2>
-              <p className="text-slate-500 text-xl font-medium leading-relaxed max-w-md">
-                Our regional analysts provide specialized data-driven insights tailored to your specific investment risk profile.
-              </p>
-            </div>
+              
+              <AnimatePresence mode="wait">
+                {status === 'success' ? (
+                  <motion.div key="success" {...fadeInUp} className="py-16 text-center space-y-8 relative z-10">
+                    <div className="w-20 h-20 rounded-full bg-[#ED1C24]/20 text-[#ED1C24] flex items-center justify-center mx-auto shadow-inner">
+                      <CheckCircle2 size={40} strokeWidth={1.5} />
+                    </div>
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-black text-white uppercase tracking-tight">Transmission Encoded</h3>
+                      <p className="text-white/60 text-sm md:text-base font-medium max-w-sm mx-auto italic leading-relaxed">Our security protocols have verified your request. We will initiate contact shortly.</p>
+                    </div>
+                    <button 
+                      onClick={() => setStatus('idle')}
+                      className="group flex items-center gap-3 mx-auto px-10 py-4 rounded-full border border-white/20 text-[#ED1C24] font-black text-[11px] md:text-xs uppercase tracking-[0.4em] hover:bg-[#ED1C24] hover:text-white transition-all shadow-xl"
+                    >
+                      New Inquiry <ArrowRight size={14} />
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
+                    <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                      {/* Full Name */}
+                      <div className="space-y-2.5">
+                        <label className="text-[10px] md:text-[11px] font-black text-white/50 uppercase tracking-[0.3em] ml-1">Full Name</label>
+                        <div className="relative group">
+                          <User size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-[#ED1C24] transition-colors" />
+                          <input 
+                            required 
+                            type="text" 
+                            placeholder="Ex: Alexander Thorne" 
+                            className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-white placeholder:text-white/20 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none shadow-inner" 
+                          />
+                        </div>
+                      </div>
 
-            <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
-              {benefits.map((benefit, i) => (
-                <div key={i} className="space-y-4 group">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-[#ED1C24] border border-slate-100 group-hover:bg-[#ED1C24] group-hover:text-white transition-all duration-500 group-hover:border-transparent">
-                    <benefit.icon size={24} strokeWidth={1.5} />
+                      {/* Phone Reference */}
+                      <div className="space-y-2.5">
+                        <label className="text-[10px] md:text-[11px] font-black text-white/50 uppercase tracking-[0.3em] ml-1">Phone Reference</label>
+                        <div className="relative group">
+                          <Phone size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-[#ED1C24] transition-colors" />
+                          <input 
+                            required 
+                            type="tel" 
+                            placeholder="+1 (555) 000-0000" 
+                            className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-white placeholder:text-white/20 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none shadow-inner" 
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                      {/* Search Location */}
+                      <div className="space-y-2.5">
+                        <label className="text-[10px] md:text-[11px] font-black text-white/50 uppercase tracking-[0.3em] ml-1">Search Location</label>
+                        <div className="relative group">
+                          <Globe size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-[#ED1C24] transition-colors" />
+                          <input 
+                            required 
+                            type="text" 
+                            placeholder="Dubai, London, Noida..." 
+                            className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-14 pr-6 text-base md:text-sm font-medium text-white placeholder:text-white/20 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none shadow-inner" 
+                          />
+                        </div>
+                      </div>
+
+                      {/* Estimated Budget */}
+                      <div className="space-y-2.5">
+                        <label className="text-[10px] md:text-[11px] font-black text-white/50 uppercase tracking-[0.3em] ml-1">Estimated Budget</label>
+                        <div className="relative group">
+                          <select 
+                            required 
+                            defaultValue="" 
+                            className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 text-base md:text-sm font-medium text-white appearance-none transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none shadow-inner cursor-pointer"
+                          >
+                            <option value="" disabled className="bg-[#0a1120]">Select Budget Range</option>
+                            <option value="50L-1Cr" className="bg-[#0a1120]">₹50 Lacs - ₹1 Cr</option>
+                            <option value="1Cr-5Cr" className="bg-[#0a1120]">₹1 Cr - ₹5 Cr</option>
+                            <option value="5Cr-10Cr" className="bg-[#0a1120]">₹5 Cr - ₹10 Cr</option>
+                            <option value="10Cr+" className="bg-[#0a1120]">₹10 Cr+</option>
+                          </select>
+                          <ChevronDown size={18} className="absolute right-5 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none group-focus-within:rotate-180 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Message */}
+                    <div className="space-y-2.5">
+                      <label className="text-[10px] md:text-[11px] font-black text-white/50 uppercase tracking-[0.3em] ml-1">How can we assist you?</label>
+                      <textarea 
+                        rows={4} 
+                        placeholder="Describe your property requirements or investment goals in detail..." 
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 text-base md:text-sm font-medium text-white placeholder:text-white/20 transition-all focus:border-[#ED1C24] focus:ring-8 focus:ring-[#ED1C24]/10 outline-none shadow-inner resize-none lg:min-h-[120px]" 
+                      />
+                    </div>
+
+                    <button 
+                      disabled={status === 'submitting'}
+                      className="w-full relative group overflow-hidden bg-[#ED1C24] text-white py-5 rounded-2xl font-black uppercase tracking-[0.5em] text-[12px] transition-all shadow-[0_20px_60px_-10px_rgba(237,28,36,0.5)] md:hover:shadow-[0_30px_80px_-10px_rgba(237,28,36,0.6)] active:scale-[0.97] flex items-center justify-center gap-4 border-t border-white/20"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#ED1C24] to-[#C4161B] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <span className="relative z-10 flex items-center gap-3">
+                        {status === 'submitting' ? <>Processing... <Loader2 size={18} className="animate-spin" /></> : <>Send Strategic Inquiry <ArrowRight size={18} /></>}
+                      </span>
+                    </button>
+
+                    <div className="flex items-center justify-center gap-3 pt-6 border-t border-white/10">
+                       <ShieldCheck size={14} className="text-white/30" />
+                       <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Enterprise Grade Encryption Active</span>
+                    </div>
+                  </form>
+                )}
+              </AnimatePresence>
+            </motion.div>
+
+            {/* RIGHT COLUMN: CARDS */}
+            <div className="lg:col-span-12 xl:col-span-5 flex flex-col gap-6">
+              {/* Partnering Card */}
+              <motion.div 
+                {...fadeInUp}
+                transition={{ delay: 0.2 }}
+                className="bg-[#0a1120] text-white p-10 rounded-[2.5rem] shadow-2xl border border-white/10 relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-80 h-80 bg-[#ED1C24]/15 rounded-full blur-[100px] -mr-40 -mt-40" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#0073B7]/5 rounded-full blur-[80px] -ml-24 -mb-24" />
+                
+                <div className="relative z-10 space-y-6">
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-black text-white/90 uppercase tracking-[0.3em]">Partnering In</h4>
+                    <h2 className="text-3xl font-black text-[#ED1C24] uppercase tracking-tighter italic">Your Success</h2>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-black text-[#0073B7] uppercase tracking-tight mb-2">{benefit.title}</h4>
-                    <p className="text-slate-400 text-[12px] font-semibold leading-relaxed tracking-tight">{benefit.desc}</p>
+                  <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs">Delivering trusted real estate investment solutions across the global premium markets.</p>
+                  
+                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/5">
+                    <div className="text-center space-y-3">
+                      <Users size={24} className="mx-auto text-[#ED1C24]" strokeWidth={1} />
+                      <div>
+                        <div className="text-2xl font-black tracking-tight">250K+</div>
+                        <div className="text-[8px] font-black uppercase text-white/20 tracking-[0.1em]">Families Served</div>
+                      </div>
+                    </div>
+                    <div className="text-center space-y-3">
+                      <Building2 size={24} className="mx-auto text-[#ED1C24]" strokeWidth={1} />
+                      <div>
+                        <div className="text-2xl font-black tracking-tight">1500+</div>
+                        <div className="text-[8px] font-black uppercase text-white/20 tracking-[0.1em]">Partnerships</div>
+                      </div>
+                    </div>
+                    <div className="text-center space-y-3">
+                      <Clock size={24} className="mx-auto text-[#ED1C24]" strokeWidth={1} />
+                      <div>
+                        <div className="text-2xl font-black tracking-tight">17+</div>
+                        <div className="text-[8px] font-black uppercase text-white/20 tracking-[0.1em]">Years Exp</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              ))}
+              </motion.div>
+
+              {/* Why Investors Choose Us? - Screenshot Replication */}
+              <motion.div 
+                {...fadeInUp}
+                transition={{ delay: 0.3 }}
+                className="bg-[#0a1120] text-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-white/10 relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#ED1C24]/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                
+                <div className="relative z-10 space-y-8">
+                  <div className="space-y-3">
+                    <h4 className="text-[11px] font-black text-white/50 uppercase tracking-[0.3em]">Why Investors Choose Us?</h4>
+                    <div className="h-[2px] w-10 bg-[#ED1C24] rounded-full" />
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4 group">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#ED1C24]/10 group-hover:border-[#ED1C24]/30 transition-all">
+                        <ShieldCheck size={18} className="text-[#ED1C24]" />
+                      </div>
+                      <div className="space-y-1">
+                        <h5 className="text-[13px] font-black uppercase tracking-tight">Verified & Reputed Properties</h5>
+                        <p className="text-white/40 text-[11px] font-medium leading-relaxed">All properties are legally verified & researched.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4 group">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#ED1C24]/10 group-hover:border-[#ED1C24]/30 transition-all">
+                        <Users size={18} className="text-[#ED1C24]" />
+                      </div>
+                      <div className="space-y-1">
+                        <h5 className="text-[13px] font-black uppercase tracking-tight">Expert Investment Advisory</h5>
+                        <p className="text-white/40 text-[11px] font-medium leading-relaxed">17+ years of market expertise for smarter decisions.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4 group">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#ED1C24]/10 group-hover:border-[#ED1C24]/30 transition-all">
+                        <FileText size={18} className="text-[#ED1C24]" />
+                      </div>
+                      <div className="space-y-1">
+                        <h5 className="text-[13px] font-black uppercase tracking-tight">End-to-End Support</h5>
+                        <p className="text-white/40 text-[11px] font-medium leading-relaxed">From search to settlement, we manage everything.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4 group">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#ED1C24]/10 group-hover:border-[#ED1C24]/30 transition-all">
+                        <Globe size={18} className="text-[#ED1C24]" />
+                      </div>
+                      <div className="space-y-1">
+                        <h5 className="text-[13px] font-black uppercase tracking-tight">Global Presence</h5>
+                        <p className="text-white/40 text-[11px] font-medium leading-relaxed">Serving clients across India & international markets.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
-
-          <div className="lg:col-span-1" />
-
-          <motion.div 
-            {...fadeInUp} 
-            transition={{ delay: 0.3 }}
-            className="lg:col-span-6 bg-gradient-to-br from-white to-slate-50 p-8 md:p-10 rounded-[2.5rem] shadow-[0_40px_80px_-30px_rgba(10,30,59,0.12)] border border-slate-200 relative overflow-hidden group/form"
-          >
-            {/* Form decorative background */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#ED1C24]/5 rounded-full blur-[120px] -mr-40 -mt-40 transition-transform duration-[2s] group-hover/form:scale-110" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#0073B7]/5 rounded-full blur-[100px] -ml-32 -mb-32" />
-            
-            <AnimatePresence mode="wait">
-              {status === 'success' ? (
-                <motion.div key="success" {...fadeInUp} className="py-16 text-center space-y-10 relative z-10">
-                  <div className="relative inline-block">
-                    <div className="w-32 h-32 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto shadow-inner">
-                      <CheckCircle2 size={48} strokeWidth={1.5} />
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-4xl font-headline font-black text-[#0073B7] uppercase tracking-tighter">Transmission <span className="text-[#ED1C24] italic">Encoded</span></h3>
-                    <p className="text-slate-500 text-lg font-medium max-w-xs mx-auto leading-relaxed">Our security protocols have verified your request. A Senior Advisor will initiate contact within 15 minutes.</p>
-                  </div>
-                  <button 
-                    onClick={() => setStatus('idle')}
-                    className="group flex items-center gap-4 mx-auto px-8 py-4 rounded-full border border-slate-200 text-[#ED1C24] font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white transition-all shadow-sm"
-                  >
-                    Send another inquiry <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </motion.div>
-              ) : (
-                <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <label className="text-[11px] font-black text-[#0073B7] uppercase tracking-[0.3em] block ml-1">Identity Profile</label>
-                      <input 
-                        required 
-                        type="text" 
-                        placeholder="Full Name" 
-                        className="w-full bg-white border border-slate-100 rounded-2xl p-5 text-base font-bold text-[#0073B7] placeholder:text-slate-300 focus:border-[#ED1C24]/30 focus:ring-[12px] focus:ring-[#ED1C24]/5 transition-all outline-none shadow-sm" 
-                      />
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-[11px] font-black text-[#0073B7] uppercase tracking-[0.3em] block ml-1">Secure Contact</label>
-                      <input 
-                        required 
-                        type="tel" 
-                        placeholder="Phone Reference" 
-                        className="w-full bg-white border border-slate-100 rounded-2xl p-5 text-base font-bold text-[#0073B7] placeholder:text-slate-300 focus:border-[#ED1C24]/30 focus:ring-[12px] focus:ring-[#ED1C24]/5 transition-all outline-none shadow-sm" 
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <label className="text-[11px] font-black text-[#0073B7] uppercase tracking-[0.3em] block ml-1">Intelligence Channel</label>
-                    <input 
-                      required 
-                      type="email" 
-                      placeholder="Official Email Address" 
-                      className="w-full bg-white border border-slate-100 rounded-2xl p-5 text-base font-bold text-[#0073B7] placeholder:text-slate-300 focus:border-[#ED1C24]/30 focus:ring-[12px] focus:ring-[#ED1C24]/5 transition-all outline-none shadow-sm" 
-                    />
-                  </div>
-
-                  <div className="space-y-3">
-                    <label className="text-[11px] font-black text-[#0073B7] uppercase tracking-[0.3em] block ml-1">Strategic Requirements</label>
-                    <textarea 
-                      rows={4} 
-                      placeholder="Specify your portfolio objectives..." 
-                      className="w-full bg-white border border-slate-100 rounded-2xl p-5 text-base font-bold text-[#0073B7] placeholder:text-slate-300 focus:border-[#ED1C24]/30 focus:ring-[12px] focus:ring-[#ED1C24]/5 transition-all outline-none shadow-sm resize-none" 
-                    />
-                  </div>
-
-                  <button 
-                    disabled={status === 'submitting'}
-                    className="w-full group relative overflow-hidden rounded-2xl transition-all active:scale-[0.98] shadow-lg"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#ED1C24] to-[#0073B7] group-hover:scale-[1.05] transition-transform duration-700" />
-                    <div className="relative py-6 flex items-center justify-center gap-4 text-white font-black uppercase tracking-[0.5em] text-[13px]">
-                      {status === 'submitting' ? (
-                        <>Processing Transmission <Loader2 size={20} className="animate-spin" /></>
-                      ) : (
-                        <>Initialize Connection <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" /></>
-                      )}
-                    </div>
-                  </button>
-
-                  <div className="flex flex-col items-center gap-4 pt-4">
-                    <div className="flex items-center gap-3 px-6 py-2.5 bg-emerald-50 rounded-full border border-emerald-100">
-                      <ShieldCheck size={14} className="text-emerald-500" />
-                      <span className="text-[10px] text-emerald-700 font-black uppercase tracking-[0.4em]">Secure AES-256 Protocol</span>
-                    </div>
-                    <p className="text-[9px] text-slate-300 font-bold uppercase tracking-[0.3em] text-center px-4">
-                      By submitting, you agree to our terms and <span className="text-slate-400">Excellence Guarantee</span>.
-                    </p>
-                  </div>
-                </form>
-              )}
-            </AnimatePresence>
-          </motion.div>
           </div>
         </section>
 
+
         {/* OFFICE LOCATIONS - Light Elite Theme */}
-        <section className="py-32 bg-slate-50 relative overflow-hidden">
+        <section className="pt-8 pb-10 bg-slate-50 relative overflow-hidden">
           {/* Subtle Background Intel Grid */}
           <div className="absolute inset-0 opacity-[0.2] pointer-events-none">
-            <div className="absolute inset-0 bg-[radial-gradient(#0073B7_1px,transparent_1px)] [background-size:64px_64px]" />
+            <div className="absolute inset-0 bg-[radial-gradient(#0073B7_1px,transparent_1px)] [background-size:60px_60px]" />
           </div>
           
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="mb-20 space-y-6">
+            <div className="mb-10 space-y-4">
               <div className="flex items-center gap-4">
                 <div className="h-[2px] w-12 bg-[#0073B7]" />
-                <span className="text-[#0073B7] font-black text-[13px] uppercase tracking-[0.5em] leading-none">Global Network</span>
+                <span className="text-[#0073B7] font-black text-[12px] uppercase tracking-[0.5em] leading-none">Global Network</span>
               </div>
-              <h2 className="text-5xl md:text-7xl font-headline font-black text-[#0073B7] uppercase tracking-tighter">Strategic <span className="text-[#0073B7] italic leading-tight">Hubs.</span></h2>
+              <h2 className="text-4xl md:text-6xl font-headline font-black text-[#0073B7] uppercase tracking-tighter">Strategic <span className="text-[#0073B7] italic leading-tight">Hubs.</span></h2>
             </div>
 
-            <div className="bg-white rounded-[4rem] p-8 shadow-[0_50px_100px_-20px_rgba(10,30,59,0.06)] border border-slate-100 overflow-hidden mb-20 group/map">
-              <Suspense fallback={<div className="h-[500px] bg-slate-50 animate-pulse rounded-[3rem]" />}>
-                <div className="scale-100 group-hover/map:scale-[1.02] transition-transform duration-[3s] filter grayscale opacity-90">
-                  <OfficeMap />
+            <div className="max-w-4xl mx-auto bg-white rounded-[2.5rem] p-4 shadow-[0_40px_80px_-20px_rgba(10,30,59,0.06)] border border-slate-100 overflow-hidden mb-12 group/map relative">
+              <div className="h-[320px] w-full rounded-[2rem] overflow-hidden bg-slate-50 relative">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.514782069796!2d77.3456!3d28.5395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d6d6d6d6d7%3A0x1234567890abcdef!2sInvestors+Clinic+Corporate+Office!5e0!3m2!1sen!2sin!4v1714970000000!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full border-0"
+                />
+                
+                {/* Float link button to the shared map */}
+                <div className="absolute bottom-10 right-10 z-20">
+                  <motion.a
+                    href="https://share.google/pQKCUGoM5JUnj5kfq"
+                    target="_blank"
+                    rel="noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-2xl border border-slate-100 text-[#0073B7] font-black text-[11px] uppercase tracking-widest hover:text-[#ED1C24] transition-colors"
+                  >
+                    <MapPin size={16} /> View Private Location <ArrowRight size={14} />
+                  </motion.a>
                 </div>
-              </Suspense>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -414,22 +547,46 @@ export const ContactUs = () => {
           </div>
         </section>
 
-        {/* FAQ SECTION - Light Refined Layout */}
-        <section className="py-32 max-w-5xl mx-auto px-6">
-          <div className="text-center space-y-6 mb-24">
-             <div className="inline-flex items-center gap-4 bg-[#ED1C24]/5 px-6 py-3 rounded-full text-[#ED1C24] font-black text-[12px] uppercase tracking-[0.5em] shadow-sm border border-[#ED1C24]/10">
-               <HelpCircle size={16} /> Intelligence Support
-             </div>
-             <h2 className="text-5xl md:text-6xl font-headline font-black text-[#0073B7] uppercase tracking-tighter leading-none">Essential <span className="text-[#0073B7] italic">Intelligence.</span></h2>
-             <p className="text-slate-400 font-medium text-xl italic tracking-tight">Clear answers for complex property portfolio strategic queries.</p>
-          </div>
+        {/* FAQ SECTION - Elite Strategic Theme */}
+        <section className="pt-16 pb-0 relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-[#0073B7]/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
           
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <div key={i} className="border-b border-slate-100 last:border-0 group/faq">
-                <FAQItem question={faq.question} answer={faq.answer} />
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto px-6 relative z-10">
+            <div className="text-center space-y-6 mb-10">
+               <motion.div 
+                 {...fadeInUp}
+                 className="inline-flex items-center gap-4 bg-white border border-slate-100 px-6 py-2 rounded-full shadow-sm"
+               >
+                 <div className="w-2 h-2 rounded-full bg-[#ED1C24] animate-pulse" />
+                 <span className="text-[#ED1C24] font-black text-[11px] uppercase tracking-[0.4em]">Intelligence Support</span>
+               </motion.div>
+               <motion.h2 
+                 {...fadeInUp}
+                 transition={{ delay: 0.1 }}
+                 className="text-4xl md:text-6xl lg:text-7xl font-headline font-black text-[#0073B7] uppercase tracking-tighter leading-none mx-auto whitespace-nowrap mb-4"
+               >
+                 REAL ESTATE <span className="text-[#ED1C24] italic">FAQS.</span>
+               </motion.h2>
+               <motion.p 
+                 {...fadeInUp}
+                 transition={{ delay: 0.2 }}
+                 className="text-slate-400 font-medium text-base md:text-lg max-w-2xl mx-auto"
+               >
+                 Bespoke solutions for complex property portfolio strategy queries.
+               </motion.p>
+            </div>
+            
+            <motion.div 
+              {...fadeInUp}
+              transition={{ delay: 0.3 }}
+              className="space-y-4"
+            >
+              {faqs.map((faq, i) => (
+                <FAQItem key={i} question={faq.question} answer={faq.answer} />
+              ))}
+            </motion.div>
+
           </div>
         </section>
       </main>
