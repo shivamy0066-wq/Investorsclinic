@@ -240,68 +240,6 @@ export const CityDetail = () => {
           </div>
         </section>
 
-        {/* Intelligence Grid */}
-        <section className="py-12 bg-slate-50/50 relative">
-           <div className="max-w-7xl mx-auto px-6">
-              <div className="grid lg:grid-cols-12 gap-8">
-                 {/* Market Analysis */}
-                 <motion.div {...fadeInUp} className="lg:col-span-12 bg-white p-8 md:p-14 rounded-[3.5rem] border border-slate-100 shadow-2xl shadow-slate-200/50">
-                    <div className="flex items-center gap-5 mb-10">
-                       <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100">
-                          <Control className="text-slate-900 w-6 h-6" />
-                       </div>
-                       <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">Executive Intelligence Report</h3>
-                    </div>
-                    <div className="grid lg:grid-cols-2 gap-16">
-                      <div>
-                        <p className="text-slate-600 text-lg font-medium leading-[1.8] mb-12">
-                           {cityInfo.analysis}
-                        </p>
-                        <div className="grid sm:grid-cols-3 gap-6">
-                           <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group transition-all hover:bg-white hover:shadow-lg">
-                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 group-hover:text-secondary transition-colors">Investment Velocity</p>
-                              <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-                                 <div className="h-full bg-secondary w-[85%]" />
-                              </div>
-                           </div>
-                           <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group transition-all hover:bg-white hover:shadow-lg">
-                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 group-hover:text-slate-900 transition-colors">Market Liquidity</p>
-                              <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-                                 <div className="h-full bg-slate-900 w-[75%]" />
-                              </div>
-                           </div>
-                           <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group transition-all hover:bg-white hover:shadow-lg">
-                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 group-hover:text-secondary transition-colors">Yield Potential</p>
-                              <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-                                 <div className="h-full bg-secondary w-[92%]" />
-                              </div>
-                           </div>
-                        </div>
-                      </div>
-                      <div className="space-y-8">
-                        <div className="flex items-center gap-4 mb-4">
-                           <div className="w-1.5 h-6 bg-secondary rounded-full" />
-                           <h3 className="text-xl font-black uppercase text-slate-900 tracking-tight">Strategic Infra Audit</h3>
-                        </div>
-                        <div className="grid gap-5">
-                           {cityInfo.infrastructure.map((proj: any, idx: number) => (
-                             <div key={idx} className="flex items-center justify-between p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-slate-300 transition-all cursor-default">
-                                <div>
-                                   <h4 className="font-black text-sm text-slate-900 uppercase tracking-tight">{proj.project}</h4>
-                                   <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-1">Timeline: {proj.timeline}</p>
-                                </div>
-                                <span className={`text-[9px] font-black px-3 py-1 rounded-full border ${proj.impact === 'High' || proj.impact === 'Extreme' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 'bg-slate-200 text-slate-600 border-slate-300'}`}>
-                                   {proj.impact} IMPACT
-                                </span>
-                             </div>
-                           ))}
-                        </div>
-                      </div>
-                    </div>
-                 </motion.div>
-              </div>
-           </div>
-        </section>
 
         {/* Detailed City Information Content Section */}
         <section className="py-12 bg-white relative">
