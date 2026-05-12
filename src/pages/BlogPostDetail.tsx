@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { 
@@ -359,6 +359,29 @@ export const BlogPostDetail: React.FC = () => {
                             {p.title}
                           </h5>
                           <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-2 block">{p.readTime}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Recent Blogs */}
+                <div className="bg-white border border-slate-200 p-6 md:p-8 rounded-[2rem] shadow-sm">
+                  <div className="flex items-center gap-2 mb-6">
+                    <Clock size={16} className="text-primary" />
+                    <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Recent Insights</h4>
+                  </div>
+                  <div className="space-y-6">
+                    {[...BLOG_POSTS].reverse().filter(p => p.id !== post.id).slice(0, 3).map((p, i) => (
+                      <Link to={`/blog/${p.id}`} key={i} className="flex gap-4 group items-center">
+                        <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-slate-50">
+                          <img src={p.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.title} />
+                        </div>
+                        <div>
+                          <span className="text-[9px] font-black text-secondary uppercase tracking-widest mb-1 block">{p.category}</span>
+                          <h5 className="text-xs font-bold text-[#0a1e3b] leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                            {p.title}
+                          </h5>
                         </div>
                       </Link>
                     ))}
