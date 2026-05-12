@@ -414,7 +414,7 @@ export const ContactUs = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as any }}
-              className="text-[clamp(2.8rem,9vw,8rem)] font-headline font-black leading-[0.85] tracking-[-0.04em] uppercase mb-8"
+              className="text-[clamp(2.5rem,6vw,5.5rem)] font-headline font-black leading-[0.9] tracking-[-0.02em] uppercase mb-8"
             >
               Get In <span className="text-secondary italic">Touch.</span>
             </motion.h1>
