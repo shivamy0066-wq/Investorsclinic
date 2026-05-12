@@ -156,45 +156,6 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
           </div>
 
-          {/* ── Floating Property Badges ── */}
-          {/* Badge 1: Top Right */}
-          <div className="hidden lg:block absolute top-28 right-16 z-20 animate-float-card">
-            <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl border border-white/40 flex items-center gap-3 min-w-[200px]">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                <TrendingUp className="w-5 h-5 text-emerald-600" />
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Avg. ROI This Year</p>
-                <p className="text-lg font-black text-slate-900 leading-tight">18.4% <span className="text-xs text-emerald-500 font-bold">↑ 3.2%</span></p>
-              </div>
-            </div>
-          </div>
-
-          {/* Badge 2: Mid Right */}
-          <div className="hidden lg:block absolute top-1/2 right-10 z-20 animate-float-card-delayed">
-            <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl border border-white/40 flex items-center gap-3 min-w-[200px]">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                <Building2 className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">New Listings Today</p>
-                <p className="text-lg font-black text-slate-900 leading-tight">47 Properties</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Badge 3: Bottom Right - Pulsing Location Pin */}
-          <div className="hidden lg:block absolute bottom-24 right-20 z-20">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shadow-2xl shadow-secondary/50 animate-pin-pulse">
-                <MapPin className="w-5 h-5 text-white" />
-              </div>
-              <div className="bg-white/95 backdrop-blur-xl rounded-xl px-3 py-2 shadow-xl border border-white/40">
-                <p className="text-[11px] font-black text-slate-800">Noida Extension</p>
-                <p className="text-[10px] text-secondary font-bold">12 new projects →</p>
-              </div>
-            </div>
-          </div>
 
           {/* ── Animated City Skyline Silhouette ── */}
           <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none overflow-hidden h-28 opacity-20">
