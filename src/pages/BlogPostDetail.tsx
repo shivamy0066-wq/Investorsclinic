@@ -173,7 +173,7 @@ export const BlogPostDetail: React.FC = () => {
                          </div>
                       </summary>
                       <nav className="px-6 pb-6 pt-2 flex flex-col gap-3">
-                         {post.content.filter(s => s.type === 'heading').map((section, idx) => (
+                         {post.content.filter(s => s.type === 'heading' || s.type === 'h2').map((section, idx) => (
                             <a 
                                key={idx}
                                href={`#section-${idx}`}
@@ -195,11 +195,25 @@ export const BlogPostDetail: React.FC = () => {
                   
                   <div className="space-y-8">
                     {post.content.map((section, idx) => {
-                      if (section.type === 'heading') {
+                      if (section.type === 'heading' || section.type === 'h2') {
                         return (
-                          <h2 key={idx} id={`section-${post.content.filter((_, i) => i < idx && post.content[i].type === 'heading').length}`} className="text-2xl mt-12 mb-6 scroll-mt-32">
+                          <h2 key={idx} id={`section-${post.content.filter((_, i) => i < idx && (post.content[i].type === 'heading' || post.content[i].type === 'h2')).length}`} className="text-2xl mt-12 mb-6 scroll-mt-32">
                             {section.text}
                           </h2>
+                        );
+                      }
+                      if (section.type === 'h3') {
+                        return <h3 key={idx} className="text-xl font-bold mt-8 mb-4">{section.text}</h3>;
+                      }
+                      if (section.type === 'h4') {
+                        return <h4 key={idx} className="text-lg font-bold mt-6 mb-3 text-slate-800">{section.text}</h4>;
+                      }
+                      if (section.type === 'image') {
+                        return (
+                          <figure key={idx} className="my-10 rounded-3xl overflow-hidden border border-slate-100 bg-white shadow-sm">
+                            <img src={section.url} alt={section.alt || ""} className="w-full h-auto object-cover" />
+                            {section.alt && <figcaption className="text-center text-xs font-medium text-slate-400 p-4 bg-slate-50 border-t border-slate-100">{section.alt}</figcaption>}
+                          </figure>
                         );
                       }
                       if (section.type === 'paragraph') {

@@ -8,9 +8,11 @@ export interface BlogPost {
   date: string;
   readTime: string;
   content: {
-    type: 'heading' | 'paragraph' | 'data';
+    type: 'heading' | 'h2' | 'h3' | 'h4' | 'paragraph' | 'data' | 'image';
     text?: string;
     items?: { label: string; value: string }[];
+    url?: string;
+    alt?: string;
   }[];
 }
 export interface Property {
