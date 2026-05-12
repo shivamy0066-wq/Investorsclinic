@@ -279,29 +279,6 @@ export const BlogPostDetail: React.FC = () => {
                   </button>
                 ))}
               </div>
-
-              {/* Related Posts */}
-              <div className="mt-16 pt-12">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-6 h-[1px] bg-secondary" />
-                  <h3 className="text-lg font-black text-[#0a1e3b] uppercase tracking-widest">Continue Reading</h3>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 4).map((p, i) => (
-                    <Link to={`/blog/${p.id}`} key={i} className="group bg-white rounded-[2rem] border border-slate-200 p-4 hover:shadow-xl transition-all hover:border-primary/30">
-                      <div className="relative aspect-[16/10] rounded-[1.5rem] overflow-hidden mb-5 bg-slate-100">
-                        <img src={p.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={p.title} />
-                      </div>
-                      <div className="px-2 pb-2">
-                        <span className="text-[10px] font-black text-secondary uppercase tracking-widest mb-2 block">{p.category}</span>
-                        <h4 className="text-base font-black text-[#0a1e3b] leading-snug font-headline group-hover:text-primary transition-colors line-clamp-2">
-                          {p.title}
-                        </h4>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* Right: Sidebar */}
@@ -392,6 +369,35 @@ export const BlogPostDetail: React.FC = () => {
             </div>
 
           </div>
+
+          {/* Related Posts - Full Width Row */}
+          <div className="mt-24 pt-16 border-t border-slate-200/60">
+            <div className="flex flex-col items-center justify-center gap-3 mb-12">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-[1px] bg-secondary" />
+                <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">More Insights</h3>
+                <div className="w-8 h-[1px] bg-secondary" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-[#0a1e3b] font-headline tracking-tight">Continue Reading</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 4).map((p, i) => (
+                <Link to={`/blog/${p.id}`} key={i} className="group bg-white rounded-[2rem] border border-slate-200 p-4 hover:shadow-xl transition-all hover:border-primary/30 flex flex-col h-full">
+                  <div className="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-5 bg-slate-100 shrink-0">
+                    <img src={p.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={p.title} />
+                  </div>
+                  <div className="px-2 flex flex-col flex-grow">
+                    <span className="text-[10px] font-black text-secondary uppercase tracking-widest mb-3 block">{p.category}</span>
+                    <h4 className="text-base font-black text-[#0a1e3b] leading-snug font-headline group-hover:text-primary transition-colors line-clamp-3">
+                      {p.title}
+                    </h4>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
         </div>
       </main>
 
