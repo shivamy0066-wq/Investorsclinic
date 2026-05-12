@@ -326,7 +326,7 @@ export const CityDetail = () => {
                   <div className="mt-12 flex justify-start">
                     <button
                       onClick={() => setIsExpanded(!isExpanded)}
-                      className="group flex items-center gap-4 px-8 py-4 bg-slate-900 hover:bg-[#ed1c24] text-white rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-xl shadow-slate-900/20 active:scale-95 border border-transparent"
+                      className="group flex items-center gap-4 px-8 py-4 bg-[#0a1e3b] hover:bg-[#0071ba] text-white rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-300 shadow-xl shadow-[#0a1e3b]/20 active:scale-95 border border-transparent"
                     >
                       <span className="flex items-center gap-2">
                         {isExpanded ? 'Collapse Report' : 'Read Full Intelligence Report'}
