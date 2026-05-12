@@ -287,7 +287,7 @@ export const BlogPostDetail: React.FC = () => {
                   <h3 className="text-lg font-black text-[#0a1e3b] uppercase tracking-widest">Continue Reading</h3>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-6">
-                  {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2).map((p, i) => (
+                  {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 4).map((p, i) => (
                     <Link to={`/blog/${p.id}`} key={i} className="group bg-white rounded-[2rem] border border-slate-200 p-4 hover:shadow-xl transition-all hover:border-primary/30">
                       <div className="relative aspect-[16/10] rounded-[1.5rem] overflow-hidden mb-5 bg-slate-100">
                         <img src={p.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={p.title} />
