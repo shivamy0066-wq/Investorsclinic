@@ -580,37 +580,41 @@ export default function App() {
                 style={{ scrollSnapType: "x mandatory" }}
               >
               {[
-                { city: "Noida", tag: "TRENDING", tagColor: "bg-secondary", desc: "120+ Premium Projects", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" },
-                { city: "Gurugram", tag: "LUXURY HUB", tagColor: "bg-[#bda55d]", desc: "85+ Signature Estates", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" },
-                { city: "Mumbai", desc: "200+ Exclusive Units", img: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?q=80&w=800&auto=format&fit=crop" },
-                { city: "Pune", desc: "65+ Smart Projects", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop" },
-                { city: "Bengaluru", desc: "110+ Tech Enabled Homes", img: "https://images.unsplash.com/photo-1596422846543-b5c6514704b1?q=80&w=800&auto=format&fit=crop" },
-                { city: "Goa", tag: "HOT SELLER", tagColor: "bg-blue-600", desc: "45+ Luxury Villas", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" },
-                { city: "Jaipur", desc: "30+ Heritage Properties", img: "https://images.unsplash.com/photo-1599661046289-e318978567c4?q=80&w=800&auto=format&fit=crop" }
+                { city: "Noida", slug: "noida", tag: "TRENDING", tagColor: "bg-secondary", desc: "120+ Premium Projects", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" },
+                { city: "Gurugram", slug: "gurugram", tag: "LUXURY HUB", tagColor: "bg-[#bda55d]", desc: "85+ Signature Estates", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop" },
+                { city: "Mumbai", slug: "mumbai", desc: "200+ Exclusive Units", img: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?q=80&w=800&auto=format&fit=crop" },
+                { city: "Pune", slug: "pune", desc: "65+ Smart Projects", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=800&auto=format&fit=crop" },
+                { city: "Bengaluru", slug: "bengaluru", desc: "110+ Tech Enabled Homes", img: "https://images.unsplash.com/photo-1596422846543-b5c6514704b1?q=80&w=800&auto=format&fit=crop" },
+                { city: "Goa", slug: "goa", tag: "HOT SELLER", tagColor: "bg-blue-600", desc: "45+ Luxury Villas", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" },
+                { city: "Jaipur", slug: "jaipur", desc: "30+ Heritage Properties", img: "https://images.unsplash.com/photo-1599661046289-e318978567c4?q=80&w=800&auto=format&fit=crop" }
               ].map((loc, idx) => (
-                <motion.div 
-                  key={idx} 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.8 }}
-                  className="flex-shrink-0 w-[260px] md:w-[290px] relative aspect-[3/4.5] rounded-[2.5rem] overflow-hidden group shadow-2xl"
-                  style={{ scrollSnapAlign: "start" }}
-                >
-                  <img src={loc.img} alt={loc.city} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60" />
-                  
-                  {loc.tag && (
-                    <div className="absolute top-6 right-6">
-                      <span className={`${loc.tagColor} text-white px-4 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.2em] shadow-lg`}>{loc.tag}</span>
-                    </div>
-                  )}
+                <Link to={`/city/${loc.slug}`} key={idx} className="flex-shrink-0" style={{ scrollSnapAlign: "start" }}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1, duration: 0.8 }}
+                    className="w-[260px] md:w-[290px] relative aspect-[3/4.5] rounded-[2.5rem] overflow-hidden group shadow-2xl cursor-pointer"
+                  >
+                    <img src={loc.img} alt={loc.city} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60" />
+                    
+                    {loc.tag && (
+                      <div className="absolute top-6 right-6">
+                        <span className={`${loc.tagColor} text-white px-4 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.2em] shadow-lg`}>{loc.tag}</span>
+                      </div>
+                    )}
 
-                  <div className="absolute bottom-6 left-5 right-5 bg-white/80 backdrop-blur-xl p-6 rounded-[2rem] shadow-2xl transform group-hover:translate-y-[-8px] transition-all duration-500">
-                    <h4 className="text-xl font-headline font-black text-[#0a1e3b]">{loc.city}</h4>
-                    <p className="text-[9px] font-bold text-[#64748b] uppercase tracking-widest mt-1">{loc.desc}</p>
-                  </div>
-                </motion.div>
+                    <div className="absolute bottom-6 left-5 right-5 bg-white/80 backdrop-blur-xl p-6 rounded-[2rem] shadow-2xl transform group-hover:translate-y-[-8px] transition-all duration-500">
+                      <h4 className="text-xl font-headline font-black text-[#0a1e3b]">{loc.city}</h4>
+                      <p className="text-[9px] font-bold text-[#64748b] uppercase tracking-widest mt-1">{loc.desc}</p>
+                      <div className="flex items-center gap-1 mt-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-[10px] font-black uppercase tracking-widest">Explore</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>
