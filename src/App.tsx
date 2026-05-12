@@ -156,6 +156,83 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
           </div>
 
+          {/* ── Floating Property Badges ── */}
+          {/* Badge 1: Top Right */}
+          <div className="hidden lg:block absolute top-28 right-16 z-20 animate-float-card">
+            <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl border border-white/40 flex items-center gap-3 min-w-[200px]">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                <TrendingUp className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Avg. ROI This Year</p>
+                <p className="text-lg font-black text-slate-900 leading-tight">18.4% <span className="text-xs text-emerald-500 font-bold">↑ 3.2%</span></p>
+              </div>
+            </div>
+          </div>
+
+          {/* Badge 2: Mid Right */}
+          <div className="hidden lg:block absolute top-1/2 right-10 z-20 animate-float-card-delayed">
+            <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-3 shadow-2xl border border-white/40 flex items-center gap-3 min-w-[200px]">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                <Building2 className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">New Listings Today</p>
+                <p className="text-lg font-black text-slate-900 leading-tight">47 Properties</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Badge 3: Bottom Right - Pulsing Location Pin */}
+          <div className="hidden lg:block absolute bottom-24 right-20 z-20">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shadow-2xl shadow-secondary/50 animate-pin-pulse">
+                <MapPin className="w-5 h-5 text-white" />
+              </div>
+              <div className="bg-white/95 backdrop-blur-xl rounded-xl px-3 py-2 shadow-xl border border-white/40">
+                <p className="text-[11px] font-black text-slate-800">Noida Extension</p>
+                <p className="text-[10px] text-secondary font-bold">12 new projects →</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Animated City Skyline Silhouette ── */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none overflow-hidden h-28 opacity-20">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-full fill-white">
+              <rect x="50" y="60" width="30" height="60" rx="2" className="[animation:building-rise_1.4s_0.1s_forwards] opacity-0" />
+              <rect x="90" y="40" width="20" height="80" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
+              <rect x="120" y="20" width="35" height="100" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
+              <rect x="165" y="50" width="25" height="70" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
+              <rect x="200" y="10" width="40" height="110" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
+              <rect x="250" y="35" width="28" height="85" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
+              <rect x="290" y="55" width="22" height="65" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
+              <rect x="320" y="25" width="50" height="95" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
+              <rect x="380" y="45" width="30" height="75" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
+              <rect x="420" y="15" width="45" height="105" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
+              <rect x="475" y="55" width="20" height="65" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
+              <rect x="505" y="30" width="35" height="90" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
+              <rect x="550" y="50" width="25" height="70" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
+              <rect x="585" y="5" width="55" height="115" rx="2" className="[animation:building-rise_1.4s_0.65s_forwards] opacity-0" />
+              <rect x="650" y="40" width="30" height="80" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
+              <rect x="690" y="20" width="40" height="100" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
+              <rect x="740" y="60" width="25" height="60" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
+              <rect x="775" y="30" width="35" height="90" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
+              <rect x="820" y="45" width="28" height="75" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
+              <rect x="858" y="10" width="50" height="110" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
+              <rect x="918" y="50" width="22" height="70" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
+              <rect x="950" y="25" width="40" height="95" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
+              <rect x="1000" y="55" width="30" height="65" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
+              <rect x="1040" y="15" width="45" height="105" rx="2" className="[animation:building-rise_1.4s_0.65s_forwards] opacity-0" />
+              <rect x="1095" y="40" width="25" height="80" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
+              <rect x="1130" y="20" width="38" height="100" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
+              <rect x="1178" y="55" width="22" height="65" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
+              <rect x="1210" y="30" width="45" height="90" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
+              <rect x="1265" y="50" width="30" height="70" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
+              <rect x="1305" y="10" width="55" height="110" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
+              <rect x="1370" y="45" width="28" height="75" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
+            </svg>
+          </div>
+
           <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-1 gap-10 relative z-10 w-full lg:mb-16">
             <div className="lg:col-span-1">
               <motion.h1 
@@ -175,20 +252,34 @@ export default function App() {
                 className="flex flex-wrap items-center gap-x-6 md:gap-x-10 gap-y-4 mb-8 md:mb-12"
               >
                 {[
-                  { val: "19", label: "Years" },
-                  { val: "190K", label: "Customers" },
-                  { val: "700", label: "Developers" },
-                  { val: "2000", label: "Projects" },
+                  { val: "19", label: "Years", delay: 0.6 },
+                  { val: "190K", label: "Customers", delay: 0.75 },
+                  { val: "700", label: "Developers", delay: 0.9 },
+                  { val: "2000", label: "Projects", delay: 1.05 },
                 ].map((stat, idx) => (
-                  <div key={idx} className="relative group">
-                    <div className="flex items-center gap-1.5">
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: stat.delay }}
+                    className="relative group"
+                  >
+                    {/* Shimmer on hover */}
+                    <div className="relative overflow-hidden flex items-center gap-1.5">
                       <span className="text-2xl md:text-3xl font-headline font-black text-white italic tracking-tighter drop-shadow-lg">{stat.val}</span>
                       <span className="text-secondary font-black text-sm animate-pulse">+</span>
                     </div>
                     <div className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-white/70 font-black mt-1 leading-tight">
                       {stat.label}
                     </div>
-                  </div>
+                    {/* Bottom underline slide-in */}
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 0.5, delay: stat.delay + 0.2, ease: "easeOut" }}
+                      className="h-[2px] bg-secondary/60 rounded-full mt-1 origin-left"
+                    />
+                  </motion.div>
                 ))}
               </motion.div>
 
