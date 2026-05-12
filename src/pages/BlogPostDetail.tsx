@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion, useScroll, useSpring } from 'motion/react';
+import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react';
 import { 
   Calendar, Clock, ArrowLeft, Linkedin, Twitter, Facebook, 
   ChevronRight, ChevronDown, TrendingUp, Mail, Search,
@@ -15,6 +15,7 @@ export const BlogPostDetail: React.FC = () => {
   const post = BLOG_POSTS.find(p => p.id === id) || BLOG_POSTS[0];
   
   const [copied, setCopied] = useState(false);
+  const [isTocOpen, setIsTocOpen] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -165,23 +166,40 @@ export const BlogPostDetail: React.FC = () => {
                 </header>
 
                 {/* Premium Table of Contents */}
-                <div className="mb-14 bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
-                  <h3 className="text-sm font-black text-[#0a1e3b] uppercase tracking-widest mb-6 flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-secondary" />
-                    Table of Contents
-                  </h3>
-                  <nav className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-                    {post.content.filter(s => s.type === 'heading' || s.type === 'h2').map((section, idx) => (
-                      <a 
-                         key={idx}
-                         href={`#section-${idx}`}
-                         className="flex items-start gap-4 text-sm font-medium text-slate-500 hover:text-primary transition-colors group"
+                <div className="mb-14 bg-white rounded-3xl p-8 border border-slate-200 shadow-sm overflow-hidden">
+                  <button 
+                    onClick={() => setIsTocOpen(!isTocOpen)} 
+                    className="w-full flex items-center justify-between group"
+                  >
+                    <h3 className="text-sm font-black text-[#0a1e3b] uppercase tracking-widest flex items-center gap-3 m-0">
+                      <div className="w-2 h-2 rounded-full bg-secondary" />
+                      Table of Contents
+                    </h3>
+                    <ChevronDown size={18} className={`text-slate-400 group-hover:text-[#0a1e3b] transition-all duration-300 ${isTocOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isTocOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       >
-                         <span className="text-slate-300 font-black font-headline group-hover:text-primary transition-colors">{(idx + 1).toString().padStart(2, '0')}</span>
-                         <span className="leading-snug">{section.text}</span>
-                      </a>
-                    ))}
-                  </nav>
+                        <nav className="grid sm:grid-cols-2 gap-x-8 gap-y-4 pt-8 mt-2 border-t border-slate-100">
+                          {post.content.filter(s => s.type === 'heading' || s.type === 'h2').map((section, idx) => (
+                            <a 
+                               key={idx}
+                               href={`#section-${idx}`}
+                               className="flex items-start gap-4 text-sm font-medium text-slate-500 hover:text-primary transition-colors group"
+                            >
+                               <span className="text-slate-300 font-black font-headline group-hover:text-primary transition-colors">{(idx + 1).toString().padStart(2, '0')}</span>
+                               <span className="leading-snug">{section.text}</span>
+                            </a>
+                          ))}
+                        </nav>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Dynamic Content Rendering */}
