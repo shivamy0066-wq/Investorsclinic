@@ -194,27 +194,30 @@ export const BlogPostDetail: React.FC = () => {
                     {post.content.map((section, idx) => {
                       if (section.type === 'heading' || section.type === 'h2') {
                         return (
-                          <h2 key={idx} id={`section-${post.content.filter((_, i) => i < idx && (post.content[i].type === 'heading' || post.content[i].type === 'h2')).length}`} className="text-3xl mt-16 mb-8 scroll-mt-32 flex items-center gap-4">
+                          <h2 key={idx} id={`section-${post.content.filter((_, i) => i < idx && (post.content[i].type === 'heading' || post.content[i].type === 'h2')).length}`} className="text-3xl md:text-4xl font-headline font-black text-[#0a1e3b] tracking-tight mt-16 mb-8 scroll-mt-32 flex items-center gap-4">
+                            <span className="w-8 h-1 bg-[#ed1c24] rounded-full shrink-0" />
                             {section.text}
                           </h2>
                         );
                       }
                       if (section.type === 'h3') {
-                        return <h3 key={idx} className="text-2xl font-bold mt-10 mb-5">{section.text}</h3>;
+                        return <h3 key={idx} className="text-2xl md:text-3xl font-headline font-black text-[#0a1e3b] tracking-tight mt-12 mb-6">{section.text}</h3>;
                       }
                       if (section.type === 'h4') {
-                        return <h4 key={idx} className="text-lg font-bold mt-8 mb-4">{section.text}</h4>;
+                        return <h4 key={idx} className="text-xl md:text-2xl font-headline font-bold text-[#0a1e3b] tracking-tight mt-10 mb-5">{section.text}</h4>;
                       }
                       if (section.type === 'image') {
                         return (
-                          <figure key={idx} className="my-12 rounded-[2rem] overflow-hidden border border-slate-200 bg-white shadow-md">
-                            <img src={section.url} alt={section.alt || ""} className="w-full h-auto object-cover" />
-                            {section.alt && <figcaption className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest p-4 bg-slate-50 border-t border-slate-100">{section.alt}</figcaption>}
+                          <figure key={idx} className="my-14 rounded-[2rem] overflow-hidden border border-slate-100 bg-slate-50 shadow-xl shadow-slate-200/50 group">
+                            <div className="relative overflow-hidden">
+                              <img src={section.url} alt={section.alt || ""} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                            </div>
+                            {section.alt && <figcaption className="text-center text-[10px] font-black text-slate-400 uppercase tracking-widest p-5 bg-white border-t border-slate-100">{section.alt}</figcaption>}
                           </figure>
                         );
                       }
                       if (section.type === 'paragraph') {
-                        return <p key={idx} className="mb-6">{section.text}</p>;
+                        return <p key={idx} className="mb-6 text-base md:text-lg text-slate-600 leading-[1.8] font-medium">{section.text}</p>;
                       }
                       if (section.type === 'data' && section.items) {
                         return (
