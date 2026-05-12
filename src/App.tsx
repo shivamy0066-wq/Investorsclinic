@@ -901,21 +901,19 @@ export default function App() {
         </section>
 
         {/* Strategic Intelligence CTA — Premium Redesign */}
-        <section className="relative py-20 bg-[#030712] overflow-hidden">
+        <section className="relative py-10 bg-[#030712] overflow-hidden">
           {/* Layered ambient lighting */}
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute -top-40 right-0 w-[700px] h-[700px] rounded-full bg-primary/10 blur-[180px]" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-secondary/8 blur-[150px]" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-blue-950/40 blur-[120px]" />
-            {/* Fine dot grid */}
             <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-            {/* Horizontal rule accents */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           </div>
 
           <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="grid lg:grid-cols-[1fr_400px] gap-16 items-center">
+            <div className="grid lg:grid-cols-[1fr_360px] gap-10 items-center">
 
               {/* ── LEFT: Content ── */}
               <motion.div
@@ -923,7 +921,7 @@ export default function App() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-10"
+                className="space-y-5"
               >
                 {/* Eyebrow */}
                 <div className="flex items-center gap-3">
@@ -932,8 +930,8 @@ export default function App() {
                 </div>
 
                 {/* Headline */}
-                <div className="space-y-4">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-black text-white leading-[1.05] tracking-tight">
+                <div className="space-y-2">
+                  <h2 className="text-2xl md:text-3xl font-headline font-black text-white leading-[1.05] tracking-tight">
                     Here's{" "}
                     <span className="relative inline-block">
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-rose-500">What</span>
@@ -944,74 +942,48 @@ export default function App() {
                     </span>
                     {" "}You'll Get
                   </h2>
-                  <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-md">
+                  <p className="text-slate-400 text-xs leading-relaxed max-w-md">
                     Get a complete intelligence package crafted for serious investors — data-driven, transparent, and actionable.
                   </p>
                 </div>
 
-                {/* Feature List */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                {/* Feature List — compact 2×2 grid */}
+                <div className="grid sm:grid-cols-2 gap-3">
                   {[
-                    {
-                      title: "Top Investment Properties",
-                      desc: "Handpicked high-growth properties tailored to your goals.",
-                      icon: <Building2 className="w-4 h-4" />,
-                      color: "from-blue-500/20 to-blue-600/5",
-                      border: "border-blue-500/20",
-                      accent: "bg-blue-500/20 text-blue-400"
-                    },
-                    {
-                      title: "Price Breakdown",
-                      desc: "Detailed cost analysis with transparent pricing.",
-                      icon: <CircleDollarSign className="w-4 h-4" />,
-                      color: "from-emerald-500/20 to-emerald-600/5",
-                      border: "border-emerald-500/20",
-                      accent: "bg-emerald-500/20 text-emerald-400"
-                    },
-                    {
-                      title: "ROI Estimation",
-                      desc: "Accurate return on investment projections backed by data.",
-                      icon: <BarChart3 className="w-4 h-4" />,
-                      color: "from-amber-500/20 to-amber-600/5",
-                      border: "border-amber-500/20",
-                      accent: "bg-amber-500/20 text-amber-400"
-                    },
-                    {
-                      title: "Free Consultation",
-                      desc: "Connect with our experts for personalized guidance.",
-                      icon: <User className="w-4 h-4" />,
-                      color: "from-rose-500/20 to-rose-600/5",
-                      border: "border-rose-500/20",
-                      accent: "bg-rose-500/20 text-rose-400"
-                    },
+                    { title: "Top Investment Properties", desc: "Handpicked high-growth properties tailored to your goals.", icon: <Building2 className="w-3.5 h-3.5" />, color: "from-blue-500/20 to-blue-600/5", border: "border-blue-500/20", accent: "bg-blue-500/20 text-blue-400" },
+                    { title: "Price Breakdown", desc: "Detailed cost analysis with transparent pricing.", icon: <CircleDollarSign className="w-3.5 h-3.5" />, color: "from-emerald-500/20 to-emerald-600/5", border: "border-emerald-500/20", accent: "bg-emerald-500/20 text-emerald-400" },
+                    { title: "ROI Estimation", desc: "Accurate return on investment projections backed by data.", icon: <BarChart3 className="w-3.5 h-3.5" />, color: "from-amber-500/20 to-amber-600/5", border: "border-amber-500/20", accent: "bg-amber-500/20 text-amber-400" },
+                    { title: "Free Consultation", desc: "Connect with our experts for personalized guidance.", icon: <User className="w-3.5 h-3.5" />, color: "from-rose-500/20 to-rose-600/5", border: "border-rose-500/20", accent: "bg-rose-500/20 text-rose-400" },
                   ].map((item, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, y: 16 }}
+                      initial={{ opacity: 0, y: 12 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: idx * 0.08, duration: 0.6 }}
-                      className={`relative p-5 rounded-2xl bg-gradient-to-br ${item.color} border ${item.border} backdrop-blur-sm hover:scale-[1.02] transition-transform duration-300 group`}
+                      transition={{ delay: idx * 0.07, duration: 0.5 }}
+                      className={`flex items-start gap-3 p-3.5 rounded-xl bg-gradient-to-br ${item.color} border ${item.border} backdrop-blur-sm hover:scale-[1.02] transition-transform duration-300`}
                     >
-                      <div className={`w-9 h-9 rounded-xl ${item.accent} flex items-center justify-center mb-4`}>
+                      <div className={`w-7 h-7 rounded-lg ${item.accent} flex items-center justify-center shrink-0 mt-0.5`}>
                         {item.icon}
                       </div>
-                      <h4 className="text-sm font-bold text-white mb-1">{item.title}</h4>
-                      <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                      <div>
+                        <h4 className="text-xs font-bold text-white mb-0.5">{item.title}</h4>
+                        <p className="text-slate-400 text-[11px] leading-relaxed">{item.desc}</p>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Trust badge */}
-                <div className="flex items-center gap-4 bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-4 backdrop-blur-sm w-fit">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
-                    <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                {/* Trust badge — compact */}
+                <div className="flex items-center gap-3 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 backdrop-blur-sm w-fit">
+                  <div className="w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-white">Trusted by 5,000+ Investors</p>
-                    <div className="flex items-center gap-2 mt-1">
+                    <div className="flex items-center gap-2 mt-0.5">
                       <div className="flex gap-0.5">
-                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />)}
+                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-2 h-2 fill-yellow-400 text-yellow-400" />)}
                       </div>
                       <span className="text-[10px] text-slate-400 font-medium">4.8/5 · 120+ Reviews</span>
                     </div>
@@ -1021,75 +993,74 @@ export default function App() {
 
               {/* ── RIGHT: Premium Form Card ── */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="relative"
               >
-                {/* Glow aura */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-transparent to-secondary/10 rounded-3xl blur-2xl opacity-60 pointer-events-none" />
+                <div className="absolute -inset-3 bg-gradient-to-br from-primary/20 via-transparent to-secondary/10 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
 
-                <div className="relative bg-gradient-to-b from-[#0f172a] to-[#0a0f1e] border border-white/[0.12] rounded-3xl p-7 shadow-2xl shadow-black/60 backdrop-blur-xl">
+                <div className="relative bg-gradient-to-b from-[#0f172a] to-[#0a0f1e] border border-white/[0.12] rounded-2xl p-5 shadow-2xl shadow-black/60 backdrop-blur-xl">
                   {/* Form header */}
-                  <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="inline-flex items-center gap-1.5 bg-primary/15 border border-primary/25 rounded-full px-2.5 py-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                      <span className="text-[8px] font-black text-primary uppercase tracking-widest">Priority Access</span>
+                    </div>
                     <div>
-                      <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-3 py-1 mb-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                        <span className="text-[9px] font-black text-primary uppercase tracking-widest">Priority Access</span>
-                      </div>
-                      <h3 className="text-xl font-headline font-bold text-white leading-tight">Inquiry Brief</h3>
-                      <p className="text-slate-400 text-xs mt-1">Unlock institutional-grade project reports instantly.</p>
+                      <h3 className="text-base font-headline font-bold text-white leading-tight">Inquiry Brief</h3>
                     </div>
                   </div>
+                  <p className="text-slate-400 text-[11px] mb-4 -mt-2">Unlock institutional-grade project reports instantly.</p>
 
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {/* Name row */}
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-2.5">
                       <div className="relative group">
-                        <User size={12} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
+                        <User size={11} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
                         <input type="text" placeholder="First name"
-                          className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-3 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
+                          className="w-full bg-white/[0.05] border border-white/10 rounded-lg py-2.5 pl-8 pr-2 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
                       </div>
                       <input type="text" placeholder="Last name"
-                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 px-4 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-lg py-2.5 px-3 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
                     </div>
 
                     {/* Email */}
                     <div className="relative group">
-                      <Mail size={12} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
+                      <Mail size={11} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
                       <input type="email" placeholder="Email address"
-                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-4 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-lg py-2.5 pl-8 pr-3 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
                     </div>
 
                     {/* Phone */}
                     <div className="relative group">
-                      <Phone size={12} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
-                      <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 border-l border-white/15 pl-2.5">
-                        <img src="https://flagcdn.com/w40/in.png" className="w-3.5 h-2 object-cover rounded-[1px]" alt="IN" />
+                      <Phone size={11} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5 border-l border-white/15 pl-2">
+                        <img src="https://flagcdn.com/w40/in.png" className="w-3 h-1.5 object-cover rounded-[1px]" alt="IN" />
                         <span className="text-white font-bold text-[10px]">+91</span>
                       </div>
                       <input type="tel" placeholder="Phone number"
-                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-16 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-lg py-2.5 pl-8 pr-14 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
                     </div>
 
                     {/* Message */}
                     <div className="relative group">
-                      <MessageSquare size={12} className="absolute left-3.5 top-3.5 text-slate-500 group-focus-within:text-primary transition-colors" />
+                      <MessageSquare size={11} className="absolute left-3 top-3 text-slate-500 group-focus-within:text-primary transition-colors" />
                       <textarea placeholder="Project requirements or questions..." rows={2}
-                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-4 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all resize-none" />
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-lg py-2.5 pl-8 pr-3 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all resize-none" />
                     </div>
 
                     {/* CTA Button */}
-                    <button className="relative w-full overflow-hidden group bg-gradient-to-r from-primary to-red-600 text-white py-3.5 rounded-xl font-black text-[10px] uppercase tracking-[0.25em] shadow-lg shadow-primary/30 flex items-center justify-center gap-2.5 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300">
+                    <button className="relative w-full overflow-hidden group bg-gradient-to-r from-primary to-red-600 text-white py-3 rounded-lg font-black text-[10px] uppercase tracking-[0.25em] shadow-lg shadow-primary/30 flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300">
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                       <span className="relative z-10">Request Access</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform relative z-10" />
                     </button>
 
                     {/* Verified footer */}
-                    <div className="flex items-center justify-center gap-2 pt-2 border-t border-white/[0.07]">
-                      <ShieldCheck size={11} className="text-emerald-400" />
+                    <div className="flex items-center justify-center gap-1.5 pt-1.5 border-t border-white/[0.07]">
+                      <ShieldCheck size={10} className="text-emerald-400" />
                       <p className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.15em]">Institutionally Verified ROI Potential</p>
                     </div>
                   </div>
