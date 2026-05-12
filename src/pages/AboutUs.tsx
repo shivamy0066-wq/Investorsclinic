@@ -497,40 +497,37 @@ export const AboutUs = () => {
         </section>
 
         {/* ─── CTA ─── */}
-        <section className="py-24 px-6 bg-white">
+        <section className="py-20 px-4 md:px-6 bg-white">
           <motion.div
             {...fade()}
-            className="max-w-5xl mx-auto bg-zinc-950 rounded-3xl p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden"
+            className="max-w-[70rem] mx-auto bg-[#0a0a0a] rounded-3xl p-8 md:px-12 md:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative overflow-hidden shadow-2xl"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(237,28,36,0.12),transparent_60%)] pointer-events-none" />
-            <div className="absolute right-0 bottom-0 opacity-[0.04] pointer-events-none">
-              <Building2 className="w-64 h-64 translate-x-1/3 translate-y-1/3" />
-            </div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(237,28,36,0.12),transparent_50%)] pointer-events-none" />
 
-            <div className="relative space-y-3 text-center md:text-left">
-              <p className="text-red-500 text-xs font-semibold uppercase tracking-[0.3em]">Private Wealth Advisory</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight">
-                Design Your <span className="text-red-500 font-light italic">Legacy</span> Portfolio.
+            <div className="relative space-y-2.5 text-left">
+              <p className="text-[#ed1c24] text-[10px] font-black uppercase tracking-[0.3em]">Private Wealth Advisory</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                Design Your <span className="text-[#ed1c24] font-medium font-serif italic">Legacy</span> Portfolio.
               </h2>
-              <p className="text-zinc-500 text-sm max-w-sm">
+              <p className="text-zinc-400 text-sm max-w-md pt-1">
                 Schedule a private consultation with our senior advisors today.
               </p>
             </div>
 
-            <div className="relative flex flex-col sm:flex-row gap-3 shrink-0">
+            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0 w-full sm:w-auto mt-2 md:mt-0">
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="bg-red-600 hover:bg-red-500 text-white px-7 py-3.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition-colors whitespace-nowrap"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-[#ed1c24] hover:bg-red-600 text-white px-6 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(237,28,36,0.25)] whitespace-nowrap"
               >
-                Book a Consultation <ArrowRight size={15} />
+                Book a Consultation <ArrowRight size={16} />
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="border border-white/15 text-white/70 hover:text-white hover:border-white/30 px-7 py-3.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition-colors whitespace-nowrap"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="border border-white/10 bg-transparent hover:bg-white/5 text-zinc-300 hover:text-white px-6 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all whitespace-nowrap"
               >
-                View Projects <ArrowRight size={15} />
+                View Projects <ArrowRight size={16} />
               </motion.button>
             </div>
           </motion.div>
