@@ -36,11 +36,11 @@ export const Header = () => {
         <nav className="h-20 flex items-center justify-between">
           <div className="flex items-center gap-16">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="flex flex-col -space-y-1 drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300">
-                <span className="text-[22px] md:text-[28px] font-black tracking-tighter text-primary whitespace-nowrap uppercase leading-none">Investors</span>
-                <span className="text-[14px] md:text-[16px] font-black tracking-[0.4em] text-primary whitespace-nowrap uppercase">Clinic</span>
-                <div className="h-1 bg-secondary mt-1 w-full rounded-full" />
-              </div>
+              <img 
+                src="https://investorsclinic.in/public/ic/images/log.svg" 
+                alt="Investors Clinic" 
+                className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-multiply"
+              />
             </Link>
             
             <div className="hidden lg:flex items-center gap-10">

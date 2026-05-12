@@ -1,49 +1,38 @@
-import React, { useRef, useState, useEffect } from "react";
-import { 
-  motion, 
-  useScroll, 
-  useSpring, 
-  useInView, 
-  useMotionValue, 
-  useTransform, 
-  animate,
-  AnimatePresence
-} from "motion/react";
-import { 
-  Award, Users, User, Target, ShieldCheck, ArrowRight, Building2, 
-  Globe2, Briefcase, Rocket, Eye, CheckCircle2, Star, 
-  Quote, TrendingUp, Handshake, Headphones, Home, Plus, X, Sparkles, ChevronDown, Minus 
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  Award, Users, Target, Eye, ArrowRight, Building2,
+  TrendingUp, Quote, Star, Plus, Minus
 } from "lucide-react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
-const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border-b border-slate-100 last:border-0 overflow-hidden">
-      <button 
+    <div className="border-b border-zinc-100 last:border-0 overflow-hidden">
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-5 md:py-6 flex items-center justify-between text-left group transition-all"
+        className="w-full py-6 flex items-center justify-between text-left group"
       >
-        <span className="text-sm md:text-base font-black text-[#0a1120] uppercase tracking-tight group-hover:text-secondary transition-colors pr-8">
+        <span className="text-sm md:text-[15px] font-semibold text-zinc-800 group-hover:text-red-600 transition-colors pr-8 leading-snug">
           {question}
         </span>
-        <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-secondary text-white rotate-180' : 'bg-slate-50 text-slate-400'}`}>
-          <Plus size={16} className={isOpen ? 'hidden' : 'block'} />
-          <Minus size={16} className={isOpen ? 'block' : 'hidden'} />
+        <div className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-300 ${isOpen ? "border-red-600 bg-red-600 text-white" : "border-zinc-200 text-zinc-400"}`}>
+          {isOpen ? <Minus size={13} /> : <Plus size={13} />}
         </div>
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="pb-6 text-slate-500 leading-relaxed font-medium text-[13px] md:text-sm max-w-4xl">
+            <p className="pb-6 text-zinc-500 leading-relaxed text-sm max-w-2xl">
               {answer}
-            </div>
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -51,308 +40,411 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
   );
 };
 
-export const AboutUs = () => {
-  const [activeFounder, setActiveFounder] = useState<number | null>(null);
+const stats = [
+  { val: "19+", label: "Years of Expertise" },
+  { val: "250K+", label: "Families Served" },
+  { val: "1,500+", label: "Developer Partners" },
+  { val: "₹1L Cr+", label: "Sales Volume" },
+];
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }
-  };
+const journey = [
+  { year: "2005", title: "Founded", desc: "Started in Noida with a vision to simplify real estate for every Indian." },
+  { year: "2010", title: "Pan-India", desc: "Expanded operations to 10 major cities across India." },
+  { year: "2015", title: "1L+ Clients", desc: "Crossed the landmark of 1,00,000 satisfied customers." },
+  { year: "2020", title: "Global Reach", desc: "Launched international offices serving NRI investors worldwide." },
+  { year: "2024", title: "Market Leader", desc: "1.9L+ customers, 700+ developers, and 2,000+ active projects." },
+];
 
+const leadership = [
+  { 
+    name: "Honeyy Katiyal", 
+    role: "Founder Chairman", 
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop", 
+    quote: "Visionary behind the digital transformation of Indian real estate.",
+    description: "Honeyy Katiyal is the pioneering force behind Investors Clinic, having built the company from a visionary startup to India's premier real estate consultancy. His strategic foresight and deep understanding of market dynamics have transformed the way real estate is bought and sold in India."
+  },
+  { 
+    name: "Sakshee Katiyal", 
+    role: "COO", 
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop", 
+    quote: "Driving operational excellence and institutional-grade service.",
+    description: "As the Chief Operating Officer, Sakshee leads the operational strategy and execution across all business units. Her focus on process optimization and client satisfaction has been instrumental in scaling the company's operations while maintaining institutional-grade service quality."
+  },
+  { 
+    name: "Sunny Katiyal", 
+    role: "Co-founder & Managing Director", 
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop", 
+    quote: "Strategist focused on global expansion and compliance standards.",
+    description: "Sunny drives the global expansion and strategic partnerships for Investors Clinic. His expertise in international real estate markets and strict adherence to compliance standards have established the firm as a trusted advisory partner for NRIs and institutional investors worldwide."
+  },
+  { 
+    name: "Bhawna Katiyal", 
+    role: "President HR", 
+    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop", 
+    quote: "Nurturing the talent pool that drives our philosophy of excellence.",
+    description: "Bhawna is the architect of the company's corporate culture and human capital strategy. By nurturing top-tier talent and fostering a philosophy of excellence, she ensures that the workforce remains the strongest asset of Investors Clinic."
+  },
+];
+
+const LeadershipCard = ({ person, index }: { person: any, index: number }) => {
+  const [expanded, setExpanded] = useState(false);
+  
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    <motion.div {...fade(index * 0.1)} className="flex flex-col items-center group w-full">
+      {/* Premium Square Image Container */}
+      <div className="relative w-52 h-52 md:w-60 md:h-60 mb-8 transition-transform duration-700 group-hover:-translate-y-3 shrink-0 flex items-center justify-center">
+        
+        {/* Animated Tech Squares */}
+        <svg className="absolute inset-[-15px] w-[calc(100%+30px)] h-[calc(100%+30px)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-0 overflow-visible" viewBox="0 0 100 100">
+          <motion.rect 
+            x="2" y="2" width="96" height="96" rx="20"
+            fill="none" stroke="#0071ba" strokeWidth="0.5" strokeDasharray="3 4" 
+            animate={{ strokeDashoffset: [0, 100] }} 
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.rect 
+            x="5" y="5" width="90" height="90" rx="16"
+            fill="none" stroke="#ed1c24" strokeWidth="0.3" strokeDasharray="1 6" 
+            animate={{ strokeDashoffset: [100, 0] }} 
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
+        </svg>
+
+        {/* Ambient Glow */}
+        <div className="absolute inset-0 rounded-[1.5rem] bg-[#0071ba]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+        {/* Core Image */}
+        <div className="absolute inset-0 rounded-[1.5rem] overflow-hidden border-[4px] border-white shadow-[0_15px_40px_-10px_rgba(0,113,186,0.15)] group-hover:shadow-[0_20px_50px_-10px_rgba(0,113,186,0.4)] transition-shadow duration-700 z-10 bg-zinc-100">
+          <img
+            src={person.image}
+            alt={person.name}
+            className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1e3b]/80 via-[#0a1e3b]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          
+          {/* Advanced Tech Corner Accents */}
+          <div className="absolute top-4 left-4 w-5 h-5 border-t-[3px] border-l-[3px] border-white/80 opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+          <div className="absolute top-4 right-4 w-5 h-5 border-t-[3px] border-r-[3px] border-white/80 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+          <div className="absolute bottom-4 left-4 w-5 h-5 border-b-[3px] border-l-[3px] border-white/80 opacity-0 group-hover:opacity-100 transition-all duration-700 -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+          <div className="absolute bottom-4 right-4 w-5 h-5 border-b-[3px] border-r-[3px] border-white/80 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+        </div>
+      </div>
       
-      <main className="pt-20">
-        {/* 1. Hero Section - Cinematic Elite Banner */}
-        <section className="relative h-[350px] md:h-[450px] flex items-center overflow-hidden bg-[#050b18]">
-          {/* Background Image with Dark Overlay */}
-          <div className="absolute inset-0 z-0">
-            <motion.img 
-              initial={{ scale: 1.05 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 15, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
-              alt="Premium Architecture" 
-              className="w-full h-full object-cover object-center opacity-60"
-            />
-            {/* Elegant Tech Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#050b18] via-[#050b18]/90 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050b18] via-transparent to-transparent opacity-80" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(237,28,36,0.12),transparent_60%)]" />
-            
-            {/* Refined Digital Grid Patterns */}
-            <div className="absolute inset-0 opacity-[0.04] pointer-events-none" 
-                 style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
-            />
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-                 style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '10px 10px' }} 
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#050b18] to-transparent z-0" />
-          </div>
+      {/* Name and Role */}
+      <div className="text-center space-y-1 mb-4 h-[50px]">
+        <h4 className="text-lg md:text-[22px] font-black text-[#0071ba] tracking-tight leading-none">{person.name}</h4>
+        <p className="text-[#0071ba] text-xs md:text-sm font-bold tracking-wide mt-1">( {person.role} )</p>
+      </div>
 
-          <div className="max-w-7xl mx-auto px-6 w-full relative z-10 pt-12">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
-              className="space-y-6"
+      {/* Description / Expandable */}
+      <div className="w-full max-w-[280px] text-center flex flex-col items-center">
+        <AnimatePresence mode="wait">
+          {expanded ? (
+            <motion.div
+              key="expanded"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden mb-3"
             >
-              <div className="space-y-3">
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="h-[2px] w-10 bg-secondary" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary">
-                    Our Corporate Legacy
-                  </span>
-                </motion.div>
+              <p className="text-sm text-zinc-500 leading-relaxed font-medium">
+                {person.description}
+              </p>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="collapsed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="mb-3"
+            >
+              <p className="text-sm text-zinc-500 leading-relaxed line-clamp-2 font-medium">
+                {person.description}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        <button 
+          onClick={() => setExpanded(!expanded)}
+          className="mt-1 text-[#ed1c24] text-[10px] font-black uppercase tracking-[0.2em] hover:text-white hover:bg-[#ed1c24] transition-all py-1.5 px-4 rounded-full border border-[#ed1c24]/20"
+        >
+          {expanded ? "Read Less" : "Read More"}
+        </button>
+      </div>
+    </motion.div>
+  );
+};
 
-                <h1 className="text-4xl md:text-7xl font-headline font-black text-white tracking-widest uppercase leading-none tracking-tighter drop-shadow-2xl">
-                  Who We <span className="text-secondary italic">Are.</span>
-                </h1>
-              </div>
+const testimonials = [
+  { name: "Rahul Sharma", tag: "HNI Investor", quote: "The transparency Investors Clinic provides is unseen in the Indian market. They truly act as long-term partners." },
+  { name: "Amit Goel", tag: "Startup CEO", quote: "Institutional-grade portfolios with retail accessibility. Highly recommended for long-term wealth building." },
+  { name: "Seema Kapoor", tag: "Portfolio Client", quote: "Their data-driven approach completely changed how I view real estate investment. A true masterclass in advisory." },
+];
 
-              {/* Clean Premium Breadcrumb - Night Mode */}
-              <div className="flex items-center gap-3 pt-4 border-t border-white/10 w-fit">
-                <a href="/" className="text-white/30 hover:text-secondary transition-all text-[10px] font-black uppercase tracking-[0.3em] hover:tracking-[0.4em]">
-                  Origin
-                </a>
-                <span className="w-1 h-1 rounded-full bg-secondary" />
-                <span className="text-white/80 font-black text-[10px] uppercase tracking-[0.3em] italic">The Institutional Perspective</span>
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as any },
+});
+
+export const AboutUs = () => {
+  return (
+    <div className="min-h-screen bg-white font-sans">
+      <Header />
+      <main className="pt-20">
+
+        {/* ─── HERO ─── */}
+        <section className="relative h-[280px] md:h-[350px] flex items-end overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
+            alt="Investors Clinic HQ"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 pb-10 w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-3"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-[1px] bg-red-500" />
+                <p className="text-red-400 text-[10px] font-black uppercase tracking-[0.3em]">Our Story</p>
               </div>
+              <h1 className="text-4xl md:text-6xl font-black text-white font-headline leading-none tracking-tight">
+                Who We <span className="text-red-500 italic font-light">Are.</span>
+              </h1>
+              <p className="text-white/70 text-xs md:text-sm max-w-md leading-relaxed font-medium">
+                Nearly two decades of trust, transparency, and transformative real estate advisory.
+              </p>
             </motion.div>
           </div>
         </section>
 
-
-        {/* 3. Who We Are - Ultra-Premium Editorial Redesign */}
-        <section id="who-we-are" className="pt-4 pb-2 md:pt-8 md:pb-4 bg-[#fafafa] overflow-hidden relative">
-          {/* Subtle background artistic text */}
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 select-none pointer-events-none opacity-[0.02] -z-10">
-            <span className="text-[25vw] font-headline font-black uppercase tracking-tighter leading-none">LEGACY</span>
-          </div>
-          
+        {/* ─── STATS STRIP ─── */}
+        <section className="bg-zinc-950 py-10">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              {/* Left Column: Artistic Image Composite */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
-                className="lg:col-span-4 relative"
-              >
-                <div className="relative z-10 rounded-[1.5rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] border-[6px] border-white bg-white group">
-                  <img 
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" 
-                    className="w-full object-cover aspect-[4/5] scale-100 group-hover:scale-105 transition-transform duration-[2000ms]"
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+              {stats.map((s, i) => (
+                <motion.div key={i} {...fade(i * 0.1)} className="px-8 py-4 text-center">
+                  <p className="text-3xl md:text-4xl font-bold text-white tracking-tight">{s.val}</p>
+                  <p className="text-zinc-500 text-xs uppercase tracking-widest mt-1">{s.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── WHO WE ARE ─── */}
+        <section className="py-20 md:py-28 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Image Side */}
+              <motion.div {...fade()} className="relative lg:max-w-md mx-auto w-full">
+                <div className="aspect-[4/5] rounded-[2rem] overflow-hidden bg-zinc-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
+                  <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
                     alt="Corporate Heritage"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-700" />
                 </div>
                 
-                {/* Years Experience - Premium Floating Tile */}
-                <motion.div 
-                  initial={{ x: -20, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="absolute -top-4 -left-3 md:-left-6 bg-secondary text-white px-5 py-6 md:px-7 md:py-8 rounded-[1.2rem] shadow-[0_15px_30px_-10px_rgba(237,28,36,0.3)] z-20 flex flex-col items-center justify-center border-[5px] border-white"
+                {/* Top Left Badge - 19 Years */}
+                <motion.div
+                  {...fade(0.4)}
+                  className="absolute -top-6 -left-6 md:-top-8 md:-left-8 bg-[#ed1c24] text-white rounded-[1.25rem] px-8 py-6 shadow-[0_15px_40px_-10px_rgba(237,28,36,0.6)] text-center flex flex-col justify-center border-[6px] border-white z-10"
                 >
-                  <span className="text-3xl md:text-4xl font-black leading-none tracking-tighter">19</span>
-                  <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1 whitespace-nowrap">Years Of Power</span>
+                  <p className="text-5xl font-black leading-none mb-1 tracking-tighter">19</p>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">Years of Power</p>
                 </motion.div>
 
-                {/* Second Floating Element - The Tagline */}
-                <motion.div 
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.8 }}
-                  className="absolute -bottom-6 -right-6 bg-white py-4 px-6 rounded-xl shadow-lg z-20 border border-slate-50 flex items-center gap-3"
+                {/* Bottom Right Badge - Building Trust */}
+                <motion.div
+                  {...fade(0.5)}
+                  className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 bg-white rounded-2xl px-5 py-4 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.1)] border border-zinc-100 flex items-center gap-4 z-10"
                 >
-                  <div className="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center">
-                    <Award className="w-4 h-4 text-secondary" />
+                  <div className="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-[#ed1c24] shrink-0">
+                    <Award size={16} />
                   </div>
                   <div>
-                    <p className="text-primary font-black text-[10px] uppercase tracking-wider leading-none">Building Trust</p>
-                    <p className="text-slate-400 font-bold text-[8px] uppercase mt-1">Since 2006</p>
+                    <p className="text-[11px] font-black text-[#0071ba] uppercase tracking-wide leading-none mb-1">Building Trust</p>
+                    <p className="text-[9px] text-zinc-400 font-semibold uppercase tracking-widest leading-none">Since 2006</p>
                   </div>
                 </motion.div>
               </motion.div>
 
-              {/* Right Column: Refined Editorial Content */}
-              <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.3 }}
-                className="lg:col-span-8"
-              >
-                <div className="space-y-6">
-                  <div className="flex flex-col gap-2">
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-headline font-black text-primary leading-tight tracking-tighter uppercase">
-                      Building Trust <span className="text-secondary italic font-serif ml-2">Since 2006.</span>
-                    </h2>
-                  </div>
+              {/* Content Side */}
+              <motion.div {...fade(0.2)} className="space-y-10 lg:pl-6">
+                {/* Heading */}
+                <h2 className="text-[2.5rem] md:text-[3.25rem] font-black text-[#0071ba] leading-[1.1] tracking-tight">
+                  BUILDING TRUST <span className="text-[#ed1c24] italic font-serif tracking-normal font-medium">SINCE 2006.</span>
+                </h2>
 
-                  <div className="max-w-xl space-y-4 text-slate-500 font-medium text-sm md:text-base leading-relaxed">
-                    <p className="border-l-4 border-secondary pl-4 italic text-primary/80">
-                      "Building Trust Since 2006 isn't just a slogan; it's the foundation of over 1.9 Lakh stories of success."
-                    </p>
-                    <p>
-                      Established near two decades ago, <span className="text-primary font-black">Investors Clinic</span> was created to dismantle the confusion of real estate and replace it with institutional-grade clarity.
-                    </p>
-                    <p className="opacity-80">
-                      We operate as a global boutique consultancy, harmonizing data-driven analytics with a personalized human touch to ensure every asset in your portfolio becomes a legacy.
-                    </p>
-                  </div>
+                {/* Quote */}
+                <div className="border-l-[3px] border-[#ed1c24] pl-6 py-1">
+                  <p className="text-[#0071ba] font-medium text-lg italic leading-relaxed">
+                    "Building Trust Since 2006 isn't just a slogan; it's the foundation of over 1.9 Lakh stories of success."
+                  </p>
+                </div>
 
-                  {/* Refined Stats Block */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
-                    {[
-                      { icon: Users, val: "250K+", label: "Elite Families" },
-                      { icon: Building2, val: "1500+", label: "Trusted Brands" },
-                      { icon: TrendingUp, val: "₹100K Cr+", label: "Sales Volume" }
-                    ].map((stat, i) => (
-                      <div key={i} className="group border-b border-slate-200 pb-4 hover:border-secondary transition-colors duration-500">
-                        <div className="flex items-center gap-3 mb-1">
-                          <stat.icon className="w-4 h-4 text-secondary group-hover:scale-110 transition-transform" />
-                          <span className="text-xl md:text-2xl font-black text-primary group-hover:text-secondary transition-colors tracking-tighter">{stat.val}</span>
-                        </div>
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">{stat.label}</p>
+                {/* Paragraphs */}
+                <div className="space-y-6 text-zinc-500 text-[15px] leading-relaxed">
+                  <p>
+                    Established near two decades ago, <span className="text-[#0071ba] font-bold">Investors Clinic</span> was created to dismantle the confusion of real estate and replace it with institutional-grade clarity.
+                  </p>
+                  <p>
+                    We operate as a global boutique consultancy, harmonizing data-driven analytics with a personalized human touch to ensure every asset in your portfolio becomes a legacy.
+                  </p>
+                </div>
+
+                {/* Stats */}
+                <div className="flex flex-wrap md:flex-nowrap gap-6 md:gap-10 pt-6 border-t border-zinc-100">
+                  {[
+                    { val: "250K+", label: "Elite Families", icon: Users },
+                    { val: "1500+", label: "Trusted Brands", icon: Building2 },
+                    { val: "₹100K Cr+", label: "Sales Volume", icon: TrendingUp },
+                  ].map((stat, i) => (
+                    <div key={i} className="flex-1 min-w-[120px]">
+                      <div className="flex items-center gap-2 mb-2">
+                        <stat.icon size={16} className="text-[#ed1c24]" />
+                        <span className="text-2xl font-black text-[#0071ba] tracking-tight">{stat.val}</span>
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">{stat.label}</p>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* 4. Mission & Vision - Compact Premium Dark Theme */}
-        <section className="py-8 md:py-12 bg-[#0a1120] relative overflow-hidden">
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(237,28,36,0.08),transparent_70%)]" />
-          
-          <div className="max-w-5xl mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              
-              {/* Mission Card - Compact Dark Glassmorphism */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] border border-white/10 flex flex-col items-start group hover:-translate-y-1 transition-all duration-700 cursor-default relative overflow-hidden h-full shadow-2xl"
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/20 rounded-full -mr-12 -mt-12 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-all duration-500">
-                  <Target className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
-                </div>
-                
-                <div className="space-y-3 relative z-10">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[8px] font-black text-secondary uppercase tracking-[0.4em]">Our Purpose</span>
-                    <h2 className="text-xl md:text-2xl font-headline font-black text-white uppercase tracking-tighter leading-tight">
-                      Professionalizing <br /> <span className="text-secondary italic">The Market.</span>
-                    </h2>
-                  </div>
-                  <div className="w-8 h-[2px] bg-secondary rounded-full" />
-                  <p className="text-slate-400 text-xs font-medium leading-relaxed max-w-sm group-hover:text-white/80 transition-colors">
-                    We empower investors with institutional-grade data and verified insights, ensuring transparency in every journey.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Vision Card - Compact Dark Glassmorphism */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-white/5 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] border border-white/10 flex flex-col items-start group hover:-translate-y-1 transition-all duration-700 cursor-default relative overflow-hidden h-full shadow-2xl"
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/20 rounded-full -mr-12 -mt-12 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-secondary transition-all duration-500">
-                  <Eye className="w-4 h-4 text-secondary group-hover:text-white transition-colors" />
-                </div>
-                
-                <div className="space-y-3 relative z-10">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[8px] font-black text-slate-500 uppercase tracking-[0.4em]">Our Future</span>
-                    <h2 className="text-xl md:text-2xl font-headline font-black text-white uppercase tracking-tighter leading-tight">
-                      Global Gold <br /> <span className="text-secondary italic">Standard.</span>
-                    </h2>
-                  </div>
-                  <div className="w-8 h-[2px] bg-secondary rounded-full" />
-                  <p className="text-slate-400 text-xs font-medium leading-relaxed max-w-sm group-hover:text-white/80 transition-colors">
-                    Setting the international benchmark where disruptive technology meets 19 years of human wisdom.
-                  </p>
-                </div>
-              </motion.div>
-
-            </div>
-          </div>
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        </section>
-
-        {/* 5. Our Journey - Light Theme Professional Redesign */}
-        <section className="py-12 bg-white overflow-hidden relative">
+        {/* ─── MISSION & VISION ─── */}
+        <section className="py-20 bg-zinc-50 border-y border-zinc-100">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl font-headline font-black text-primary uppercase tracking-tighter">
-                Our Journey
-              </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  icon: Target,
+                  tag: "Our Mission",
+                  title: "Professionalizing the Market",
+                  body: "We empower investors with institutional-grade data and verified insights, ensuring complete transparency and confidence in every real estate decision.",
+                  accent: "red",
+                },
+                {
+                  icon: Eye,
+                  tag: "Our Vision",
+                  title: "The Global Gold Standard",
+                  body: "Setting an international benchmark where disruptive technology meets 19 years of human wisdom and market expertise.",
+                  accent: "zinc",
+                },
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  {...fade(i * 0.15)}
+                  className="bg-white border border-zinc-100 rounded-2xl p-10 group hover:border-red-200 hover:shadow-lg transition-all duration-500"
+                >
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-6 ${i === 0 ? "bg-red-50" : "bg-zinc-100"}`}>
+                    <card.icon className={`w-5 h-5 ${i === 0 ? "text-red-600" : "text-zinc-600"}`} />
+                  </div>
+                  <p className="text-red-500 text-[10px] font-semibold uppercase tracking-[0.3em] mb-2">{card.tag}</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-zinc-900 mb-4 leading-tight">{card.title}</h3>
+                  <div className="w-8 h-[2px] bg-red-600 rounded-full mb-5 group-hover:w-14 transition-all duration-500" />
+                  <p className="text-zinc-500 text-sm leading-relaxed">{card.body}</p>
+                </motion.div>
+              ))}
             </div>
+          </div>
+        </section>
 
-            <div className="relative max-w-6xl mx-auto">
-              {/* The Timeline Line - Centered on circles */}
-              <div className="absolute top-[15px] left-0 w-full h-[2px] bg-slate-100 hidden md:block" />
-              <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
+        {/* ─── JOURNEY / TIMELINE ─── */}
+        <section className="py-24 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.div {...fade()} className="mb-16 text-center">
+              <p className="text-red-600 text-xs font-semibold uppercase tracking-[0.3em] mb-3">Milestones</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 tracking-tight">Our Journey</h2>
+            </motion.div>
+
+            <div className="relative">
+              {/* Line */}
+              <div className="absolute top-4 left-0 w-full h-[1px] bg-zinc-100 hidden md:block" />
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="absolute top-[15px] left-0 h-[2px] bg-secondary hidden md:block z-10"
+                style={{ transformOrigin: "left" }}
+                className="absolute top-4 left-0 w-full h-[1px] bg-red-500 hidden md:block z-10"
               />
 
-              <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-0 relative z-20">
-                {[
-                  { num: 1, year: "2005", desc: "Founded in Noida with a vision to simplify real estate" },
-                  { num: 2, year: "2010", desc: "Expanded to 10 cities across India" },
-                  { num: 3, year: "2015", desc: "Crossed 1,00,000 satisfied customers milestone" },
-                  { num: 4, year: "2020", desc: "Launched international offices for NRI investors" },
-                  { num: 5, year: "2024", desc: "1,90,000+ customers | 700+ developers | 2000+ projects" }
-                ].map((step, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex flex-col items-center text-center group w-full md:w-[180px]"
-                  >
-                    {/* Circle Node - Precise Small Size */}
-                    <div className="w-[30px] h-[30px] rounded-full bg-secondary text-white flex items-center justify-center text-[11px] font-black mb-[15px] shadow-[0_5px_15px_rgba(237,28,36,0.3)] group-hover:scale-110 transition-transform cursor-default relative z-20 border-2 border-white">
-                      {step.num}
-                      <div className="absolute inset-0 rounded-full animate-pulse bg-secondary/40 -z-10 blur-sm" />
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-4 relative z-20">
+                {journey.map((step, i) => (
+                  <motion.div key={i} {...fade(i * 0.1)} className="flex flex-col items-center text-center group">
+                    <div className="w-8 h-8 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center mb-5 shadow-lg shadow-red-200 group-hover:scale-110 transition-transform border-2 border-white">
+                      {i + 1}
                     </div>
+                    <span className="text-2xl font-bold text-red-600 tracking-tight mb-1">{step.year}</span>
+                    <span className="text-zinc-900 font-semibold text-sm mb-2">{step.title}</span>
+                    <p className="text-zinc-400 text-xs leading-relaxed max-w-[140px]">{step.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
-                    {/* Content Grouping */}
-                    <div className="flex flex-col items-center">
-                      <span className="text-[22px] md:text-[24px] font-black text-secondary block tracking-tighter mb-[10px]">
-                        {step.year}
-                      </span>
-                      <p className="text-slate-500 text-[11px] md:text-[12px] font-medium leading-relaxed max-w-[160px] mx-auto group-hover:text-primary transition-colors">
-                        {step.desc}
-                      </p>
+        {/* ─── LEADERSHIP ─── */}
+        <section className="py-24 md:py-32 bg-white">
+          <div className="max-w-[90rem] mx-auto px-6">
+            <motion.div {...fade()} className="mb-20 text-center">
+              <p className="text-[#ed1c24] text-[10px] font-black uppercase tracking-[0.3em] mb-4">The People Behind It</p>
+              <h2 className="text-4xl md:text-5xl font-black text-[#0071ba] tracking-tight">
+                Meet Our <span className="text-[#ed1c24] font-medium font-serif italic">Leadership</span>
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16 justify-items-center">
+              {leadership.map((person, i) => (
+                <LeadershipCard key={i} person={person} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── TESTIMONIALS ─── */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <motion.div {...fade()} className="lg:col-span-1 flex flex-col justify-center space-y-5">
+                <p className="text-red-600 text-xs font-semibold uppercase tracking-[0.3em]">Client Stories</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 leading-tight tracking-tight">
+                  Voices of<br />
+                  <span className="text-red-600 font-light italic">Trust.</span>
+                </h2>
+                <div className="flex items-center gap-2 mt-2">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} size={14} className="fill-red-500 text-red-500" />
+                  ))}
+                  <span className="text-zinc-400 text-xs ml-2 font-medium">4.9 / 5.0</span>
+                </div>
+              </motion.div>
+
+              <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:col-span-2">
+                {testimonials.map((t, i) => (
+                  <motion.div key={i} {...fade(0.1 + i * 0.1)}
+                    className="bg-zinc-50 border border-zinc-100 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-400 flex flex-col"
+                  >
+                    <Quote size={20} className="text-red-200 mb-4 shrink-0" />
+                    <p className="text-zinc-600 text-sm leading-relaxed italic flex-1">"{t.quote}"</p>
+                    <div className="mt-5 pt-4 border-t border-zinc-100">
+                      <p className="text-zinc-900 font-semibold text-sm">{t.name}</p>
+                      <p className="text-red-500 text-[10px] uppercase tracking-widest font-medium mt-0.5">{t.tag}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -361,209 +453,90 @@ export const AboutUs = () => {
           </div>
         </section>
 
-        {/* 8. Team Leadership - Light Theme Professional Redesign */}
-        <section className="py-14 md:py-20 bg-slate-50 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(237,28,36,0.05),transparent_70%)]" />
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-10 md:mb-16">
-              <h2 className="text-2xl md:text-4xl font-headline font-black text-primary uppercase tracking-tighter">
-                Meet Our <span className="text-secondary italic">Leadership</span>
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { name: "Honeyy Katiyal", role: "Founder Chairman", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop", story: "Visionary leader behind the digital transformation of Indian real estate advisory." },
-                { name: "Sakshee Katiyal", role: "COO", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop", story: "Driving operational excellence and institutional-grade service delivery across India." },
-                { name: "Sunny Katiyal", role: "Co-founder & Managing Director", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop", story: "Strategist focused on global expansion and building high-compliance benchmarks." },
-                { name: "Bhawna Katiyal", role: "President HR", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop", story: "Nurturing the elite talent pool that drives our committed to excellence philosophy." }
-              ].map((founder, i) => (
-                <motion.div 
-                  key={i} 
-                  initial={{ opacity: 0, y: 20 }} 
-                  whileInView={{ opacity: 1, y: 0 }} 
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="relative group h-[380px] md:h-[420px] overflow-hidden rounded-[2rem] bg-slate-100 border border-white/10 shadow-2xl"
-                >
-                  {/* Profile Image - Always Bright and Visible */}
-                  <div className="absolute inset-0 z-0">
-                    <img 
-                      src={founder.image} 
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                      alt={founder.name} 
-                    />
-                    {/* Minimal bottom gradient for text readability */}
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
-                  </div>
-                  
-                  {/* Name & Role (Clearly visible at bottom) */}
-                  <div className="absolute inset-0 z-10 p-8 flex flex-col justify-end">
-                    <h4 className="text-xl md:text-2xl font-headline font-black text-white mb-1 uppercase tracking-tight drop-shadow-lg">{founder.name}</h4>
-                    <p className="text-secondary font-black uppercase tracking-[0.2em] text-[10px] drop-shadow-md">{founder.role}</p>
-                  </div>
-
-                  {/* Story Overlay on Hover */}
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    className="absolute inset-0 z-20 bg-secondary/95 p-10 flex flex-col justify-center text-white transition-all duration-500 cursor-pointer"
-                  >
-                    <Quote className="w-8 h-8 text-white/30 mb-6" />
-                    <p className="text-sm md:text-base font-bold leading-relaxed mb-8">"{founder.story}"</p>
-                    <div className="flex items-center gap-2 font-black text-[9px] uppercase tracking-widest mt-auto">
-                      Learn More <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 8. Testimonials - Refined Theme Integration */}
-        <section className="pt-8 pb-4 md:pt-12 md:pb-8 bg-[#fcfdff] overflow-hidden relative">
-          <div className="absolute bottom-0 right-0 w-32 h-32 bg-secondary/5 rounded-full md:mb-12 md:mr-12 -z-10 blur-3xl" />
+        {/* ─── FAQ ─── */}
+        <section className="py-24 bg-zinc-50 border-y border-zinc-100">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-4 space-y-4">
-                <h2 className="text-3xl md:text-4xl font-headline font-black text-primary leading-[1.1]">Voices of <span className="text-secondary italic">Trust.</span></h2>
-                <div className="flex items-center gap-3 bg-white w-fit px-4 py-2 rounded-xl border border-slate-100 shadow-sm">
-                  <div className="flex items-center gap-1">
-                    {[1, 2, 3, 4, 5].map(i => <Star key={i} size={12} className="fill-secondary text-secondary" />)}
-                  </div>
-                  <span className="font-black text-slate-400 text-[9px] uppercase tracking-widest border-l border-slate-100 pl-3">4.9/5 Rating</span>
-                </div>
-              </div>
-              <div className="lg:col-span-8">
-                <div className="flex gap-4 overflow-hidden py-2">
-                  <motion.div 
-                    animate={{ x: [0, -400] }}
-                    transition={{ duration: 12, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
-                    className="flex gap-4 shrink-0"
-                  >
-                    {[
-                      { name: "Rahul Sharma", company: "HNI Investor", quote: "The transparency Investors Clinic provides is unseen in the Indian market. They truly act as partners." },
-                      { name: "Amit Goel", company: "Draper CEO", quote: "Institutional grade portfolios with retail accessibility. Highly recommended for long term wealth." },
-                      { name: "S. Kapoor", company: "Portfolio Client", quote: "Their data-driven approach changed how I view real estate. A masterclass in advisory." }
-                    ].map((t, i) => (
-                      <div key={i} className="bg-white p-6 rounded-[1.5rem] w-[300px] md:w-[340px] shrink-0 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                        <Quote size={24} className="text-secondary/10 mb-4 group-hover:text-secondary/30 transition-colors" />
-                        <p className="text-xs md:text-sm font-bold text-slate-500 mb-6 leading-relaxed italic">"{t.quote}"</p>
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="text-xs font-black text-primary uppercase tracking-tight">{t.name}</p>
-                            <p className="text-secondary font-bold uppercase tracking-[0.1em] text-[8px]">{t.company}</p>
-                          </div>
-                          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-secondary/30">
-                            <Users size={14} />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              <motion.div {...fade()} className="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-4">
+                <p className="text-red-600 text-xs font-semibold uppercase tracking-[0.3em]">Got Questions?</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 leading-tight tracking-tight">
+                  Common<br />
+                  <span className="text-red-600 font-light italic">Insights.</span>
+                </h2>
+                <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
+                  Learn more about our processes and how we safeguard your capital growth.
+                </p>
+              </motion.div>
 
-
-        {/* 10. Corporate FAQ Section - Premium Minimalist */}
-        <section className="py-16 md:py-24 bg-white relative">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-              <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
-                <div className="space-y-4 text-center lg:text-left">
-                  <div className="flex items-center justify-center lg:justify-start gap-3">
-                    <div className="w-10 h-[2px] bg-secondary" />
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-secondary">Inquiry Desk</span>
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-headline font-black text-primary leading-tight uppercase tracking-tighter">
-                    Corporate <br /> <span className="text-secondary italic">Insights.</span>
-                  </h2>
-                  <p className="text-slate-500 font-medium text-sm md:text-base leading-relaxed max-w-[280px] mx-auto lg:mx-0">
-                    Discover more about our institutional processes and how we protect your capital growth.
-                  </p>
-                </div>
-              </div>
-              <div className="lg:col-span-8">
-                <div className="bg-slate-50/50 rounded-[2.5rem] p-4 md:p-10 border border-slate-100">
-                  <FAQItem 
-                    question="What makes Investors Clinic different from other real estate consultancies?"
+              <motion.div {...fade(0.2)} className="lg:col-span-8">
+                <div className="bg-white rounded-2xl border border-zinc-100 px-6 md:px-10 py-2">
+                  <FAQItem
+                    question="What makes Investors Clinic different from other consultancies?"
                     answer="We combine 19 years of institutional experience with cutting-edge data analytics to provide a transparent, end-to-end investment journey. Unlike traditional brokers, we act as long-term wealth partners, auditing every developer and project before recommendation."
                   />
-                  <FAQItem 
+                  <FAQItem
                     question="Is Investors Clinic only focused on the Indian market?"
-                    answer="While we have a dominant footprint across India, we operate a robust global advisory desk. We have specialized offices and partners in Dubai, London, and other major hubs, assisting NRIs and global investors in building cross-border diversified portfolios."
+                    answer="While we have a dominant footprint across India, we operate a robust global advisory desk with specialized offices in Dubai, London, and other major hubs — assisting NRIs and global investors in building diversified portfolios."
                   />
-                  <FAQItem 
+                  <FAQItem
                     question="How do you verify the projects you recommend?"
-                    answer="Every project undergoes a multi-layer verification process. We evaluate developer track records, check RERA registration authenticity, assess construction velocity, and use proprietary heatmaps to forecast capital appreciation and rental yield potential."
+                    answer="Every project undergoes a multi-layer verification: developer track records, RERA registration, construction velocity assessments, and proprietary heatmaps to forecast capital appreciation and rental yield potential."
                   />
-                  <FAQItem 
+                  <FAQItem
                     question="What services do you provide besides property sales?"
-                    answer="Our ecosystem covers Strategic Portfolio Management, Home Loan Assistance, Legal Title Verification, Vastu Consultation, and Resale/Rental Management. We provide a 360-degree support structure for the entire lifecycle of your real estate asset."
+                    answer="Our ecosystem covers Strategic Portfolio Management, Home Loan Assistance, Legal Title Verification, Vastu Consultation, and Resale/Rental Management — a 360-degree structure for the entire lifecycle of your asset."
                   />
-                  <FAQItem 
+                  <FAQItem
                     question="Who is the leadership behind Investors Clinic?"
-                    answer="The company was founded in 2006 by Mr. Honeyy Katiyal, a visionary entrepreneur who pioneered organized real estate advisory in India. Our leadership board consists of seasoned industry experts across Operations, HR, and Global Strategy."
+                    answer="Founded in 2006 by Mr. Honeyy Katiyal, a visionary who pioneered organized real estate advisory in India. Our leadership board includes seasoned experts across Operations, HR, and Global Strategy."
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* 11. CTA - Premium Elite Version */}
-        <section className="py-4 pb-12 px-6 relative overflow-hidden">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-[1200px] mx-auto bg-gradient-to-r from-[#003366] to-[#001a33] rounded-[2rem] p-10 md:p-12 relative overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] flex flex-col md:flex-row items-center justify-between gap-10"
+        {/* ─── CTA ─── */}
+        <section className="py-24 px-6 bg-white">
+          <motion.div
+            {...fade()}
+            className="max-w-5xl mx-auto bg-zinc-950 rounded-3xl p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden"
           >
-            {/* Artistic Watermark - Building Shapes */}
-            <div className="absolute right-0 bottom-0 top-0 w-1/2 opacity-[0.03] pointer-events-none z-0">
-              <Building2 className="w-full h-full transform translate-x-1/4 translate-y-1/4" />
-            </div>
-            
-            <div className="relative z-10 space-y-4 text-center md:text-left">
-              {/* Badge Label */}
-              <div className="flex items-center justify-center md:justify-start gap-4">
-                <div className="h-[2px] w-6 bg-secondary" />
-                <span className="text-secondary font-black tracking-[0.3em] uppercase text-[10px]">Private Wealth Advisory</span>
-                <div className="h-[2px] w-6 bg-secondary" />
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-black text-white leading-tight tracking-tight">
-                Design Your <span className="text-secondary italic">Legacy</span> Portfolio.
-              </h2>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(237,28,36,0.12),transparent_60%)] pointer-events-none" />
+            <div className="absolute right-0 bottom-0 opacity-[0.04] pointer-events-none">
+              <Building2 className="w-64 h-64 translate-x-1/3 translate-y-1/3" />
             </div>
 
-            <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4">
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-[#ed1c24] text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[11px] flex items-center gap-3 shadow-2xl shadow-red-600/20 whitespace-nowrap transition-all"
+            <div className="relative space-y-3 text-center md:text-left">
+              <p className="text-red-500 text-xs font-semibold uppercase tracking-[0.3em]">Private Wealth Advisory</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight">
+                Design Your <span className="text-red-500 font-light italic">Legacy</span> Portfolio.
+              </h2>
+              <p className="text-zinc-500 text-sm max-w-sm">
+                Schedule a private consultation with our senior advisors today.
+              </p>
+            </div>
+
+            <div className="relative flex flex-col sm:flex-row gap-3 shrink-0">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-red-600 hover:bg-red-500 text-white px-7 py-3.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition-colors whitespace-nowrap"
               >
-                Book VIP Consultation
-                <ArrowRight size={16} />
+                Book a Consultation <ArrowRight size={15} />
               </motion.button>
-              
-              <motion.button 
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.05)" }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-transparent text-white border-2 border-white/20 px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[11px] flex items-center gap-3 whitespace-nowrap transition-all"
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="border border-white/15 text-white/70 hover:text-white hover:border-white/30 px-7 py-3.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition-colors whitespace-nowrap"
               >
-                View Case Studies
-                <ArrowRight size={16} />
+                View Projects <ArrowRight size={15} />
               </motion.button>
             </div>
           </motion.div>
         </section>
-      </main>
 
+      </main>
       <Footer />
     </div>
   );

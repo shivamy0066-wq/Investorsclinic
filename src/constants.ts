@@ -245,7 +245,7 @@ export const PROPERTIES: Property[] = [
     price: "₹3.5 Cr Onwards", 
     bhk: "3 & 4 BHK",
     sqft: "2400 sq.ft",
-    img: "https://images.unsplash.com/photo-1460317442991-0ec239f636a7?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
     description: "BPTP Downtown 66 stands as a testament to modern urban living, offering high-end apartments with smart home features and excellent connectivity to the Golf Course Extension Road."
   },
   { 

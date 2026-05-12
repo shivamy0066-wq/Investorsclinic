@@ -348,38 +348,96 @@ export default function App() {
             <div className="flex whitespace-nowrap overflow-hidden">
               <div className="flex gap-4 animate-marquee hover:[animation-play-state:paused]">
                 {[
-                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
-                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
-                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
-                  "Smartworld", "Whiteland", "Puravankara", "Sobha Ltd",
-                  "Brigade", "Kalpataru", "Shapoorji", "Adani",
-                  "Omaxe", "Mahagun", "Ace Group", "Eldeco",
+                  { name: "BPTP", domain: "bptp.com" },
+                  { name: "Signature Global", domain: "signatureglobal.in" },
+                  { name: "Godrej", domain: "godrejproperties.com" },
+                  { name: "M3M India", domain: "m3mindia.com" },
+                  { name: "DLF", domain: "dlf.in" },
+                  { name: "Gaurs", domain: "gaursonsindia.com" },
+                  { name: "ATS", domain: "atshomekraft.com" },
+                  { name: "Prestige", domain: "prestigeconstructions.com" },
+                  { name: "Mahindra", domain: "mahindralifespaces.com" },
+                  { name: "Lodha", domain: "lodhagroup.in" },
+                  { name: "Emaar India", domain: "emaar-india.com" },
+                  { name: "AIPL", domain: "aipl.com" },
+                  { name: "Smartworld", domain: "smartworlddevelopers.com" },
+                  { name: "Whiteland", domain: "whitelandcorporation.com" },
+                  { name: "Puravankara", domain: "puravankara.com" },
+                  { name: "Sobha", domain: "sobha.com" },
+                  { name: "Brigade", domain: "brigadegroup.com" },
+                  { name: "Kalpataru", domain: "kalpataru.com" },
+                  { name: "Shapoorji", domain: "shapoorjipallonji.com" },
+                  { name: "Adani", domain: "adanirealty.com" },
+                  { name: "Omaxe", domain: "omaxe.com" },
+                  { name: "Mahagun", domain: "mahagunindia.com" },
+                  { name: "Ace Group", domain: "acegroupindia.com" },
+                  { name: "Eldeco", domain: "eldecogroup.com" }
                 ].map((dev, idx) => (
                   <div
                     key={idx}
-                    className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
+                    className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:border-white/30 hover:-translate-y-1 group cursor-default relative overflow-hidden"
                   >
-                    <span className="text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
-                      {dev}
+                    <img 
+                      src={`https://logo.clearbit.com/${dev.domain}`}
+                      alt={dev.name}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        if (e.currentTarget.nextElementSibling) {
+                          (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block';
+                        }
+                      }}
+                      className="max-w-[120px] max-h-[35px] object-contain filter grayscale invert brightness-200 contrast-200 mix-blend-screen opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                    />
+                    <span className="hidden text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 text-center leading-tight">
+                      {dev.name}
                     </span>
                   </div>
                 ))}
               </div>
               <div className="flex gap-4 animate-marquee hover:[animation-play-state:paused]" aria-hidden="true">
                 {[
-                  "BPTP", "Signature Global", "Godrej Properties", "M3M India", 
-                  "DLF", "Gaurs Group", "ATS Homekraft", "Prestige Group",
-                  "Mahindra", "Lodha Group", "Emaar India", "AIPL",
-                  "Smartworld", "Whiteland", "Puravankara", "Sobha Ltd",
-                  "Brigade", "Kalpataru", "Shapoorji", "Adani",
-                  "Omaxe", "Mahagun", "Ace Group", "Eldeco",
+                  { name: "BPTP", domain: "bptp.com" },
+                  { name: "Signature Global", domain: "signatureglobal.in" },
+                  { name: "Godrej", domain: "godrejproperties.com" },
+                  { name: "M3M India", domain: "m3mindia.com" },
+                  { name: "DLF", domain: "dlf.in" },
+                  { name: "Gaurs", domain: "gaursonsindia.com" },
+                  { name: "ATS", domain: "atshomekraft.com" },
+                  { name: "Prestige", domain: "prestigeconstructions.com" },
+                  { name: "Mahindra", domain: "mahindralifespaces.com" },
+                  { name: "Lodha", domain: "lodhagroup.in" },
+                  { name: "Emaar India", domain: "emaar-india.com" },
+                  { name: "AIPL", domain: "aipl.com" },
+                  { name: "Smartworld", domain: "smartworlddevelopers.com" },
+                  { name: "Whiteland", domain: "whitelandcorporation.com" },
+                  { name: "Puravankara", domain: "puravankara.com" },
+                  { name: "Sobha", domain: "sobha.com" },
+                  { name: "Brigade", domain: "brigadegroup.com" },
+                  { name: "Kalpataru", domain: "kalpataru.com" },
+                  { name: "Shapoorji", domain: "shapoorjipallonji.com" },
+                  { name: "Adani", domain: "adanirealty.com" },
+                  { name: "Omaxe", domain: "omaxe.com" },
+                  { name: "Mahagun", domain: "mahagunindia.com" },
+                  { name: "Ace Group", domain: "acegroupindia.com" },
+                  { name: "Eldeco", domain: "eldecogroup.com" }
                 ].map((dev, idx) => (
                   <div
-                    key={idx}
-                    className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-xl hover:border-secondary/60 hover:-translate-y-1 group cursor-default"
+                    key={`clone-${idx}`}
+                    className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:border-white/30 hover:-translate-y-1 group cursor-default relative overflow-hidden"
                   >
-                    <span className="text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500">
-                      {dev}
+                    <img 
+                      src={`https://logo.clearbit.com/${dev.domain}`}
+                      alt={dev.name}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        if (e.currentTarget.nextElementSibling) {
+                          (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block';
+                        }
+                      }}
+                      className="max-w-[120px] max-h-[35px] object-contain filter grayscale invert brightness-200 contrast-200 mix-blend-screen opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                    />
+                    <span className="hidden text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 text-center leading-tight">
+                      {dev.name}
                     </span>
                   </div>
                 ))}
