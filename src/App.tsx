@@ -900,188 +900,203 @@ export default function App() {
           </div>
         </section>
 
-        {/* Strategic Intelligence CTA - Premium Upgrade */}
-        <section className="py-8 bg-[#020617] px-6 relative overflow-hidden">
-          {/* Environmental Lighting & Geometric Texture */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[160px] -translate-y-1/2 translate-x-1/4 animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[140px] translate-y-1/2 -translate-x-1/4 translate-z-0" />
-            
-            {/* Subtle Grid Pattern - TARGETED ELEMENT */}
-            <div className="absolute inset-0 opacity-[0.02]" style={{backgroundImage: 'radial-gradient(#ffffff 0.5px, transparent 0.5px)', backgroundSize: '32px 32px'}} />
-            
-            {/* Floating Orbs */}
-            {[1].map((i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.05, 0.1, 0.05]
-                }}
-                transition={{
-                  duration: 10,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute top-1/3 left-1/4 w-48 h-48 rounded-full blur-3xl bg-primary/20"
-              />
-            ))}
+        {/* Strategic Intelligence CTA — Premium Redesign */}
+        <section className="relative py-20 bg-[#030712] overflow-hidden">
+          {/* Layered ambient lighting */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute -top-40 right-0 w-[700px] h-[700px] rounded-full bg-primary/10 blur-[180px]" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-secondary/8 blur-[150px]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full bg-blue-950/40 blur-[120px]" />
+            {/* Fine dot grid */}
+            <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+            {/* Horizontal rule accents */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           </div>
 
-          <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
-            {/* Content Side */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex-1 space-y-6"
-            >
-              <div className="space-y-2">
-                <h2 className="text-2xl md:text-3xl font-headline font-black text-white leading-tight">
-                  Here's <span className="relative">What <div className="absolute -bottom-1.5 left-0 w-full h-1 bg-red-600 rounded-full" /></span> You'll Get
-                </h2>
-              </div>
+          <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="grid lg:grid-cols-[1fr_400px] gap-16 items-center">
 
-              <div className="space-y-5">
-                {[
-                  { 
-                    title: "Top Investment Properties", 
-                    desc: "Handpicked high-growth properties tailored to your goals.",
-                    icon: <Building2 className="w-5 h-5 text-slate-300" />
-                  },
-                  { 
-                    title: "Price Breakdown", 
-                    desc: "Detailed cost analysis with transparent pricing.",
-                    icon: <CircleDollarSign className="w-5 h-5 text-slate-300" />
-                  },
-                  { 
-                    title: "ROI Estimation", 
-                    desc: "Get accurate return on investment projections.",
-                    icon: <BarChart3 className="w-5 h-5 text-slate-300" />
-                  },
-                  { 
-                    title: "Free Consultation", 
-                    desc: "Connect with our experts for personalized guidance.",
-                    icon: <User className="w-5 h-5 text-slate-300" />
-                  }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-4 group">
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center shrink-0 group-hover:border-secondary group-hover:bg-white/5 transition-all">
-                      {item.icon}
-                    </div>
-                    <div className="space-y-0.5">
-                      <h4 className="text-base font-headline font-bold text-white">{item.title}</h4>
-                      <p className="text-slate-400 text-xs md:text-sm leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Trusted Footer */}
-              <div className="bg-white/5 border border-white/10 p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 backdrop-blur-sm">
-                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
-                  <ShieldCheck className="w-5 h-5 text-slate-300" />
+              {/* ── LEFT: Content ── */}
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-10"
+              >
+                {/* Eyebrow */}
+                <div className="flex items-center gap-3">
+                  <div className="h-px w-8 bg-primary/60" />
+                  <span className="text-[9px] font-black text-primary uppercase tracking-[0.4em]">Exclusive Access</span>
                 </div>
-                <div className="flex-1 text-center md:text-left space-y-1">
-                  <p className="text-xs font-bold text-white/80">Trusted by 5,000+ Investors</p>
-                  <div className="flex flex-col md:flex-row items-center gap-2">
-                    <div className="flex gap-0.5 text-yellow-400">
-                      {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 fill-current" />)}
-                    </div>
-                    <div className="hidden md:block w-px h-3 bg-white/20" />
-                    <p className="text-[10px] font-medium text-slate-400">
-                       <span className="text-white font-bold">4.8/5</span> | 120+ Reviews
-                    </p>
-                  </div>
+
+                {/* Headline */}
+                <div className="space-y-4">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-black text-white leading-[1.05] tracking-tight">
+                    Here's{" "}
+                    <span className="relative inline-block">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-rose-500">What</span>
+                      <svg className="absolute -bottom-1 left-0 w-full" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
+                        <path d="M0,1.5 Q50,0 100,1.5" stroke="url(#redLine)" strokeWidth="2" fill="none" />
+                        <defs><linearGradient id="redLine" x1="0" x2="1"><stop stopColor="#f87171"/><stop offset="1" stopColor="#e11d48"/></linearGradient></defs>
+                      </svg>
+                    </span>
+                    {" "}You'll Get
+                  </h2>
+                  <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-md">
+                    Get a complete intelligence package crafted for serious investors — data-driven, transparent, and actionable.
+                  </p>
                 </div>
-              </div>
-            </motion.div>
 
-                  <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-[380px]"
-            >
-              <div className="group relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-br from-white/30 to-transparent rounded-[1.25rem] blur opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
-                
-                <div className="relative bg-[#0f172a]/95 backdrop-blur-2xl p-5 md:p-6 rounded-[1.25rem] border border-white/20 shadow-2xl space-y-3">
-                  <div className="space-y-0.5 mb-2">
-                    <h3 className="text-lg font-headline font-bold text-white">Inquiry Brief</h3>
-                    <p className="text-[11px] text-slate-300">Unlock detailed institutional project reports.</p>
-                  </div>
-
-                  <div className="space-y-4">
-                    {/* Name Fields */}
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="relative">
-                        <User size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" />
-                        <input 
-                          type="text" 
-                          placeholder="First name" 
-                          className="w-full bg-black/60 border border-white/20 rounded-lg py-3.5 pl-10 pr-4 text-white outline-none focus:border-secondary focus:bg-black/80 transition-all text-xs placeholder:text-slate-400"
-                        />
+                {/* Feature List */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    {
+                      title: "Top Investment Properties",
+                      desc: "Handpicked high-growth properties tailored to your goals.",
+                      icon: <Building2 className="w-4 h-4" />,
+                      color: "from-blue-500/20 to-blue-600/5",
+                      border: "border-blue-500/20",
+                      accent: "bg-blue-500/20 text-blue-400"
+                    },
+                    {
+                      title: "Price Breakdown",
+                      desc: "Detailed cost analysis with transparent pricing.",
+                      icon: <CircleDollarSign className="w-4 h-4" />,
+                      color: "from-emerald-500/20 to-emerald-600/5",
+                      border: "border-emerald-500/20",
+                      accent: "bg-emerald-500/20 text-emerald-400"
+                    },
+                    {
+                      title: "ROI Estimation",
+                      desc: "Accurate return on investment projections backed by data.",
+                      icon: <BarChart3 className="w-4 h-4" />,
+                      color: "from-amber-500/20 to-amber-600/5",
+                      border: "border-amber-500/20",
+                      accent: "bg-amber-500/20 text-amber-400"
+                    },
+                    {
+                      title: "Free Consultation",
+                      desc: "Connect with our experts for personalized guidance.",
+                      icon: <User className="w-4 h-4" />,
+                      color: "from-rose-500/20 to-rose-600/5",
+                      border: "border-rose-500/20",
+                      accent: "bg-rose-500/20 text-rose-400"
+                    },
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.08, duration: 0.6 }}
+                      className={`relative p-5 rounded-2xl bg-gradient-to-br ${item.color} border ${item.border} backdrop-blur-sm hover:scale-[1.02] transition-transform duration-300 group`}
+                    >
+                      <div className={`w-9 h-9 rounded-xl ${item.accent} flex items-center justify-center mb-4`}>
+                        {item.icon}
                       </div>
-                      <input 
-                        type="text" 
-                        placeholder="Last name" 
-                        className="w-full bg-black/60 border border-white/20 rounded-lg py-3.5 px-4 text-white outline-none focus:border-secondary focus:bg-black/80 transition-all text-xs placeholder:text-slate-400"
-                      />
+                      <h4 className="text-sm font-bold text-white mb-1">{item.title}</h4>
+                      <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Trust badge */}
+                <div className="flex items-center gap-4 bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-4 backdrop-blur-sm w-fit">
+                  <div className="w-10 h-10 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-white">Trusted by 5,000+ Investors</p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />)}
+                      </div>
+                      <span className="text-[10px] text-slate-400 font-medium">4.8/5 · 120+ Reviews</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* ── RIGHT: Premium Form Card ── */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative"
+              >
+                {/* Glow aura */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-transparent to-secondary/10 rounded-3xl blur-2xl opacity-60 pointer-events-none" />
+
+                <div className="relative bg-gradient-to-b from-[#0f172a] to-[#0a0f1e] border border-white/[0.12] rounded-3xl p-7 shadow-2xl shadow-black/60 backdrop-blur-xl">
+                  {/* Form header */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div>
+                      <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-3 py-1 mb-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                        <span className="text-[9px] font-black text-primary uppercase tracking-widest">Priority Access</span>
+                      </div>
+                      <h3 className="text-xl font-headline font-bold text-white leading-tight">Inquiry Brief</h3>
+                      <p className="text-slate-400 text-xs mt-1">Unlock institutional-grade project reports instantly.</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    {/* Name row */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="relative group">
+                        <User size={12} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
+                        <input type="text" placeholder="First name"
+                          className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-3 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
+                      </div>
+                      <input type="text" placeholder="Last name"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 px-4 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
                     </div>
 
-                    {/* Email Input */}
-                    <div className="relative">
-                      <Mail size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" />
-                      <input 
-                        type="email" 
-                        placeholder="Email address" 
-                        className="w-full bg-black/60 border border-white/20 rounded-lg py-3.5 pl-10 pr-4 text-white outline-none focus:border-secondary focus:bg-black/80 transition-all text-xs placeholder:text-slate-400"
-                      />
+                    {/* Email */}
+                    <div className="relative group">
+                      <Mail size={12} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
+                      <input type="email" placeholder="Email address"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-4 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
                     </div>
 
-                    {/* Phone Input */}
-                    <div className="relative">
-                      <Phone size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" />
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1.5 pr-1 border-l border-white/30 pl-2">
+                    {/* Phone */}
+                    <div className="relative group">
+                      <Phone size={12} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
+                      <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 border-l border-white/15 pl-2.5">
                         <img src="https://flagcdn.com/w40/in.png" className="w-3.5 h-2 object-cover rounded-[1px]" alt="IN" />
                         <span className="text-white font-bold text-[10px]">+91</span>
                       </div>
-                      <input 
-                        type="tel" 
-                        placeholder="Phone number" 
-                        className="w-full bg-black/60 border border-white/20 rounded-lg py-3.5 pl-10 pr-16 text-white outline-none focus:border-secondary focus:bg-black/80 transition-all text-xs placeholder:text-slate-400"
-                      />
+                      <input type="tel" placeholder="Phone number"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-16 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all" />
                     </div>
 
-                    {/* Message Area */}
-                    <div className="relative">
-                      <MessageSquare size={14} className="absolute left-4 top-4 text-slate-300" />
-                      <textarea 
-                        placeholder="Project requirements..."
-                        rows={2}
-                        className="w-full bg-black/60 border border-white/20 rounded-lg py-3.5 pl-10 pr-4 text-white outline-none focus:border-secondary focus:bg-black/80 transition-all text-xs placeholder:text-slate-400 resize-none"
-                      ></textarea>
+                    {/* Message */}
+                    <div className="relative group">
+                      <MessageSquare size={12} className="absolute left-3.5 top-3.5 text-slate-500 group-focus-within:text-primary transition-colors" />
+                      <textarea placeholder="Project requirements or questions..." rows={2}
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-3 pl-9 pr-4 text-white text-xs placeholder:text-slate-600 outline-none focus:border-primary/50 focus:bg-white/[0.08] transition-all resize-none" />
                     </div>
 
-                    <div className="pt-1">
-                      <button className="w-full bg-primary hover:bg-secondary text-white py-3.5 rounded-lg font-headline font-black text-[9px] uppercase tracking-[0.25em] shadow-xl shadow-primary/20 group flex items-center justify-center gap-2.5 transition-all hover:-translate-y-1 hover:shadow-2xl active:scale-[0.98] border border-white/20 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                        <span className="relative z-10">Request Access</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
-                      </button>
-                    </div>
+                    {/* CTA Button */}
+                    <button className="relative w-full overflow-hidden group bg-gradient-to-r from-primary to-red-600 text-white py-3.5 rounded-xl font-black text-[10px] uppercase tracking-[0.25em] shadow-lg shadow-primary/30 flex items-center justify-center gap-2.5 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                      <span className="relative z-10">Request Access</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
+                    </button>
 
-                    <div className="flex items-center justify-center gap-2 pt-3 border-t border-white/10">
-                      <ShieldCheck size={11} className="text-secondary" />
-                      <p className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Institutionally Verified ROI Potential.</p>
+                    {/* Verified footer */}
+                    <div className="flex items-center justify-center gap-2 pt-2 border-t border-white/[0.07]">
+                      <ShieldCheck size={11} className="text-emerald-400" />
+                      <p className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.15em]">Institutionally Verified ROI Potential</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+
+            </div>
           </div>
         </section>
         {/* Scroll To Top Button */}
