@@ -235,6 +235,26 @@ export const BlogPostDetail: React.FC = () => {
                           </div>
                         );
                       }
+                      if (section.type === 'faq' && section.faqItems) {
+                        return (
+                          <div key={idx} className="my-10 space-y-4">
+                            {section.faqItems.map((faq, fIdx) => (
+                              <details key={fIdx} className="bg-white border border-slate-200 rounded-2xl group overflow-hidden shadow-sm hover:shadow-md transition-all">
+                                <summary className="flex items-center justify-between p-5 md:p-6 cursor-pointer list-none select-none">
+                                  <h4 className="text-[15px] md:text-base font-bold text-slate-800 pr-8 m-0">{faq.question}</h4>
+                                  <div className="w-8 h-8 shrink-0 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all text-slate-400">
+                                    <ChevronDown size={14} className="group-open:rotate-180 transition-transform duration-300" />
+                                  </div>
+                                </summary>
+                                <div className="px-5 md:px-6 pb-6 pt-0">
+                                  <div className="w-full h-px bg-slate-100 mb-4" />
+                                  <p className="text-slate-600 text-[15px] leading-relaxed m-0">{faq.answer}</p>
+                                </div>
+                              </details>
+                            ))}
+                          </div>
+                        );
+                      }
                       return null;
                     })}
                   </div>

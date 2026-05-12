@@ -8,9 +8,10 @@ export interface BlogPost {
   date: string;
   readTime: string;
   content: {
-    type: 'heading' | 'h2' | 'h3' | 'h4' | 'paragraph' | 'data' | 'image';
+    type: 'heading' | 'h2' | 'h3' | 'h4' | 'paragraph' | 'data' | 'image' | 'faq';
     text?: string;
     items?: { label: string; value: string }[];
+    faqItems?: { question: string; answer: string }[];
     url?: string;
     alt?: string;
   }[];

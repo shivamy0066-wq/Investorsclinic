@@ -286,14 +286,15 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Conclusion" },
       { type: "paragraph", text: "The demand for studio apartments is growing quickly because they are affordable, easy to maintain, and practical for modern living. These compact homes are becoming popular in areas like Noida and Greater Noida, where buyers can find good options at reasonable prices. With the right location and proper planning, a studio apartment can offer both comfortable living and steady returns over time." },
       { type: "h2", text: "FAQs" },
-      { type: "h3", text: "What is the difference between a studio apartment and a 1BHK?" },
-      { type: "paragraph", text: "A studio apartment has a single open space without separate rooms, while a 1BHK has a separate bedroom, living room, and kitchen. Studio apartments are more compact and affordable, whereas 1BHK units offer more space and privacy." },
-      { type: "h3", text: "Are studio apartments easy to maintain?" },
-      { type: "paragraph", text: "Yes, studio apartments are very easy to maintain because of their smaller size. Cleaning takes less time, and utility costs like electricity and water are usually lower compared to bigger flats." },
-      { type: "h3", text: "What should I check before buying a studio apartment?" },
-      { type: "paragraph", text: "Before buying, you should check the location, connectivity, builder reputation, legal approvals, ventilation, and future resale potential. These factors help ensure a safe and profitable investment." },
-      { type: "h3", text: "Why are studio apartments becoming popular?" },
-      { type: "paragraph", text: "Studio apartments are becoming popular due to rising property prices, urban migration, and the need for affordable and low-maintenance homes. They offer a practical solution for modern city living." }
+      { 
+        type: "faq", 
+        faqItems: [
+          { question: "What is the difference between a studio apartment and a 1BHK?", answer: "A studio apartment has a single open space without separate rooms, while a 1BHK has a separate bedroom, living room, and kitchen. Studio apartments are more compact and affordable, whereas 1BHK units offer more space and privacy." },
+          { question: "Are studio apartments easy to maintain?", answer: "Yes, studio apartments are very easy to maintain because of their smaller size. Cleaning takes less time, and utility costs like electricity and water are usually lower compared to bigger flats." },
+          { question: "What should I check before buying a studio apartment?", answer: "Before buying, you should check the location, connectivity, builder reputation, legal approvals, ventilation, and future resale potential. These factors help ensure a safe and profitable investment." },
+          { question: "Why are studio apartments becoming popular?", answer: "Studio apartments are becoming popular due to rising property prices, urban migration, and the need for affordable and low-maintenance homes. They offer a practical solution for modern city living." }
+        ]
+      }
     ]
   }
 ];
