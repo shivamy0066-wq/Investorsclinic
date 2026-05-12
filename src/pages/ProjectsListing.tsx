@@ -279,22 +279,24 @@ export const ProjectsListing = () => {
           />
 
           {/* CTA Section */}
-          <section className="mt-32">
-            <div className="bg-[#0a1e3b] rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
-              {/* Premium abstract gradients */}
-              <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_80%_20%,rgba(237,28,36,0.15),transparent_70%)] pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[radial-gradient(circle_at_20%_80%,rgba(0,113,186,0.15),transparent_70%)] pointer-events-none" />
+          <section className="mt-20">
+            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0f172a] to-[#0a0f1e] border border-white/[0.12] p-8 md:p-10 shadow-2xl shadow-black/40">
+              {/* Premium abstract ambient lighting */}
+              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
+              {/* Fine dot grid */}
+              <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
               
-              <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                <motion.div {...fadeInUp} className="max-w-xl text-center lg:text-left">
-                  <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-                    <div className="w-8 h-[1px] bg-red-500" />
-                    <p className="text-red-400 font-black tracking-[0.3em] uppercase text-[10px]">Private Advisory</p>
+              <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+                <motion.div {...fadeInUp} className="flex-1 text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-3 py-1 mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-[9px] font-black text-red-400 uppercase tracking-widest">Private Advisory</span>
                   </div>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
-                    Can't find your <span className="text-red-500 italic font-serif font-medium">Ideal</span> home?
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-3 leading-tight tracking-tight font-headline">
+                    Can't find your <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600 italic font-serif">Ideal</span> home?
                   </h2>
-                  <p className="text-white/60 text-base font-medium leading-relaxed">
+                  <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
                     Our senior advisors hold exclusive access to off-market inventory and highly sought-after pre-launch developments that are never listed publicly.
                   </p>
                 </motion.div>
@@ -302,12 +304,13 @@ export const ProjectsListing = () => {
                 <motion.div 
                   {...fadeInUp} 
                   transition={{ delay: 0.2 }}
-                  className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center"
+                  className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto items-center shrink-0"
                 >
-                  <button className="bg-[#ed1c24] text-white px-8 py-5 rounded-xl font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-red-500 transition-all shadow-[0_10px_30px_rgba(237,28,36,0.3)] active:scale-95 whitespace-nowrap w-full sm:w-auto">
-                    Consult an Expert
+                  <button className="relative overflow-hidden group bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-3.5 rounded-xl font-black uppercase tracking-[0.2em] text-[10px] hover:shadow-[0_10px_20px_rgba(237,28,36,0.3)] hover:-translate-y-0.5 active:scale-95 transition-all w-full sm:w-auto flex items-center justify-center gap-2">
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                    <span className="relative z-10">Consult an Expert</span>
                   </button>
-                  <button className="bg-white/5 text-white border border-white/20 backdrop-blur-xl px-8 py-5 rounded-xl font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-white/10 hover:border-white/40 transition-all active:scale-95 whitespace-nowrap w-full sm:w-auto">
+                  <button className="bg-white/[0.03] text-white border border-white/10 backdrop-blur-xl px-6 py-3.5 rounded-xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-white/[0.08] hover:border-white/20 transition-all active:scale-95 w-full sm:w-auto">
                     Request VIP Access
                   </button>
                 </motion.div>
