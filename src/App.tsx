@@ -745,58 +745,68 @@ export default function App() {
                           {
                             name: "Dr. Sameer Khan",
                             label: "Verified Investor",
-                            text: "Why I chose Noida for my first high-yield asset.",
-                            thumbnail: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop",
+                            text: "Why I chose Noida for my first high-yield asset — Investors Clinic explains.",
+                            youtubeId: "OBbzECz08_I",
                             avatar: "https://i.pravatar.cc/150?u=sameer"
                           },
                           {
                             name: "Meera Reddy",
                             label: "Luxury Homeowner",
-                            text: "Finding my dream vacation home in Goa was effortless with the team.",
-                            thumbnail: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop",
+                            text: "Finding my dream home in Goa was effortless with the Investors Clinic team.",
+                            youtubeId: "BznUMbIIxsE",
                             avatar: "https://i.pravatar.cc/150?u=meera"
                           },
                           {
                             name: "Rajesh Malhotra",
                             label: "Portfolio Client",
-                            text: "Scaling my residential portfolio across Tier 1 cities.",
-                            thumbnail: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+                            text: "Scaling my residential portfolio across Tier 1 cities with expert guidance.",
+                            youtubeId: "kLhFfgEPBR0",
                             avatar: "https://i.pravatar.cc/150?u=rajesh"
                           },
                           {
                             name: "Priya Sharma",
                             label: "End User",
                             text: "Moving to my own apartment was a dream come true for my small family.",
-                            thumbnail: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=800&auto=format&fit=crop",
+                            youtubeId: "V6ub12NG3Gg",
                             avatar: "https://i.pravatar.cc/150?u=priya"
                           },
                           {
                             name: "Vikram Sethi",
                             label: "Commercial Investor",
-                            text: "The rental yield advice given was spot on for my office space investment.",
-                            thumbnail: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop",
+                            text: "The rental yield advice was spot on for my office space investment.",
+                            youtubeId: "QBGkBb3TPSA",
                             avatar: "https://i.pravatar.cc/150?u=vikram"
                           },
                           {
                             name: "Arun Goel",
                             label: "Plot Buyer",
-                            text: "Smooth documentation and land title verification. Very professional.",
-                            thumbnail: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop",
+                            text: "Smooth documentation and land title verification. Very professional service.",
+                            youtubeId: "sFf3TJKQ6lg",
                             avatar: "https://i.pravatar.cc/150?u=arun"
                           }
                         ].map((card, idx) => (
                           <motion.div 
                             key={idx}
                             whileHover={{ scale: 1.02, y: -4 }}
-                            onClick={() => setActiveVideo(card.thumbnail!)}
+                            onClick={() => setActiveVideo(card.youtubeId)}
                             className="w-full bg-white rounded-[1.5rem] border border-[#E5E7EB] shadow-sm overflow-hidden flex flex-col cursor-pointer shrink-0 h-[280px] transition-all duration-300 hover:shadow-xl group"
                           >
                             <div className="relative h-40 overflow-hidden">
-                              <img src={card.thumbnail} alt={card.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                              <div className="absolute inset-0 bg-black/20" />
+                              <img 
+                                src={`https://img.youtube.com/vi/${card.youtubeId}/hqdefault.jpg`}
+                                alt={card.name} 
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                              />
+                              <div className="absolute inset-0 bg-black/30" />
+                              <div className="absolute top-3 right-3">
+                                <svg viewBox="0 0 90 20" className="h-4 opacity-90" fill="white">
+                                  <path d="M27.9727 3.12324C27.6435 1.89323 26.6768 0.926623 25.4468 0.597366C23.2197 2.24288e-07 14.285 0 14.285 0C14.285 0 5.35042 2.24288e-07 3.12323 0.597366C1.89323 0.926623 0.926623 1.89323 0.597366 3.12324C2.24288e-07 5.35042 0 10 0 10C0 10 2.24288e-07 14.6496 0.597366 16.8768C0.926623 18.1068 1.89323 19.0734 3.12323 19.4026C5.35042 20 14.285 20 14.285 20C14.285 20 23.2197 20 25.4468 19.4026C26.6768 19.0734 27.6435 18.1068 27.9727 16.8768C28.5701 14.6496 28.5701 10 28.5701 10C28.5701 10 28.5677 5.35042 27.9727 3.12324Z" fill="#FF0000"/>
+                                  <path d="M11.4253 14.2854L18.8477 10.0004L11.4253 5.71533V14.2854Z" fill="white"/>
+                                </svg>
+                              </div>
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-xl flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors">
-                                  <Play className="w-4 h-4 text-secondary fill-current group-hover:text-white transition-colors" />
+                                <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur shadow-xl flex items-center justify-center group-hover:bg-red-600 transition-colors duration-300">
+                                  <Play className="w-5 h-5 text-red-600 fill-current group-hover:text-white transition-colors" />
                                 </div>
                               </div>
                             </div>
@@ -824,9 +834,9 @@ export default function App() {
           </div>
         </section>
 
-        {/* Video Playback Modal */}
+        {/* Video Playback Modal â€” YouTube Embed */}
         {activeVideo && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 md:px-6">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -837,24 +847,25 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="relative w-full max-w-5xl aspect-video bg-black rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10"
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-5xl aspect-video bg-black rounded-[1.5rem] overflow-hidden shadow-2xl border border-white/10"
             >
+              {/* Close Button */}
               <button 
                 onClick={() => setActiveVideo(null)}
-                className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-secondary transition-all z-10"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-secondary transition-all z-10"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
               
-              <div className="w-full h-full relative">
-                <img src={activeVideo} className="w-full h-full object-cover opacity-60" alt="Video Placeholder" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-secondary text-white flex items-center justify-center mb-6 shadow-2xl animate-pulse">
-                    <Play className="w-10 h-10 fill-current" />
-                  </div>
-                  <p className="text-white text-xl font-headline font-bold uppercase tracking-[0.2em]">Video playing...</p>
-                </div>
-              </div>
+              {/* YouTube Embed */}
+              <iframe
+                className="w-full h-full"
+                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`}
+                title="Investors Clinic Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </motion.div>
           </div>
         )}
