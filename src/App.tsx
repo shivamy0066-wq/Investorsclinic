@@ -218,7 +218,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-[3.5rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] font-headline font-bold text-white leading-[1.05] tracking-tight mb-8"
+                className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.75rem] font-headline font-bold text-white leading-[1.05] tracking-tight mb-8"
               >
                 Find Your{" "}
                 <span className="italic text-[#0071ba]">
@@ -249,8 +249,8 @@ export default function App() {
                     className="flex flex-col w-[120px]"
                   >
                     <div className="flex items-baseline gap-0.5">
-                      <span className="text-[2.2rem] md:text-[2.6rem] font-headline font-black text-white leading-none tracking-tight">
-                        {stat.val}<span className="text-[#e11d48] text-[1.4rem] relative -top-3 left-0.5 font-bold">+</span>
+                      <span className="text-[1.8rem] md:text-[2.2rem] font-headline font-black text-white leading-none tracking-tight">
+                        {stat.val}<span className="text-[#e11d48] text-[1.2rem] relative -top-2 left-0.5 font-bold">+</span>
                       </span>
                     </div>
                     <motion.div
