@@ -65,8 +65,7 @@ const HeroCard: React.FC<{ post: typeof BLOG_POSTS[0] }> = ({ post }) => (
   <Reveal className="mb-10">
     <Link to={`/blog/${post.id}`} className="group block relative overflow-hidden rounded-3xl">
       <div className="relative h-[420px] md:h-[500px]">
-        <img
-          src={post.image}
+        <img loading="lazy"           src={post.image}
           alt={post.title}
           className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
         />
@@ -118,8 +117,7 @@ const BlogCard: React.FC<{ post: typeof BLOG_POSTS[0]; index: number }> = ({ pos
       className="group flex flex-col h-full bg-white border border-slate-100 rounded-2xl overflow-hidden hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
     >
       <div className="relative h-48 overflow-hidden">
-        <img
-          src={post.image}
+        <img loading="lazy"           src={post.image}
           alt={post.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -153,7 +151,7 @@ const BlogListCard: React.FC<{ post: typeof BLOG_POSTS[0] }> = ({ post }) => (
       className="group flex gap-5 bg-white border border-slate-100 rounded-2xl overflow-hidden hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 p-4"
     >
       <div className="relative w-28 h-24 rounded-xl overflow-hidden shrink-0">
-        <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <img loading="lazy" src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
       </div>
       <div className="flex flex-col justify-center flex-1 min-w-0">
         <span className={`self-start text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border mb-2 ${catColor(post.category)}`}>

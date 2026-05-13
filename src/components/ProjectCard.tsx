@@ -23,7 +23,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ property, index, onCom
     <motion.div {...fadeInUp} className="bg-white rounded-[1.5rem] overflow-hidden shadow-xl border border-slate-100 group">
       <Link to={`/project/${property.id}`} className="block">
         <div className="aspect-[1.3/1] relative overflow-hidden">
-          <img src={property.img} alt={property.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
+          <img loading="lazy" src={property.img} alt={property.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
           <div className="absolute top-4 left-4">
             <span className={`${property.tagColor} text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest`}>{property.tag}</span>
           </div>

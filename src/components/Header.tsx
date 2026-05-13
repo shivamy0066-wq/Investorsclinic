@@ -39,6 +39,9 @@ export const Header = () => {
               <img 
                 src="https://investorsclinic.in/public/ic/images/log.svg" 
                 alt="Investors Clinic" 
+                width="200"
+                height="56"
+                fetchPriority="high"
                 className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-multiply"
               />
             </Link>

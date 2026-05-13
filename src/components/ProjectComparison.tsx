@@ -32,7 +32,7 @@ export const ProjectComparison: React.FC<ComparisonProps> = ({ selectedItems, on
                   className="w-10 h-10 rounded-xl border-2 border-[#0a1e3b] overflow-hidden bg-slate-800 relative group cursor-pointer"
                   onClick={() => onRemove(item)}
                 >
-                  <img src={item.img} className="w-full h-full object-cover" />
+                  <img loading="lazy" src={item.img} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-secondary/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                     <X size={12} className="text-white" />
                   </div>
@@ -112,7 +112,7 @@ export const ProjectComparison: React.FC<ComparisonProps> = ({ selectedItems, on
                       {/* Property Header */}
                       <div className="space-y-6">
                         <div className="aspect-[1.5/1] rounded-3xl overflow-hidden shadow-2xl">
-                          <img src={item.img} className="w-full h-full object-cover" />
+                          <img loading="lazy" src={item.img} className="w-full h-full object-cover" />
                         </div>
                         <div>
                           <h4 className="text-xl font-black text-[#0a1e3b] uppercase tracking-tight line-clamp-2 min-h-[56px]">{item.title}</h4>

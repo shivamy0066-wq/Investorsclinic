@@ -151,7 +151,7 @@ export const ProjectDetail = () => {
                       onClick={() => setActiveImg(i)}
                       className={`relative aspect-video rounded-xl overflow-hidden border-2 transition-all ${activeImg === i ? 'border-primary shadow-md' : 'border-transparent opacity-60 hover:opacity-100'}`}
                     >
-                      <img src={img} className="w-full h-full object-cover" alt="" />
+                      <img loading="lazy" src={img} className="w-full h-full object-cover" alt="" />
                       {i === 3 && (
                         <div className="absolute inset-0 bg-slate-900/60 flex items-center justify-center text-white text-[9px] font-black uppercase tracking-wider">
                           +12 More
@@ -294,8 +294,7 @@ export const ProjectDetail = () => {
                           transition={{ duration: 0.5 }}
                           className="relative flex items-center justify-center w-full"
                         >
-                          <img
-                            src={activeTab === '2 BHK' ? "/floorplans/floorplan_2bhk.png" : activeTab === '3 BHK' ? "/floorplans/floorplan_3bhk.png" : "/floorplans/floorplan_4bhk.png"}
+                          <img loading="lazy"                             src={activeTab === '2 BHK' ? "/floorplans/floorplan_2bhk.png" : activeTab === '3 BHK' ? "/floorplans/floorplan_3bhk.png" : "/floorplans/floorplan_4bhk.png"}
                             className="max-w-full max-h-[340px] object-contain drop-shadow-lg"
                             alt={`${activeTab} Floor Plan`}
                           />
@@ -350,8 +349,7 @@ export const ProjectDetail = () => {
                   <div className="relative min-h-[320px] bg-slate-50 border-l border-slate-100 overflow-hidden group">
                     {/* Abstract Grid & Map Overlay */}
                     <div className="absolute inset-0 opacity-[0.2]" style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-                    <img
-                      src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop"
+                    <img loading="lazy"                       src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop"
                       className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-30 grayscale"
                       alt="Map Background"
                     />

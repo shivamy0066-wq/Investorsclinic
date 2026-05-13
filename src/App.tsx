@@ -43,7 +43,8 @@ import {
   Layers,
   UserCheck,
   CircleDollarSign,
-  BarChart3
+  BarChart3,
+  SlidersHorizontal
 } from "lucide-react";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -62,6 +63,10 @@ export default function App() {
   const [heroBudget, setHeroBudget] = React.useState("Budget");
   const [heroPropertyType, setHeroPropertyType] = React.useState("Property Type");
   const [heroPossessionStatus, setHeroPossessionStatus] = React.useState("Possession Status");
+  const [heroBhk, setHeroBhk] = React.useState("BHK");
+  const [heroAmenities, setHeroAmenities] = React.useState("Amenities");
+  const [heroSize, setHeroSize] = React.useState("Size");
+  const [showAdvanced, setShowAdvanced] = React.useState(false);
   const [showScrollTop, setShowScrollTop] = React.useState(false);
 
   const handleHeroSearch = () => {
@@ -71,6 +76,11 @@ export default function App() {
     if (heroBudget && heroBudget !== "Budget") params.append("budget", heroBudget);
     if (heroPropertyType && heroPropertyType !== "Property Type") params.append("type", heroPropertyType);
     if (heroPossessionStatus && heroPossessionStatus !== "Possession Status") params.append("status", heroPossessionStatus);
+    if (showAdvanced) {
+      if (heroBhk && heroBhk !== "BHK") params.append("bhk", heroBhk);
+      if (heroAmenities && heroAmenities !== "Amenities") params.append("amenities", heroAmenities);
+      if (heroSize && heroSize !== "Size") params.append("size", heroSize);
+    }
     
     navigate(`/projects?${params.toString()}`);
   };
@@ -143,223 +153,368 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[550px] md:min-h-[85vh] flex items-center pt-24 md:pt-28 pb-10 overflow-hidden">
-          {/* Static Banner */}
+        <section className="relative min-h-screen flex flex-col justify-end md:justify-center pt-20 pb-0 overflow-hidden">
+          {/* Cinematic Background */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2113&auto=format&fit=crop" 
-              alt="Vibrant Sunset City Skyline" 
-              className="w-full h-full object-cover object-center"
+            <img
+              fetchPriority="high"
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=90&w=2400&auto=format&fit=crop"
+              alt="Luxury Real Estate India"
+              className="w-full h-full object-cover object-center scale-105"
               referrerPolicy="no-referrer"
+              style={{ transform: "scale(1.04)" }}
             />
-            <div className="absolute inset-0 bg-black/10" />
+            {/* Multi-layer gradient overlay for depth */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#07101f]/95 via-[#07101f]/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07101f]/80 via-transparent to-transparent" />
+            {/* Animated shimmer accent line */}
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e11d48] to-transparent opacity-60" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
           </div>
 
-
-          {/* ── Animated City Skyline Silhouette ── */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none overflow-hidden h-28 opacity-20">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-full fill-white">
-              <rect x="50" y="60" width="30" height="60" rx="2" className="[animation:building-rise_1.4s_0.1s_forwards] opacity-0" />
-              <rect x="90" y="40" width="20" height="80" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
-              <rect x="120" y="20" width="35" height="100" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="165" y="50" width="25" height="70" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
-              <rect x="200" y="10" width="40" height="110" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
-              <rect x="250" y="35" width="28" height="85" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
-              <rect x="290" y="55" width="22" height="65" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
-              <rect x="320" y="25" width="50" height="95" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
-              <rect x="380" y="45" width="30" height="75" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
-              <rect x="420" y="15" width="45" height="105" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
-              <rect x="475" y="55" width="20" height="65" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="505" y="30" width="35" height="90" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
-              <rect x="550" y="50" width="25" height="70" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
-              <rect x="585" y="5" width="55" height="115" rx="2" className="[animation:building-rise_1.4s_0.65s_forwards] opacity-0" />
-              <rect x="650" y="40" width="30" height="80" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
-              <rect x="690" y="20" width="40" height="100" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
-              <rect x="740" y="60" width="25" height="60" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="775" y="30" width="35" height="90" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
-              <rect x="820" y="45" width="28" height="75" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
-              <rect x="858" y="10" width="50" height="110" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
-              <rect x="918" y="50" width="22" height="70" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
-              <rect x="950" y="25" width="40" height="95" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
-              <rect x="1000" y="55" width="30" height="65" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
-              <rect x="1040" y="15" width="45" height="105" rx="2" className="[animation:building-rise_1.4s_0.65s_forwards] opacity-0" />
-              <rect x="1095" y="40" width="25" height="80" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="1130" y="20" width="38" height="100" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
-              <rect x="1178" y="55" width="22" height="65" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
-              <rect x="1210" y="30" width="45" height="90" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
-              <rect x="1265" y="50" width="30" height="70" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
-              <rect x="1305" y="10" width="55" height="110" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
-              <rect x="1370" y="45" width="28" height="75" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
-            </svg>
+          {/* Floating trust strip */}
+          <div className="absolute top-24 md:top-28 left-0 right-0 z-20 hidden md:flex justify-center pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 0.6 }}
+              className="flex items-center gap-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2.5"
+            >
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-white/60">Trusted By</span>
+              <div className="w-px h-4 bg-white/20" />
+              {["RERA Registered", "ISO 9001:2015", "NAR Member", "CREDAI Partner"].map((badge) => (
+                <span key={badge} className="text-[10px] font-bold text-white/80 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+                  {badge}
+                </span>
+              ))}
+            </motion.div>
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-1 gap-10 relative z-10 w-full lg:mb-16">
-            <div className="lg:col-span-1">
-              <motion.h1 
+          {/* Main hero content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-28 pb-10 md:py-0 flex flex-col md:flex-row items-end md:items-center gap-10 md:gap-8 min-h-screen md:min-h-0">
+
+            {/* LEFT: Copy + Search */}
+            <div className="flex-1 md:max-w-[60%]">
+              {/* Eyebrow label */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center gap-2.5 bg-[#e11d48]/15 border border-[#e11d48]/30 rounded-full px-4 py-1.5 mb-6"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#e11d48] animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff6b8a]">India's #1 Real Estate Advisor</span>
+              </motion.div>
+
+              {/* Hero headline */}
+              <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-[2.2rem] md:text-[4.2rem] font-headline font-black text-white leading-[1.1] md:leading-[0.95] mb-6 md:mb-8 tracking-tight"
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-[2.6rem] sm:text-[3.4rem] md:text-[4.2rem] lg:text-[5rem] font-headline font-black text-white leading-[1.05] tracking-tight mb-6"
               >
-                Find Your <span className="italic text-primary font-bold">Dream</span> <br className="hidden md:block" /> 
-                Home in India
+                Find Your{" "}
+                <span className="relative">
+                  <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#e11d48] to-[#fb7185]">
+                    Dream
+                  </span>
+                  {/* Underline accent */}
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.7, delay: 1.0, ease: "easeOut" }}
+                    className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-[#e11d48] to-[#fb7185] rounded-full origin-left"
+                  />
+                </span>
+                <br />
+                <span className="text-white/90">Home in India</span>
               </motion.h1>
 
-              <motion.div 
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                className="text-base md:text-lg text-white/60 font-medium max-w-lg leading-relaxed mb-8"
+              >
+                Expert guidance across 2000+ premium projects. Zero brokerage. Lifetime support.
+              </motion.p>
+
+              {/* Stats row */}
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="flex flex-wrap items-center gap-x-6 md:gap-x-10 gap-y-4 mb-8 md:mb-12"
+                transition={{ delay: 0.7 }}
+                className="flex items-center gap-6 md:gap-10 mb-10 flex-wrap"
               >
                 {[
-                  { val: "19", label: "Years", delay: 0.6 },
-                  { val: "190K", label: "Customers", delay: 0.75 },
-                  { val: "700", label: "Developers", delay: 0.9 },
-                  { val: "2000", label: "Projects", delay: 1.05 },
-                ].map((stat, idx) => (
+                  { val: "19", label: "Years", delay: 0.7 },
+                  { val: "190K", label: "Customers", delay: 0.82 },
+                  { val: "700+", label: "Developers", delay: 0.94 },
+                  { val: "2000+", label: "Projects", delay: 1.06 },
+                ].map((stat) => (
                   <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: stat.delay }}
-                    className="relative group"
+                    className="group"
                   >
-                    {/* Shimmer on hover */}
-                    <div className="relative overflow-hidden flex items-center gap-1.5">
-                      <span className="text-2xl md:text-3xl font-headline font-black text-white italic tracking-tighter drop-shadow-lg">{stat.val}</span>
-                      <span className="text-secondary font-black text-sm animate-pulse">+</span>
+                    <div className="flex items-baseline gap-0.5">
+                      <span className="text-[1.8rem] md:text-[2.2rem] font-headline font-black text-white leading-none tracking-tighter">
+                        {stat.val}
+                      </span>
                     </div>
-                    <div className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-white/70 font-black mt-1 leading-tight">
+                    <div className="text-[9px] uppercase tracking-[0.3em] text-white/50 font-bold mt-0.5">
                       {stat.label}
                     </div>
-                    {/* Bottom underline slide-in */}
                     <motion.div
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.5, delay: stat.delay + 0.2, ease: "easeOut" }}
-                      className="h-[2px] bg-secondary/60 rounded-full mt-1 origin-left"
+                      transition={{ duration: 0.4, delay: stat.delay + 0.2, ease: "easeOut" }}
+                      className="h-[2px] bg-gradient-to-r from-[#e11d48] to-transparent rounded-full mt-1.5 origin-left"
                     />
                   </motion.div>
                 ))}
               </motion.div>
 
-                {/* New Premium Search Bar */}
-              <motion.div 
+              {/* Search Card */}
+              <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="max-w-4xl w-full"
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="w-full max-w-2xl"
               >
                 {/* Category Tabs */}
-                <div className="flex items-center gap-0 bg-[#162133] rounded-t-[0.75rem] w-full overflow-x-auto no-scrollbar scroll-smooth">
+                <div className="flex items-center bg-[#0d1c2e]/90 backdrop-blur rounded-t-2xl overflow-x-auto no-scrollbar border border-white/10 border-b-0">
                   {[
-                    { id: "Projects", icon: <Building className="w-4 h-4" />, label: "Projects", hasChevron: true },
-                    { id: "Residential", icon: <Home className="w-4 h-4" />, label: "Residential" },
-                    { id: "Plots", icon: <Mountain className="w-4 h-4" />, label: "Plot & Land" },
-                    { id: "Commercial", icon: <Building2 className="w-4 h-4" />, label: "Commercial" },
+                    { id: "Projects", icon: <Building className="w-3.5 h-3.5" />, label: "Projects" },
+                    { id: "Residential", icon: <Home className="w-3.5 h-3.5" />, label: "Residential" },
+                    { id: "Plots", icon: <Mountain className="w-3.5 h-3.5" />, label: "Plot & Land" },
+                    { id: "Commercial", icon: <Building2 className="w-3.5 h-3.5" />, label: "Commercial" },
                   ].map((tab) => (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`relative flex items-center gap-2 px-6 py-4 md:py-2.5 text-[12px] font-bold tracking-normal transition-all duration-300 whitespace-nowrap ${
-                        activeTab === tab.id ? "text-white" : "text-white/60 hover:text-white/80"
+                      className={`relative flex items-center gap-2 px-5 py-3.5 text-[11px] font-bold tracking-wide transition-all duration-300 whitespace-nowrap flex-1 justify-center ${
+                        activeTab === tab.id
+                          ? "text-white"
+                          : "text-white/40 hover:text-white/70"
                       }`}
                     >
                       {tab.icon}
                       <span>{tab.label}</span>
-                      {tab.hasChevron && <ChevronDown className="w-3.5 h-3.5 opacity-50 ml-0.5" />}
                       {activeTab === tab.id && (
-                        <motion.div 
+                        <motion.div
                           layoutId="activeTabUnderline"
-                          className="absolute bottom-0 left-5 right-5 h-[2px] bg-secondary rounded-t-sm" 
+                          className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#e11d48] rounded-t-sm"
                         />
                       )}
                     </button>
                   ))}
                 </div>
 
-                  {/* Main Search Interface */}
-                <div className="bg-white rounded-b-[1.5rem] md:rounded-b-[0.75rem] shadow-[0_30px_60px_rgba(0,0,0,0.15)] flex flex-col md:flex-row items-stretch overflow-hidden border border-white/20">
-                  {/* Location Selector */}
-                  <div className="md:w-48 px-6 py-5 border-b md:border-b-0 md:border-r border-slate-100 flex items-center justify-between group cursor-pointer hover:bg-slate-50 transition-colors relative">
-                    <select 
+                {/* Main Search Row */}
+                <div className="bg-white/95 backdrop-blur-sm rounded-b-2xl flex flex-col md:flex-row items-stretch overflow-hidden border border-white/20 shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+                  {/* City */}
+                  <div className="md:w-44 px-5 py-4 border-b md:border-b-0 md:border-r border-slate-100 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors relative group">
+                    <select
                       className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                       value={selectedCity}
                       onChange={(e) => setSelectedCity(e.target.value)}
                     >
-                      {CITIES.map(city => (
+                      {CITIES.map((city) => (
                         <option key={city} value={city}>{city}</option>
                       ))}
                     </select>
-                    <div className="flex items-center gap-3">
-                      <MapPin className="w-4 h-4 text-secondary" />
-                      <p className="text-[14px] md:text-[15px] font-black text-primary tracking-tight">{selectedCity}</p>
+                    <div className="flex items-center gap-2.5">
+                      <MapPin className="w-4 h-4 text-[#e11d48] shrink-0" />
+                      <span className="text-[14px] font-black text-[#0d1c2e] tracking-tight">{selectedCity}</span>
                     </div>
-                    <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" />
+                    <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#e11d48] transition-colors" />
                   </div>
 
-                  {/* Search Input Area */}
-                  <div className="flex-1 flex items-center px-6 py-5 min-w-0 bg-slate-50/30">
-                    <Search className="w-5 h-5 text-slate-300 mr-4 shrink-0" />
-                    <input 
-                      type="text" 
+                  {/* Search Input */}
+                  <div className="flex-1 flex items-center px-5 py-4 bg-transparent min-w-0">
+                    <Search className="w-4 h-4 text-slate-300 mr-3 shrink-0" />
+                    <input
+                      type="text"
                       placeholder="Project, builder or location..."
-                      className="bg-transparent border-none focus:ring-0 w-full text-primary font-bold placeholder:text-slate-400 min-w-0 text-[14px]"
+                      className="bg-transparent border-none outline-none focus:ring-0 w-full text-[#0d1c2e] font-semibold placeholder:text-slate-400 text-[14px] min-w-0"
                       value={heroSearchQuery}
                       onChange={(e) => setHeroSearchQuery(e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && handleHeroSearch()}
                     />
-                    
-                    <div className="flex items-center gap-3 ml-3 shrink-0">
-                      <button className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-500 hover:text-primary transition-all shadow-sm">
-                        <Mic className="w-4 h-4" />
-                      </button>
-                    </div>
+                    <button className="shrink-0 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-all ml-2">
+                      <Mic className="w-3.5 h-3.5" />
+                    </button>
                   </div>
 
-                  {/* CTA Button */}
-                  <button 
+                  {/* CTA */}
+                  <button
                     onClick={handleHeroSearch}
-                    className="bg-primary text-white px-10 py-6 md:py-3.5 text-[14px] font-black uppercase tracking-widest hover:bg-[#0c2a55] transition-all active:scale-[0.98] shrink-0 flex items-center justify-center gap-3"
+                    className="bg-[#e11d48] hover:bg-[#be1239] text-white px-8 py-4 text-[12px] font-black uppercase tracking-[0.18em] transition-all active:scale-[0.98] shrink-0 flex items-center justify-center gap-2.5"
                   >
-                    <Search className="w-5 h-5 md:hidden" />
-                    SEARCH PROJECTS
+                    <Search className="w-4 h-4" />
+                    Search
                   </button>
                 </div>
 
-                {/* Quick Filters */}
-                <div className="flex items-center gap-3 mt-6 overflow-x-auto no-scrollbar pb-2">
-                  {[
-                    { label: heroBudget, state: heroBudget, setter: setHeroBudget, options: ["Budget", "Under 50 Lac", "50 Lac - 1 Cr", "1 Cr - 2 Cr", "2 Cr - 5 Cr", "Above 5 Cr"] },
-                    { label: heroPropertyType, state: heroPropertyType, setter: setHeroPropertyType, options: ["Property Type", "Apartment", "Villa", "Plot", "Commercial", "Office"] },
-                    { label: heroPossessionStatus, state: heroPossessionStatus, setter: setHeroPossessionStatus, options: ["Possession Status", "Ready to Move", "Under Construction", "New Launch"] }
-                  ].map((filter, index) => (
-                    <motion.div 
-                      key={filter.options[0]} 
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.5 + (index * 0.1) }}
-                      className="relative bg-[#ebedf1] px-5 md:px-6 py-2.5 rounded-[0.75rem] flex items-center justify-between gap-4 md:gap-6 text-[#1a1a2e] group hover:bg-primary/10 hover:text-primary transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
-                    >
-                      <select 
-                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
-                        value={filter.state}
-                        onChange={(e) => filter.setter(e.target.value)}
+                {/* Quick Filter Pills */}
+                <div className="flex flex-col gap-3 mt-4">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {[
+                      { label: heroBudget, setter: setHeroBudget, options: ["Budget", "Under 50 Lac", "50 Lac - 1 Cr", "1 Cr - 2 Cr", "2 Cr - 5 Cr", "Above 5 Cr"] },
+                      { label: heroPropertyType, setter: setHeroPropertyType, options: ["Property Type", "Apartment", "Villa", "Plot", "Commercial", "Office"] },
+                      { label: heroPossessionStatus, setter: setHeroPossessionStatus, options: ["Possession Status", "Ready to Move", "Under Construction", "New Launch"] },
+                    ].map((filter, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.92 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.9 + i * 0.08 }}
+                        className="relative flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 hover:bg-white/15 text-white px-4 py-2 rounded-full text-[11px] font-bold cursor-pointer transition-all group whitespace-nowrap"
                       >
-                        {filter.options.map(opt => (
-                          <option key={opt} value={opt}>{opt}</option>
-                        ))}
-                      </select>
-                      <span className="text-[12px] font-bold tracking-tight">{filter.label}</span>
-                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-primary transition-all duration-300" />
+                        <select
+                          className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
+                          value={filter.label}
+                          onChange={(e) => filter.setter(e.target.value)}
+                        >
+                          {filter.options.map((opt) => (
+                            <option key={opt} value={opt}>{opt}</option>
+                          ))}
+                        </select>
+                        <span>{filter.label}</span>
+                        <ChevronDown className="w-3 h-3 text-white/50 group-hover:text-white transition-colors" />
+                      </motion.div>
+                    ))}
+                    
+                    <motion.button
+                      initial={{ opacity: 0, scale: 0.92 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 1.14 }}
+                      onClick={() => setShowAdvanced(!showAdvanced)}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold cursor-pointer transition-all group whitespace-nowrap ${showAdvanced ? 'bg-[#e11d48] text-white border border-[#e11d48]' : 'bg-transparent border border-white/20 hover:border-white/40 text-white'}`}
+                    >
+                      <SlidersHorizontal className="w-3 h-3" />
+                      <span>Advanced Filters</span>
+                    </motion.button>
+                  </div>
+
+                  {showAdvanced && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                      animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+                      className="flex items-center gap-2 flex-wrap"
+                    >
+                      {[
+                        { label: heroBhk, setter: setHeroBhk, options: ["BHK", "1 BHK", "2 BHK", "3 BHK", "4+ BHK"] },
+                        { label: heroAmenities, setter: setHeroAmenities, options: ["Amenities", "Swimming Pool", "Gymnasium", "Club House", "Park"] },
+                        { label: heroSize, setter: setHeroSize, options: ["Size", "Under 1000 sq.ft", "1000 - 2000 sq.ft", "2000 - 3000 sq.ft", "Above 3000 sq.ft"] },
+                      ].map((filter, i) => (
+                        <div
+                          key={i}
+                          className="relative flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/10 text-white/80 hover:text-white px-4 py-2 rounded-full text-[11px] font-bold cursor-pointer transition-all group whitespace-nowrap"
+                        >
+                          <select
+                            className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
+                            value={filter.label}
+                            onChange={(e) => filter.setter(e.target.value)}
+                          >
+                            {filter.options.map((opt) => (
+                              <option key={opt} value={opt}>{opt}</option>
+                            ))}
+                          </select>
+                          <span>{filter.label}</span>
+                          <ChevronDown className="w-3 h-3 text-white/40 group-hover:text-white/80 transition-colors" />
+                        </div>
+                      ))}
                     </motion.div>
-                  ))}
+                  )}
                 </div>
               </motion.div>
             </div>
+
+            {/* RIGHT: Floating property preview card (desktop only) */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.8 }}
+              className="hidden lg:flex flex-col gap-4 w-[300px] shrink-0 pb-10"
+            >
+              {/* Featured tag */}
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-[2px] bg-[#e11d48]" />
+                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/50">Featured Property</span>
+              </div>
+
+              {/* Property Card */}
+              <div className="relative bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl overflow-hidden group">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop"
+                    alt="Featured property"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute top-3 left-3">
+                    <span className="bg-[#e11d48] text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">
+                      New Launch
+                    </span>
+                  </div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white font-black text-base leading-tight">M3M The Cullinan</p>
+                    <p className="text-white/60 text-[11px] font-medium mt-0.5 flex items-center gap-1">
+                      <MapPin className="w-3 h-3" /> Sector 94, Noida
+                    </p>
+                  </div>
+                </div>
+                <div className="p-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Starting From</p>
+                    <p className="text-white font-black text-lg leading-none mt-0.5">₹4.5 Cr</p>
+                  </div>
+                  <button
+                    onClick={() => window.location.href = "/projects"}
+                    className="text-[11px] font-black uppercase tracking-wider text-[#e11d48] border border-[#e11d48]/30 hover:border-[#e11d48] px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    View →
+                  </button>
+                </div>
+              </div>
+
+              {/* Mini stats panel */}
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: <TrendingUp className="w-3.5 h-3.5" />, label: "Avg. ROI", val: "18.4%" },
+                  { icon: <ShieldCheck className="w-3.5 h-3.5" />, label: "RERA Listed", val: "100%" },
+                ].map((s) => (
+                  <div key={s.label} className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 flex flex-col gap-1">
+                    <div className="text-[#e11d48]">{s.icon}</div>
+                    <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest">{s.label}</p>
+                    <p className="text-white font-black text-base leading-none">{s.val}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Bottom scroll indicator */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2">
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              className="w-5 h-8 border-2 border-white/20 rounded-full flex items-start justify-center pt-1.5"
+            >
+              <div className="w-1 h-2 bg-white/40 rounded-full" />
+            </motion.div>
           </div>
         </section>
+
+
 
         {/* Developers Network Section - Dark Theme */}
         <section className="py-10 bg-[#0a1e3b] overflow-hidden relative border-y border-white/5">
@@ -429,7 +584,7 @@ export default function App() {
                     key={idx}
                     className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:border-white/30 hover:-translate-y-1 group cursor-default relative overflow-hidden"
                   >
-                    <img 
+                    <img loading="lazy" 
                       src={`https://logo.clearbit.com/${dev.domain}`}
                       alt={dev.name}
                       onError={(e) => {
@@ -477,7 +632,7 @@ export default function App() {
                     key={`clone-${idx}`}
                     className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:border-white/30 hover:-translate-y-1 group cursor-default relative overflow-hidden"
                   >
-                    <img 
+                    <img loading="lazy" 
                       src={`https://logo.clearbit.com/${dev.domain}`}
                       alt={dev.name}
                       onError={(e) => {
@@ -596,7 +751,7 @@ export default function App() {
                     transition={{ delay: idx * 0.1, duration: 0.8 }}
                     className="w-[260px] md:w-[290px] relative aspect-[3/4.5] rounded-[2.5rem] overflow-hidden group shadow-2xl cursor-pointer"
                   >
-                    <img src={loc.img} alt={loc.city} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" />
+                    <img loading="lazy" src={loc.img} alt={loc.city} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60" />
                     
                     {loc.tag && (
@@ -648,7 +803,7 @@ export default function App() {
                     <div className="h-12 w-px bg-[#E5E7EB]" />
                     <div>
                       <div className="flex items-center gap-2 mb-0.5">
-                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-3" />
+                        <img loading="lazy" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-3" />
                         <span className="text-[9px] font-black text-[#111827] uppercase tracking-widest">Reviews</span>
                       </div>
                       <p className="text-base font-headline font-bold text-[#111827]">2,500+</p>
@@ -712,7 +867,7 @@ export default function App() {
                                 <div className="flex gap-0.5 text-yellow-500">
                                   {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 fill-current" />)}
                                 </div>
-                                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-2.5 opacity-40" />
+                                <img loading="lazy" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-2.5 opacity-40" />
                               </div>
                               <p className="text-[#111827] text-sm font-medium leading-relaxed italic line-clamp-4">
                                 "{card.text}"
@@ -745,7 +900,7 @@ export default function App() {
                           {
                             name: "Dr. Sameer Khan",
                             label: "Verified Investor",
-                            text: "Why I chose Noida for my first high-yield asset � Investors Clinic explains.",
+                            text: "Why I chose Noida for my first high-yield asset � Investors Clinic explains.",
                             youtubeId: "OBbzECz08_I",
                             avatar: "https://i.pravatar.cc/150?u=sameer"
                           },
@@ -792,7 +947,7 @@ export default function App() {
                             className="w-full bg-white rounded-[1.5rem] border border-[#E5E7EB] shadow-sm overflow-hidden flex flex-col cursor-pointer shrink-0 h-[280px] transition-all duration-300 hover:shadow-xl group"
                           >
                             <div className="relative h-40 overflow-hidden">
-                              <img 
+                              <img loading="lazy" 
                                 src={`https://img.youtube.com/vi/${card.youtubeId}/hqdefault.jpg`}
                                 alt={card.name} 
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
@@ -815,7 +970,7 @@ export default function App() {
                                 {card.text}
                               </p>
                               <div className="flex items-center gap-3">
-                                <img src={card.avatar} alt={card.name} className="w-7 h-7 rounded-full object-cover" />
+                                <img loading="lazy" src={card.avatar} alt={card.name} className="w-7 h-7 rounded-full object-cover" />
                                 <div>
                                   <p className="text-[11px] font-headline font-bold text-[#111827]">{card.name}</p>
                                   <p className="text-[8px] font-bold text-secondary uppercase tracking-widest">{card.label}</p>
@@ -937,7 +1092,7 @@ export default function App() {
                 </div>
 
                 <div className="relative aspect-[1.4/1] rounded-[1.5rem] overflow-hidden mb-6 shadow-xl shadow-primary/5 group-hover:shadow-primary/10 transition-shadow duration-500">
-                  <img 
+                  <img loading="lazy" 
                     src={blog.img} 
                     alt={blog.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
@@ -1104,7 +1259,7 @@ export default function App() {
                     <div className="relative group">
                       <Phone size={11} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors" />
                       <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5 border-l border-white/15 pl-2">
-                        <img src="https://flagcdn.com/w40/in.png" className="w-3 h-1.5 object-cover rounded-[1px]" alt="IN" />
+                        <img loading="lazy" src="https://flagcdn.com/w40/in.png" className="w-3 h-1.5 object-cover rounded-[1px]" alt="IN" />
                         <span className="text-white font-bold text-[10px]">+91</span>
                       </div>
                       <input type="tel" placeholder="Phone number"

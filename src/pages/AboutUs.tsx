@@ -115,8 +115,7 @@ const LeadershipCard = ({ person, index }: { person: any, index: number }) => {
 
         {/* Core Image */}
         <div className="absolute inset-0 rounded-[1.5rem] overflow-hidden border-[4px] border-white shadow-[0_15px_40px_-10px_rgba(0,113,186,0.15)] group-hover:shadow-[0_20px_50px_-10px_rgba(0,113,186,0.4)] transition-shadow duration-700 z-10 bg-zinc-100">
-          <img
-            src={person.image}
+          <img loading="lazy"             src={person.image}
             alt={person.name}
             className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
           />
@@ -199,8 +198,7 @@ export const AboutUs = () => {
 
         {/* ─── HERO ─── */}
         <section className="relative h-[280px] md:h-[350px] flex items-end overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
+          <img loading="lazy"             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
             alt="Investors Clinic HQ"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
@@ -249,8 +247,7 @@ export const AboutUs = () => {
               {/* Image Side */}
               <motion.div {...fade()} className="relative lg:max-w-md mx-auto w-full">
                 <div className="aspect-[4/5] rounded-[2rem] overflow-hidden bg-zinc-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
-                  <img
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+                  <img loading="lazy"                     src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
                     alt="Corporate Heritage"
                   />

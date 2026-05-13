@@ -156,7 +156,7 @@ export const BlogPostDetail: React.FC = () => {
                   </div>
 
                   <div className="relative rounded-[2rem] overflow-hidden shadow-xl group aspect-[16/9] md:aspect-[2/1] bg-white border border-slate-100">
-                    <img 
+                    <img loading="lazy" 
                       src={post.image} 
                       alt={post.title}
                       className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
@@ -228,7 +228,7 @@ export const BlogPostDetail: React.FC = () => {
                         return (
                           <figure key={idx} className="my-14 rounded-[2rem] overflow-hidden border border-slate-100 bg-slate-50 shadow-xl shadow-slate-200/50 group">
                             <div className="relative overflow-hidden">
-                              <img src={section.url} alt={section.alt || ""} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                              <img loading="lazy" src={section.url} alt={section.alt || ""} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
                             </div>
                             {section.alt && <figcaption className="text-center text-[10px] font-black text-slate-400 uppercase tracking-widest p-5 bg-white border-t border-slate-100">{section.alt}</figcaption>}
                           </figure>
@@ -373,7 +373,7 @@ export const BlogPostDetail: React.FC = () => {
                     {[...BLOG_POSTS].reverse().filter(p => p.id !== post.id).slice(0, 3).map((p, i) => (
                       <Link to={`/blog/${p.id}`} key={i} className="flex gap-4 group items-center">
                         <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-slate-100 bg-slate-50">
-                          <img src={p.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.title} />
+                          <img loading="lazy" src={p.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.title} />
                         </div>
                         <div>
                           <span className="text-[9px] font-black text-secondary uppercase tracking-widest mb-1 block">{p.category}</span>
@@ -406,7 +406,7 @@ export const BlogPostDetail: React.FC = () => {
               {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 4).map((p, i) => (
                 <Link to={`/blog/${p.id}`} key={i} className="group bg-white rounded-[2rem] border border-slate-200 p-4 hover:shadow-xl transition-all hover:border-primary/30 flex flex-col h-full">
                   <div className="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-5 bg-slate-100 shrink-0">
-                    <img src={p.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={p.title} />
+                    <img loading="lazy" src={p.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={p.title} />
                   </div>
                   <div className="px-2 flex flex-col flex-grow">
                     <span className="text-[10px] font-black text-secondary uppercase tracking-widest mb-3 block">{p.category}</span>
