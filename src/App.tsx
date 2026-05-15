@@ -226,7 +226,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="w-full max-w-5xl"
+                className="w-full max-w-4xl"
               >
                 {/* Category Tabs */}
                 <div className="flex items-center bg-[#1b2533] rounded-t-lg overflow-x-auto no-scrollbar border-b-0 border-[#1b2533]">
@@ -239,7 +239,7 @@ export default function App() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`relative flex items-center gap-2 px-6 py-4 text-[12px] font-bold tracking-wide transition-all duration-300 whitespace-nowrap ${
+                      className={`relative flex items-center gap-2 px-5 py-3 text-[11px] font-bold tracking-wide transition-all duration-300 whitespace-nowrap ${
                         activeTab === tab.id
                           ? "text-white"
                           : "text-white/60 hover:text-white/80"
@@ -261,7 +261,7 @@ export default function App() {
                 {/* Main Search Row */}
                 <div className="bg-white rounded-b-lg flex flex-col md:flex-row items-stretch overflow-hidden shadow-xl border border-t-0 border-[#1b2533]">
                   {/* City */}
-                  <div className="md:w-52 px-6 py-4 border-b md:border-b-0 md:border-r border-slate-200 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors relative group">
+                  <div className="md:w-44 px-5 py-3 border-b md:border-b-0 md:border-r border-slate-200 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors relative group">
                     <select
                       className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                       value={selectedCity}
@@ -279,7 +279,7 @@ export default function App() {
                   </div>
 
                   {/* Search Input */}
-                  <div className="flex-1 flex items-center px-6 py-4 bg-transparent min-w-0">
+                  <div className="flex-1 flex items-center px-5 py-3 bg-transparent min-w-0">
                     <Search className="w-5 h-5 text-slate-300 mr-3 shrink-0" />
                     <input
                       type="text"
@@ -297,7 +297,7 @@ export default function App() {
                   {/* CTA */}
                   <button
                     onClick={handleHeroSearch}
-                    className="bg-[#0071ba] hover:bg-[#005a96] text-white px-10 py-5 md:py-4 text-[13px] font-bold uppercase tracking-wide transition-all active:scale-[0.98] shrink-0 flex items-center justify-center"
+                    className="bg-[#0071ba] hover:bg-[#005a96] text-white px-8 py-4 md:py-3 text-[12px] font-bold uppercase tracking-wide transition-all active:scale-[0.98] shrink-0 flex items-center justify-center"
                   >
                     SEARCH PROJECTS
                   </button>
@@ -315,7 +315,7 @@ export default function App() {
                       initial={{ opacity: 0, scale: 0.92 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.9 + i * 0.08 }}
-                      className="relative flex items-center gap-2 bg-white text-slate-800 px-5 py-2.5 rounded-full text-[12px] font-bold cursor-pointer transition-all hover:bg-slate-50 group whitespace-nowrap shadow-md"
+                      className="relative flex items-center gap-2 bg-white text-slate-800 px-4 py-2 rounded-full text-[11px] font-bold cursor-pointer transition-all hover:bg-slate-50 group whitespace-nowrap shadow-md"
                     >
                       <select
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
