@@ -153,64 +153,25 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[95vh] flex flex-col justify-end md:justify-center pt-20 pb-0 overflow-hidden">
+        <section className="relative min-h-screen flex flex-col justify-center pt-20 pb-10 overflow-hidden">
           {/* Cinematic Background */}
           <div className="absolute inset-0 z-0">
             <img
               fetchPriority="high"
               src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2113&auto=format&fit=crop"
               alt="Luxury Real Estate India"
-              className="w-full h-full object-cover object-center scale-105"
+              className="w-full h-full object-cover object-center"
               referrerPolicy="no-referrer"
-              style={{ transform: "scale(1.04)" }}
             />
-            {/* Multi-layer gradient overlay for depth */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#07101f]/95 via-[#07101f]/70 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07101f]/80 via-transparent to-transparent" />
-            {/* Animated shimmer accent line */}
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#e11d48] to-transparent opacity-60" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+            {/* Gradient overlay - lighter so city background is clearly visible */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
           </div>
 
-          {/* 🏙️ Animated City Skyline Silhouette 🏙️ */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none overflow-hidden h-32 opacity-25">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-full fill-white">
-              <rect x="50" y="60" width="30" height="60" rx="2" className="[animation:building-rise_1.4s_0.1s_forwards] opacity-0" />
-              <rect x="90" y="40" width="20" height="80" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
-              <rect x="120" y="20" width="35" height="100" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="165" y="50" width="25" height="70" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
-              <rect x="200" y="10" width="40" height="110" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
-              <rect x="250" y="35" width="28" height="85" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
-              <rect x="290" y="55" width="22" height="65" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
-              <rect x="320" y="25" width="50" height="95" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
-              <rect x="380" y="45" width="30" height="75" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
-              <rect x="420" y="15" width="45" height="105" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
-              <rect x="475" y="55" width="20" height="65" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="505" y="30" width="35" height="90" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
-              <rect x="550" y="50" width="25" height="70" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
-              <rect x="585" y="5" width="55" height="115" rx="2" className="[animation:building-rise_1.4s_0.65s_forwards] opacity-0" />
-              <rect x="650" y="40" width="30" height="80" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
-              <rect x="690" y="20" width="40" height="100" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
-              <rect x="740" y="60" width="25" height="60" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="775" y="30" width="35" height="90" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
-              <rect x="820" y="45" width="28" height="75" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
-              <rect x="858" y="10" width="50" height="110" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
-              <rect x="918" y="50" width="22" height="70" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
-              <rect x="950" y="25" width="40" height="95" rx="2" className="[animation:building-rise_1.4s_0.5s_forwards] opacity-0" />
-              <rect x="1000" y="55" width="30" height="65" rx="2" className="[animation:building-rise_1.4s_0.2s_forwards] opacity-0" />
-              <rect x="1040" y="15" width="45" height="105" rx="2" className="[animation:building-rise_1.4s_0.65s_forwards] opacity-0" />
-              <rect x="1095" y="40" width="25" height="80" rx="2" className="[animation:building-rise_1.4s_0.3s_forwards] opacity-0" />
-              <rect x="1130" y="20" width="38" height="100" rx="2" className="[animation:building-rise_1.4s_0.55s_forwards] opacity-0" />
-              <rect x="1178" y="55" width="22" height="65" rx="2" className="[animation:building-rise_1.4s_0.4s_forwards] opacity-0" />
-              <rect x="1210" y="30" width="45" height="90" rx="2" className="[animation:building-rise_1.4s_0.25s_forwards] opacity-0" />
-              <rect x="1265" y="50" width="30" height="70" rx="2" className="[animation:building-rise_1.4s_0.45s_forwards] opacity-0" />
-              <rect x="1305" y="10" width="55" height="110" rx="2" className="[animation:building-rise_1.4s_0.6s_forwards] opacity-0" />
-              <rect x="1370" y="45" width="28" height="75" rx="2" className="[animation:building-rise_1.4s_0.35s_forwards] opacity-0" />
-            </svg>
-          </div>
+
 
           {/* Main hero content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-28 pb-16 md:py-0 flex flex-col items-start gap-10 md:gap-8 min-h-[90vh] md:min-h-0">
+          <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-12 flex flex-col items-start gap-8">
 
             <div className="w-full">
               {/* Hero headline */}
@@ -218,7 +179,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.75rem] font-headline font-bold text-white leading-[1.05] tracking-tight mb-8"
+                className="text-[2.8rem] sm:text-[3.5rem] md:text-[4.2rem] lg:text-[5rem] font-headline font-bold text-white leading-[1.08] tracking-tight mb-6"
               >
                 Find Your{" "}
                 <span className="italic text-[#0071ba]">
@@ -233,7 +194,7 @@ export default function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
-                className="flex items-center gap-6 md:gap-14 mb-10 flex-wrap"
+                className="flex items-center gap-8 md:gap-16 mb-8 flex-wrap"
               >
                 {[
                   { val: "19", label: "YEARS", delay: 0.7 },
@@ -246,20 +207,14 @@ export default function App() {
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: stat.delay }}
-                    className="flex flex-col w-[120px]"
+                    className="flex flex-col"
                   >
                     <div className="flex items-baseline gap-0.5">
-                      <span className="text-[1.8rem] md:text-[2.2rem] font-headline font-black text-white leading-none tracking-tight">
-                        {stat.val}<span className="text-[#e11d48] text-[1.2rem] relative -top-2 left-0.5 font-bold">+</span>
+                      <span className="text-[1.8rem] md:text-[2.4rem] font-headline font-black text-white leading-none tracking-tight">
+                        {stat.val}
                       </span>
                     </div>
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.4, delay: stat.delay + 0.2, ease: "easeOut" }}
-                      className="h-[3px] bg-[#e11d48] mt-2 mb-2 origin-left w-full"
-                    />
-                    <div className="text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-white/90 font-bold">
+                    <div className="text-[11px] md:text-[13px] uppercase tracking-[0.18em] text-white/80 font-semibold mt-1">
                       {stat.label}
                     </div>
                   </motion.div>
@@ -452,7 +407,7 @@ export default function App() {
                     className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:border-white/30 hover:-translate-y-1 group cursor-default relative overflow-hidden"
                   >
                     <img loading="lazy" 
-                      src={`https://logo.clearbit.com/${dev.domain}`}
+                      src={`https://www.google.com/s2/favicons?domain=${dev.domain}&sz=128`}
                       alt={dev.name}
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';
@@ -460,9 +415,9 @@ export default function App() {
                           (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block';
                         }
                       }}
-                      className="max-w-[120px] max-h-[35px] object-contain filter grayscale invert brightness-200 contrast-200 mix-blend-screen opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                      className="max-w-[40px] max-h-[40px] object-contain filter grayscale invert brightness-200 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
                     />
-                    <span className="hidden text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 text-center leading-tight">
+                    <span className="ml-3 text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 text-center leading-tight">
                       {dev.name}
                     </span>
                   </div>
@@ -500,7 +455,7 @@ export default function App() {
                     className="flex-none w-[150px] md:w-[180px] h-[55px] md:h-[65px] bg-white/5 backdrop-blur-md border border-white/10 shadow-sm rounded-xl flex items-center justify-center p-3 transition-all hover:shadow-[0_10px_30px_rgba(255,255,255,0.1)] hover:border-white/30 hover:-translate-y-1 group cursor-default relative overflow-hidden"
                   >
                     <img loading="lazy" 
-                      src={`https://logo.clearbit.com/${dev.domain}`}
+                      src={`https://www.google.com/s2/favicons?domain=${dev.domain}&sz=128`}
                       alt={dev.name}
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';
@@ -508,9 +463,9 @@ export default function App() {
                           (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block';
                         }
                       }}
-                      className="max-w-[120px] max-h-[35px] object-contain filter grayscale invert brightness-200 contrast-200 mix-blend-screen opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                      className="max-w-[40px] max-h-[40px] object-contain filter grayscale invert brightness-200 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
                     />
-                    <span className="hidden text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 text-center leading-tight">
+                    <span className="ml-3 text-white font-black text-[10px] md:text-xs uppercase tracking-[0.1em] group-hover:text-secondary group-hover:scale-105 transition-all duration-500 text-center leading-tight">
                       {dev.name}
                     </span>
                   </div>
